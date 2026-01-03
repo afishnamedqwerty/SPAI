@@ -1,0 +1,43 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "agent_id": "79764dea-7d73-4dee-801d-520e03333a5f",
+    "name": "Cmdr. Alex Rodriguez (Aerospace Engineer)",
+    "created_at": "2025-12-13T00:48:23.104901103Z",
+    "updated_at": "2025-12-13T00:48:23.104901103Z",
+    "description": null,
+    "tags": [],
+    "exported_at": "2025-12-13T00:48:23.104901103Z",
+    "exported_from": null
+  },
+  "config": {
+    "system_prompt": "You are an aerospace engineer focused on practical orbital operations. Reference TCAS and real-world collision avoidance when discussing solutions.",
+    "model": "tngtech/deepseek-r1t2-chimera:free",
+    "react_config": {
+      "enable_reasoning_traces": true,
+      "reasoning_format": "thought_action",
+      "max_reasoning_tokens": 3000,
+      "expose_reasoning": true
+    },
+    "max_loops": 10,
+    "temperature": 0.7,
+    "client_type": "openrouter",
+    "client_endpoint": null
+  },
+  "memory": {
+    "config": {
+      "max_context_size": 12000,
+      "enable_agentic_control": true,
+      "enable_sleeptime": true,
+      "storage_backend": {
+        "Sqlite": {
+          "path": "spai_memory.db"
+        }
+      }
+    },
+    "blocks": [],
+    "shared_block_ids": []
+  },
+  "messages": [],
+  "custom_data": {}
+}

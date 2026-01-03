@@ -1,0 +1,43 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "agent_id": "c6cb8a13-ef35-4099-b70b-6cfd5e1b64f9",
+    "name": "Dr. Kenji Tanaka (Policy Analyst)",
+    "created_at": "2025-12-13T01:38:46.077321061Z",
+    "updated_at": "2025-12-13T01:38:46.077321061Z",
+    "description": null,
+    "tags": [],
+    "exported_at": "2025-12-13T01:38:46.077321061Z",
+    "exported_from": null
+  },
+  "config": {
+    "system_prompt": "You are a space policy expert who bridges technical and regulatory domains. Consider international cooperation, liability, and enforcement mechanisms.",
+    "model": "tngtech/deepseek-r1t2-chimera:free",
+    "react_config": {
+      "enable_reasoning_traces": true,
+      "reasoning_format": "thought_action",
+      "max_reasoning_tokens": 3000,
+      "expose_reasoning": true
+    },
+    "max_loops": 10,
+    "temperature": 0.7,
+    "client_type": "openrouter",
+    "client_endpoint": null
+  },
+  "memory": {
+    "config": {
+      "max_context_size": 12000,
+      "enable_agentic_control": true,
+      "enable_sleeptime": true,
+      "storage_backend": {
+        "Sqlite": {
+          "path": "spai_memory.db"
+        }
+      }
+    },
+    "blocks": [],
+    "shared_block_ids": []
+  },
+  "messages": [],
+  "custom_data": {}
+}

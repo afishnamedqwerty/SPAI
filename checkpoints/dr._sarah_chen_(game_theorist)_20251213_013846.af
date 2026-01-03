@@ -1,0 +1,43 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "agent_id": "7036da81-e452-4b12-8d03-479575498194",
+    "name": "Dr. Sarah Chen (Game Theorist)",
+    "created_at": "2025-12-13T01:38:46.076858343Z",
+    "updated_at": "2025-12-13T01:38:46.076858343Z",
+    "description": null,
+    "tags": [],
+    "exported_at": "2025-12-13T01:38:46.076858343Z",
+    "exported_from": null
+  },
+  "config": {
+    "system_prompt": "You are a game theorist analyzing cooperation in orbital infrastructure. Use your memory blocks to track insights and build on previous discussions.",
+    "model": "tngtech/deepseek-r1t2-chimera:free",
+    "react_config": {
+      "enable_reasoning_traces": true,
+      "reasoning_format": "thought_action",
+      "max_reasoning_tokens": 3000,
+      "expose_reasoning": true
+    },
+    "max_loops": 10,
+    "temperature": 0.7,
+    "client_type": "openrouter",
+    "client_endpoint": null
+  },
+  "memory": {
+    "config": {
+      "max_context_size": 12000,
+      "enable_agentic_control": true,
+      "enable_sleeptime": true,
+      "storage_backend": {
+        "Sqlite": {
+          "path": "spai_memory.db"
+        }
+      }
+    },
+    "blocks": [],
+    "shared_block_ids": []
+  },
+  "messages": [],
+  "custom_data": {}
+}

@@ -1,0 +1,300 @@
+
+[ Lynis 3.0.7 ]
+
+################################################################################
+  Lynis comes with ABSOLUTELY NO WARRANTY. This is free software, and you are
+  welcome to redistribute it under the terms of the GNU General Public License.
+  See the LICENSE file for details about using this software.
+
+  2007-2021, CISOfy - https://cisofy.com/lynis/
+  Enterprise support available (compliance, plugins, interface and tools)
+################################################################################
+
+
+[+] Initializing program
+------------------------------------
+
+
+Warning: PID file exists, probably another Lynis process is running.
+------------------------------------------------------------------------------
+If you are unsure if another Lynis process is running currently, you are advised
+to stop the current process and check the process list first. If you cancelled
+a previous instance (by using CTRL+C), you can ignore this message.
+
+You are advised to check for temporary files after program completion.
+------------------------------------------------------------------------------
+
+Note: Cancelling the program can leave temporary files behind
+[2C- Detecting OS... [41C [ DONE ]
+[2C- Checking profiles...[37C [ DONE ]
+
+  ---------------------------------------------------
+  Program version:           3.0.7
+  Operating system:          Linux
+  Operating system name:     Ubuntu
+  Operating system version:  22.04
+  Kernel version:            6.8.0
+  Hardware platform:         x86_64
+  Hostname:                  outrun
+  ---------------------------------------------------
+  Profiles:                  /etc/lynis/default.prf
+  Log file:                  /var/log/lynis.log
+  Report file:               /var/log/lynis-report.dat
+  Report version:            1.0
+  Plugin directory:          /etc/lynis/plugins
+  ---------------------------------------------------
+  Auditor:                   [Not Specified]
+  Language:                  en
+  Test category:             all
+  Test group:                all
+  ---------------------------------------------------
+[2C- Program update status... [32C [ NO UPDATE ]
+
+[+] System tools
+------------------------------------
+[2C- Scanning available tools...[30C
+[2C- Checking system binaries...[30C
+
+[+] Plugins (phase 1)
+------------------------------------
+[0CNote: plugins have more extensive tests and may take several minutes to complete[0C
+[0C [0C
+[2C- Plugin: debian[43C
+    [
+[+] Debian Tests
+------------------------------------
+[2C- Checking for system binaries that are required by Debian Tests...[0C
+[4C- Checking /bin... [38C [ FOUND ]
+[4C- Checking /sbin... [37C [ FOUND ]
+[4C- Checking /usr/bin... [34C [ FOUND ]
+[4C- Checking /usr/sbin... [33C [ FOUND ]
+[4C- Checking /usr/local/bin... [28C [ FOUND ]
+[4C- Checking /usr/local/sbin... [27C [ FOUND ]
+[2C- Authentication:[42C
+[4C- PAM (Pluggable Authentication Modules):[16C
+
+  [WARNING]: Test DEB-0001 had a long execution: 10.444117 seconds
+
+[6C- libpam-tmpdir[40C [ Not Installed ]
+[2C- File System Checks:[38C
+[4C- DM-Crypt, Cryptsetup & Cryptmount:[21C
+[2C- Software:[48C
+[4C- apt-listbugs[43C [ Not Installed ]
+[4C- apt-listchanges[40C [ Not Installed ]
+[4C- needrestart[44C [ Not Installed ]
+[4C- fail2ban[47C [ Installed with jail.conf ]
+]
+
+[+] Boot and services
+------------------------------------
+[2C- Service Manager[42C [ systemd ]
+[2C- Checking UEFI boot[39C [ ENABLED ]
+[2C- Checking Secure Boot[37C [ DISABLED ]
+[2C- Checking presence GRUB2[34C [ FOUND ]
+[4C- Checking for password protection[23C [ NONE ]
+[2C- Check running services (systemctl)[23C [ DONE ]
+[8CResult: found 41 running services[20C
+[2C- Check enabled services at boot (systemctl)[15C [ DONE ]
+[8CResult: found 60 enabled services[20C
+[2C- Check startup files (permissions)[24C [ OK ]
+[2C- Running 'systemd-analyze security'[23C
+[8C- ModemManager.service:[30C [ MEDIUM ]
+[8C- NetworkManager.service:[28C [ EXPOSED ]
+[8C- accounts-daemon.service:[27C [ MEDIUM ]
+[8C- acpid.service:[37C [ UNSAFE ]
+[8C- alsa-state.service:[32C [ UNSAFE ]
+[8C- anacron.service:[35C [ UNSAFE ]
+[8C- apport.service:[36C [ UNSAFE ]
+[8C- atd.service:[39C [ UNSAFE ]
+[8C- avahi-daemon.service:[30C [ UNSAFE ]
+[8C- bluetooth.service:[33C [ MEDIUM ]
+[8C- colord.service:[36C [ EXPOSED ]
+[8C- containerd.service:[32C [ UNSAFE ]
+[8C- cron.service:[38C [ UNSAFE ]
+[8C- cups-browsed.service:[30C [ UNSAFE ]
+[8C- cups.service:[38C [ UNSAFE ]
+[8C- dbus.service:[38C [ UNSAFE ]
+[8C- dmesg.service:[37C [ UNSAFE ]
+[8C- docker.service:[36C [ UNSAFE ]
+[8C- emergency.service:[33C [ UNSAFE ]
+[8C- gdm.service:[39C [ UNSAFE ]
+[8C- getty@tty1.service:[32C [ UNSAFE ]
+[8C- irqbalance.service:[32C [ MEDIUM ]
+[8C- kerneloops.service:[32C [ UNSAFE ]
+[8C- lynis.service:[37C [ UNSAFE ]
+[8C- me.proton.vpn.split_tunneling.service:[13C [ UNSAFE ]
+[8C- networkd-dispatcher.service:[23C [ UNSAFE ]
+[8C- nvidia-persistenced.service:[23C [ UNSAFE ]
+[8C- ollama.service:[36C [ UNSAFE ]
+[8C- packagekit.service:[32C [ UNSAFE ]
+[8C- plymouth-start.service:[28C [ UNSAFE ]
+[8C- polkit.service:[36C [ UNSAFE ]
+[8C- power-profiles-daemon.service:[21C [ EXPOSED ]
+[8C- rc-local.service:[34C [ UNSAFE ]
+[8C- rescue.service:[36C [ UNSAFE ]
+[8C- rsyslog.service:[35C [ UNSAFE ]
+[8C- rtkit-daemon.service:[30C [ MEDIUM ]
+[8C- snap.cups.cups-browsed.service:[20C [ UNSAFE ]
+[8C- snap.cups.cupsd.service:[27C [ UNSAFE ]
+[8C- snapd.service:[37C [ UNSAFE ]
+[8C- switcheroo-control.service:[24C [ EXPOSED ]
+[8C- systemd-ask-password-console.service:[14C [ UNSAFE ]
+[8C- systemd-ask-password-plymouth.service:[13C [ UNSAFE ]
+[8C- systemd-ask-password-wall.service:[17C [ UNSAFE ]
+[8C- systemd-fsckd.service:[29C [ UNSAFE ]
+[8C- systemd-initctl.service:[27C [ UNSAFE ]
+[8C- systemd-journald.service:[26C [ PROTECTED ]
+[8C- systemd-logind.service:[28C [ PROTECTED ]
+[8C- systemd-networkd.service:[26C [ PROTECTED ]
+[8C- systemd-oomd.service:[30C [ PROTECTED ]
+[8C- systemd-resolved.service:[26C [ PROTECTED ]
+[8C- systemd-rfkill.service:[28C [ UNSAFE ]
+[8C- systemd-timesyncd.service:[25C [ PROTECTED ]
+[8C- systemd-udevd.service:[29C [ MEDIUM ]
+[8C- thermald.service:[34C [ UNSAFE ]
+[8C- ubuntu-advantage.service:[26C [ UNSAFE ]
+[8C- udisks2.service:[35C [ UNSAFE ]
+[8C- unattended-upgrades.service:[23C [ UNSAFE ]
+[8C- upower.service:[36C [ PROTECTED ]
+[8C- user@1000.service:[33C [ UNSAFE ]
+[8C- uuidd.service:[37C [ PROTECTED ]
+[8C- vboxautostart-service.service:[21C [ UNSAFE ]
+[8C- vboxballoonctrl-service.service:[19C [ UNSAFE ]
+[8C- vboxdrv.service:[35C [ UNSAFE ]
+[8C- vboxweb-service.service:[27C [ UNSAFE ]
+[8C- whoopsie.service:[34C [ UNSAFE ]
+[8C- wpa_supplicant.service:[28C [ UNSAFE ]
+
+[+] Kernel
+------------------------------------
+[2C- Checking default run level[31C [ RUNLEVEL 5 ]
+[2C- Checking CPU support (NX/PAE)[28C
+[4CCPU support: PAE and/or NoeXecute supported[14C [ FOUND ]
+[2C- Checking kernel version and release[22C [ DONE ]
+[2C- Checking kernel type[37C [ DONE ]
+[2C- Checking loaded kernel modules[27C [ DONE ]
+[6CFound 138 active modules[31C
+[2C- Checking Linux kernel configuration file[17C [ FOUND ]
+[2C- Checking default I/O kernel scheduler[20C [ NOT FOUND ]
+[2C- Checking for available kernel update[21C [ OK ]
+[2C- Checking core dumps configuration[24C
+[4C- configuration in systemd conf files[20C [ DEFAULT ]
+[4C- configuration in etc/profile[27C [ DEFAULT ]
+[4C- 'hard' configuration in security/limits.conf[11C [ DEFAULT ]
+[4C- 'soft' configuration in security/limits.conf[11C [ DEFAULT ]
+[4C- Checking setuid core dumps configuration[15C [ PROTECTED ]
+[2C- Check if reboot is needed[32C [ NO ]
+
+[+] Memory and Processes
+------------------------------------
+[2C- Checking /proc/meminfo[35C [ FOUND ]
+[2C- Searching for dead/zombie processes[22C [ NOT FOUND ]
+[2C- Searching for IO waiting processes[23C [ NOT FOUND ]
+[2C- Search prelink tooling[35C [ NOT FOUND ]
+
+[+] Users, Groups and Authentication
+------------------------------------
+[2C- Administrator accounts[35C [ OK ]
+[2C- Unique UIDs[46C [ OK ]
+[2C- Consistency of group files (grpck)[23C [ OK ]
+[2C- Unique group IDs[41C [ OK ]
+[2C- Unique group names[39C [ OK ]
+[2C- Password file consistency[32C [ OK ]
+[2C- Password hashing methods[33C [ OK ]
+[2C- Checking password hashing rounds[25C [ DISABLED ]
+[2C- Query system users (non daemons)[25C [ DONE ]
+[2C- NIS+ authentication support[30C [ NOT ENABLED ]
+[2C- NIS authentication support[31C [ NOT ENABLED ]
+[2C- Sudoers file(s)[42C [ FOUND ]
+[4C- Permissions for directory: /etc/sudoers.d[14C [ WARNING ]
+[4C- Permissions for: /etc/sudoers[26C [ OK ]
+[4C- Permissions for: /etc/sudoers.d/chkrootkit[13C [ OK ]
+[4C- Permissions for: /etc/sudoers.d/security-tools[9C [ OK ]
+[4C- Permissions for: /etc/sudoers.d/README[17C [ OK ]
+[2C- PAM password strength tools[30C [ OK ]
+[2C- PAM configuration files (pam.conf)[23C [ FOUND ]
+[2C- PAM configuration files (pam.d)[26C [ FOUND ]
+[2C- PAM modules[46C [ FOUND ]
+[2C- LDAP module in PAM[39C [ NOT FOUND ]
+[2C- Accounts without expire date[29C [ SUGGESTION ]
+[2C- Accounts without password[32C [ OK ]
+[2C- Locked accounts[42C [ FOUND ]
+[2C- Checking user password aging (minimum)[19C [ DISABLED ]
+[2C- User password aging (maximum)[28C [ DISABLED ]
+[2C- Checking expired passwords[31C [ OK ]
+[2C- Checking Linux single user mode authentication[11C [ OK ]
+[2C- Determining default umask[32C
+[4C- umask (/etc/profile)[35C [ NOT FOUND ]
+[4C- umask (/etc/login.defs)[32C [ SUGGESTION ]
+[2C- LDAP authentication support[30C [ NOT ENABLED ]
+[2C- Logging failed login attempts[28C [ ENABLED ]
+
+[+] Shells
+------------------------------------
+[2C- Checking shells from /etc/shells[25C
+[4CResult: found 9 shells (valid shells: 9).[16C
+[4C- Session timeout settings/tools[25C [ NONE ]
+[2C- Checking default umask values[28C
+[4C- Checking default umask in /etc/bash.bashrc[13C [ NONE ]
+[4C- Checking default umask in /etc/profile[17C [ NONE ]
+
+[+] File systems
+------------------------------------
+[2C- Checking mount points[36C
+[4C- Checking /home mount point[29C [ SUGGESTION ]
+[4C- Checking /tmp mount point[30C [ SUGGESTION ]
+[4C- Checking /var mount point[30C [ SUGGESTION ]
+[2C- Query swap partitions (fstab)[28C [ OK ]
+[2C- Testing swap partitions[34C [ OK ]
+[2C- Testing /proc mount (hidepid)[28C [ SUGGESTION ]
+[2C- Checking for old files in /tmp[27C [ OK ]
+[2C- Checking /tmp sticky bit[33C [ OK ]
+[2C- Checking /var/tmp sticky bit[29C [ OK ]
+[2C- ACL support root file system[29C [ ENABLED ]
+[2C- Mount options of /[39C [ NON DEFAULT ]
+[2C- Mount options of /dev[36C [ PARTIALLY HARDENED ]
+[2C- Mount options of /dev/shm[32C [ PARTIALLY HARDENED ]
+[2C- Mount options of /run[36C [ HARDENED ]
+[2C- Total without nodev:11 noexec:39 nosuid:34 ro or noexec (W^X): 14 of total 57[0C
+[2C- Disable kernel support of some filesystems[15C
+
+[+] USB Devices
+------------------------------------
+[2C- Checking usb-storage driver (modprobe config)[12C [ NOT DISABLED ]
+[2C- Checking USB devices authorization[23C [ ENABLED ]
+[2C- Checking USBGuard[40C [ NOT FOUND ]
+
+[+] Storage
+------------------------------------
+[2C- Checking firewire ohci driver (modprobe config)[10C [ DISABLED ]
+
+[+] NFS
+------------------------------------
+[2C- Check running NFS daemon[33C [ NOT FOUND ]
+
+[+] Name services
+------------------------------------
+[2C- Checking search domains[34C [ FOUND ]
+[2C- Checking /etc/resolv.conf options[24C [ FOUND ]
+[2C- Searching DNS domain name[32C [ UNKNOWN ]
+[2C- Checking /etc/hosts[38C
+[4C- Duplicate entries in hosts file[24C [ NONE ]
+[4C- Presence of configured hostname in /etc/hosts[10C [ FOUND ]
+[4C- Hostname mapped to localhost[27C [ NOT FOUND ]
+[4C- Localhost mapping to IP address[24C [ OK ]
+
+[+] Ports and packages
+------------------------------------
+[2C- Searching package managers[31C
+[4C- Searching RPM package manager[26C [ FOUND ]
+[6C- Querying RPM package manager[25C
+[4C- Searching dpkg package manager[25C [ FOUND ]
+[6C- Querying package manager[29C
+[4C- Query unpurged packages[32C [ FOUND ]
+[4C- debsums utility[40C [ FOUND ]
+[6C- Cron job for debsums[33C [ FOUND ]
+[2C- Checking security repository in sources.list file[8C [ OK ]
+[2C- Checking APT package database[28C [ OK ]
+W: Target Packages (stable/binary-amd64/Packages) is configured multiple times in /etc/apt/sources.list.d/docker.list:1 and /etc/apt/sources.list.d/docker.sources:1
+W: Target Packages (stable/binary-all/Packages) is configured multiple times in /etc/apt/sources.list.d/docker.list:1 and /etc/apt/sources.list.d/docker.sources:1
+W: Target Translations (stable/i18n/Translation-en) is configured multiple times in /etc/apt/sources.list.d/docker.list:1 and /etc/apt/sources.list.d/docker.sources:1

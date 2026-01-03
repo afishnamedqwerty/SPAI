@@ -1,0 +1,261 @@
+=== SPAI PORTLIST - ALL CONNECTIONS ===
+portlist not available
+
+
+=== SPAI PORTLIST - SUSPICIOUS PORTS ===
+portlist not available
+
+
+=== 60-SECOND TSHARK CAPTURE ===
+================================================================================
+UDP Conversations
+Filter:<No Filter>
+                                                           |       <-      | |       ->      | |     Total     |    Relative    |   Duration   |
+                                                           | Frames  Bytes | | Frames  Bytes | | Frames  Bytes |      Start     |              |
+127.0.0.1:39483            <-> 127.0.0.53:53                    2 326 bytes       2 192 bytes       4 518 bytes     1.316363929         0.0678
+10.0.0.244:1900            <-> 10.0.0.10:38562                  0 0 bytes         3 1,584 bytes       3 1,584 bytes     0.000000000         2.1497
+10.0.0.10:38562            <-> 239.255.255.250:1900             0 0 bytes         2 434 bytes       2 434 bytes     0.809347711         1.0007
+127.0.0.1:57612            <-> 127.0.0.53:53                    1 178 bytes       1 85 bytes        2 263 bytes     1.285322679         0.0978
+127.0.0.1:51076            <-> 127.0.0.53:53                    1 164 bytes       1 85 bytes        2 249 bytes     1.285397500         0.0988
+127.0.0.1:3662             <-> 127.0.0.53:53                    1 140 bytes       1 85 bytes        2 225 bytes     1.285445550         0.0974
+127.0.0.1:45761            <-> 127.0.0.53:53                    1 178 bytes       1 85 bytes        2 263 bytes     1.295765256         0.0874
+127.0.0.1:6408             <-> 127.0.0.53:53                    1 164 bytes       1 85 bytes        2 249 bytes     1.295819147         0.0883
+127.0.0.1:17270            <-> 127.0.0.53:53                    1 140 bytes       1 85 bytes        2 225 bytes     1.295851457         0.0871
+127.0.0.1:36376            <-> 127.0.0.53:53                    1 113 bytes       1 97 bytes        2 210 bytes     6.840705728         0.0003
+127.0.0.1:40605            <-> 127.0.0.53:53                    1 182 bytes       1 97 bytes        2 279 bytes     6.840710729         0.0281
+127.0.0.1:57518            <-> 127.0.0.53:53                    1 113 bytes       1 97 bytes        2 210 bytes    39.775860607         0.0009
+127.0.0.1:57732            <-> 127.0.0.53:53                    1 182 bytes       1 97 bytes        2 279 bytes    39.775860777         0.1229
+fe80::10ea:b41b:b25e:c567:5353 <-> ff02::fb:5353                    0 0 bytes         2 274 bytes       2 274 bytes    57.353785835         0.0000
+================================================================================
+================================================================================
+TCP Conversations
+Filter:<No Filter>
+                                                           |       <-      | |       ->      | |     Total     |    Relative    |   Duration   |
+                                                           | Frames  Bytes | | Frames  Bytes | | Frames  Bytes |      Start     |              |
+10.0.0.10:39774            <-> 104.18.36.146:443             1170 6,148 kB      692 52 kB        1862 6,200 kB      1.162733179        45.1691
+172.66.0.227:443           <-> 10.0.0.10:40264                432 516 kB        554 502 kB        986 1,019 kB      1.930581577        55.7694
+127.0.0.1:57102            <-> 127.0.0.1:34549                193 22 kB         251 52 kB         444 75 kB         0.351875910        58.0505
+10.0.0.10:42146            <-> 172.64.150.129:443             111 595 kB         64 6,828 bytes     175 602 kB       16.972943959        27.3606
+10.0.0.10:57986            <-> 34.54.84.110:443                59 52 kB          44 8,729 bytes     103 61 kB         6.868923739        30.4973
+2605:380:56:6::1:443       <-> 2601:404:c000:3480:bbf9:b8fd:af6a:2c32:43686      34 6,304 bytes      48 7,306 bytes      82 13 kB         1.167378629        45.5861
+127.0.0.1:57116            <-> 127.0.0.1:34549                 32 49 kB          31 5,981 bytes      63 55 kB         6.836050569        45.4649
+10.0.0.10:40744            <-> 104.244.43.131:443              27 2,632 bytes      21 2,524 bytes      48 5,156 bytes     1.311133595        29.8358
+10.0.0.10:44266            <-> 34.54.84.110:443                17 6,284 bytes      16 3,367 bytes      33 9,651 bytes    39.898920170         0.1516
+10.0.0.10:47944            <-> 45.90.30.0:853                  12 2,028 bytes      16 2,132 bytes      28 4,160 bytes     1.285803932        15.6903
+10.0.0.10:44660            <-> 185.70.42.37:443                10 4,228 bytes      10 1,220 bytes      20 5,448 bytes    12.603701766        31.6469
+10.0.0.10:56238            <-> 45.90.30.0:853                   8 1,107 bytes      12 1,566 bytes      20 2,673 bytes    39.776342180        10.2003
+10.0.0.10:43070            <-> 18.97.36.67:443                  5 575 bytes       5 957 bytes      10 1,532 bytes     2.601255846        46.0435
+127.0.0.1:42177            <-> 127.0.0.1:44796                  5 502 bytes       5 340 bytes      10 842 bytes     7.244958189        37.3760
+127.0.0.1:46772            <-> 127.0.0.1:34757                  5 767 bytes       5 1,213 bytes      10 1,980 bytes    37.304612740         0.0370
+127.0.0.1:32938            <-> 127.0.0.1:34757                  5 752 bytes       5 871 bytes      10 1,623 bytes    39.775337723         0.2525
+2601:404:c000:3480:bbf9:b8fd:af6a:2c32:40818 <-> 2607:f8b0:4009:819::200a:443       4 352 bytes       4 352 bytes       8 704 bytes     1.612951661        46.0993
+2601:404:c000:3480:bbf9:b8fd:af6a:2c32:45286 <-> 2607:f8b0:4009:817::200a:443       4 352 bytes       4 352 bytes       8 704 bytes     2.637950622        46.0981
+2601:404:c000:3480:bbf9:b8fd:af6a:2c32:52330 <-> 2607:f8b0:4009:81a::200a:443       4 352 bytes       4 352 bytes       8 704 bytes     3.660950383        46.1050
+2601:404:c000:3480:bbf9:b8fd:af6a:2c32:52322 <-> 2607:f8b0:4009:81a::200a:443       4 352 bytes       4 352 bytes       8 704 bytes     3.660979134        46.1053
+2601:404:c000:3480:bbf9:b8fd:af6a:2c32:48108 <-> 2607:f8b0:4009:80a::200a:443       4 352 bytes       4 352 bytes       8 704 bytes     3.661007044        46.1001
+2601:404:c000:3480:bbf9:b8fd:af6a:2c32:52334 <-> 2607:f8b0:4009:81a::200a:443       4 352 bytes       4 352 bytes       8 704 bytes     3.661014684        46.1053
+2601:404:c000:3480:bbf9:b8fd:af6a:2c32:48802 <-> 2607:f8b0:4009:817::200a:443       4 352 bytes       4 352 bytes       8 704 bytes     9.292958839        46.1014
+2601:404:c000:3480:bbf9:b8fd:af6a:2c32:43272 <-> 2606:50c0:8000::154:443          4 427 bytes       4 328 bytes       8 755 bytes    12.876954328        21.8361
+10.0.0.10:58778            <-> 185.199.108.154:443              4 347 bytes       4 248 bytes       8 595 bytes    12.876984228        21.6173
+2601:404:c000:3480:bbf9:b8fd:af6a:2c32:34110 <-> 2001:558:feed::2:853             0 0 bytes         7 676 bytes       7 676 bytes     1.286110944         7.1759
+2601:404:c000:3480:bbf9:b8fd:af6a:2c32:52586 <-> 2001:558:feed::2:853             0 0 bytes         7 676 bytes       7 676 bytes    39.776608411         7.1484
+2601:404:c000:3480:bbf9:b8fd:af6a:2c32:59842 <-> 2607:f8b0:4009:818::2001:443       3 276 bytes       3 288 bytes       6 564 bytes     1.772545919         0.0247
+2605:380:56:6::1:443       <-> 2601:404:c000:3480:bbf9:b8fd:af6a:2c32:34952       3 240 bytes       3 327 bytes       6 567 bytes     1.881750962         0.0216
+2601:404:c000:3480:bbf9:b8fd:af6a:2c32:36830 <-> 2001:4860:4802:38::223:443       3 264 bytes       3 264 bytes       6 528 bytes    14.412972249        30.7459
+10.0.0.10:33654            <-> 140.82.112.26:443                3 230 bytes       2 166 bytes       5 396 bytes     5.708953620        14.8027
+127.0.0.1:37268            <-> 127.0.0.1:36727                  2 136 bytes       2 136 bytes       4 272 bytes     0.588960340        30.2090
+127.0.0.1:37262            <-> 127.0.0.1:36727                  2 136 bytes       2 136 bytes       4 272 bytes     0.588963850        30.2080
+127.0.0.1:58278            <-> 127.0.0.1:36727                  2 136 bytes       2 136 bytes       4 272 bytes     7.756969779        30.2080
+127.0.0.1:49552            <-> 127.0.0.1:37597                  2 136 bytes       2 136 bytes       4 272 bytes    12.876992818        45.0560
+127.0.0.1:58280            <-> 127.0.0.1:36727                  2 136 bytes       2 136 bytes       4 272 bytes    14.925962683        30.2070
+127.0.0.1:58268            <-> 127.0.0.1:36727                  2 136 bytes       2 136 bytes       4 272 bytes    17.484950448        30.2081
+10.0.0.10:38670            <-> 18.97.36.51:443                  2 254 bytes       2 376 bytes       4 630 bytes    34.601290681         0.0837
+10.0.0.10:52310            <-> 52.182.143.214:443               2 124 bytes       1 68 bytes        3 192 bytes    16.972972719        29.7233
+================================================================================
+tshark not available, falling back to ss/netstat
+
+
+=== LISTENING PORTS ===
+Netid State  Recv-Q Send-Q                    Local Address:Port  Peer Address:PortProcess                                       
+udp   UNCONN 0      0                           224.0.0.251:5353       0.0.0.0:*    users:(("brave",pid=535961,fd=521))          
+udp   UNCONN 0      0                           224.0.0.251:5353       0.0.0.0:*    users:(("brave",pid=536025,fd=46))           
+udp   UNCONN 0      0                               0.0.0.0:5353       0.0.0.0:*                                                 
+udp   UNCONN 0      0                               0.0.0.0:47381      0.0.0.0:*                                                 
+udp   UNCONN 0      0                         127.0.0.53%lo:53         0.0.0.0:*                                                 
+udp   UNCONN 0      0                                  [::]:5353          [::]:*                                                 
+udp   UNCONN 0      0      [fe80::f287:54a0:9525:c4fc]%wlo1:546           [::]:*                                                 
+udp   UNCONN 0      0                                  [::]:59239         [::]:*                                                 
+tcp   LISTEN 0      4096                          127.0.0.1:42177      0.0.0.0:*    users:(("language_server",pid=1456997,fd=11))
+tcp   LISTEN 0      4096                          127.0.0.1:34757      0.0.0.0:*    users:(("language_server",pid=1456997,fd=10))
+tcp   LISTEN 0      4096                          127.0.0.1:34549      0.0.0.0:*    users:(("language_server",pid=1456997,fd=9)) 
+tcp   LISTEN 0      5                             127.0.0.1:9875       0.0.0.0:*    users:(("FreeCAD",pid=1186425,fd=51))        
+tcp   LISTEN 0      511                           127.0.0.1:9101       0.0.0.0:*    users:(("antigravity",pid=371580,fd=89))     
+tcp   LISTEN 0      511                           127.0.0.1:9091       0.0.0.0:*    users:(("antigravity",pid=371580,fd=181))    
+tcp   LISTEN 0      511                           127.0.0.1:9090       0.0.0.0:*    users:(("antigravity",pid=371580,fd=173))    
+tcp   LISTEN 0      511                           127.0.0.1:9093       0.0.0.0:*    users:(("antigravity",pid=371580,fd=84))     
+tcp   LISTEN 0      511                           127.0.0.1:9092       0.0.0.0:*    users:(("antigravity",pid=371580,fd=148))    
+tcp   LISTEN 0      511                           127.0.0.1:9094       0.0.0.0:*    users:(("antigravity",pid=371580,fd=189))    
+tcp   LISTEN 0      128                           127.0.0.1:631        0.0.0.0:*                                                 
+tcp   LISTEN 0      4096                          127.0.0.1:11434      0.0.0.0:*                                                 
+tcp   LISTEN 0      511                           127.0.0.1:36727      0.0.0.0:*    users:(("antigravity",pid=1456816,fd=50))    
+tcp   LISTEN 0      4096                          127.0.0.1:43637      0.0.0.0:*    users:(("tor-0.4.8.19-li",pid=1261996,fd=6)) 
+tcp   LISTEN 0      4096                          127.0.0.1:37597      0.0.0.0:*    users:(("tor-0.4.8.19-li",pid=1261996,fd=7)) 
+tcp   LISTEN 0      4096                      127.0.0.53%lo:53         0.0.0.0:*                                                 
+tcp   LISTEN 0      128                               [::1]:631           [::]:*                                                 
+tcp   LISTEN 0      511                                   *:43889            *:*    users:(("antigravity",pid=371580,fd=87))     
+
+
+=== ESTABLISHED CONNECTIONS ===
+Netid Recv-Q Send-Q                            Local Address:Port                Peer Address:Port Process                                       
+udp   0      0                                10.0.0.10%wlo1:68                      10.0.0.1:67                                                 
+tcp   0      0                                     127.0.0.1:34549                  127.0.0.1:57116 users:(("language_server",pid=1456997,fd=13))
+tcp   0      0                                     10.0.0.10:43070                18.97.36.67:443   users:(("brave",pid=536025,fd=31))           
+tcp   0      0                                     127.0.0.1:44796                  127.0.0.1:42177 users:(("antigravity",pid=1456816,fd=63))    
+tcp   0      0                                     127.0.0.1:58280                  127.0.0.1:36727 users:(("language_server",pid=1456997,fd=16))
+tcp   0      0                                     127.0.0.1:37262                  127.0.0.1:36727 users:(("language_server",pid=1456997,fd=30))
+tcp   0      0                                     127.0.0.1:57102                  127.0.0.1:34549 users:(("antigravity",pid=1456816,fd=53))    
+tcp   0      0                                     127.0.0.1:36727                  127.0.0.1:37268 users:(("antigravity",pid=1456816,fd=70))    
+tcp   0      0                                     10.0.0.10:44660               185.70.42.37:443   users:(("brave",pid=536025,fd=38))           
+tcp   0      0                                     127.0.0.1:58278                  127.0.0.1:36727 users:(("language_server",pid=1456997,fd=17))
+tcp   0      0                                     10.0.0.10:33654              140.82.112.26:443   users:(("brave",pid=536025,fd=68))           
+tcp   0      0                                     127.0.0.1:36727                  127.0.0.1:58278 users:(("antigravity",pid=1456816,fd=57))    
+tcp   0      0                                     10.0.0.10:40264               172.66.0.227:443   users:(("brave",pid=536025,fd=28))           
+tcp   0      0                                     10.0.0.10:42146             172.64.150.129:443   users:(("brave",pid=536025,fd=24))           
+tcp   0      0                                     10.0.0.10:40744             104.244.43.131:443   users:(("brave",pid=536025,fd=43))           
+tcp   0      0                                     127.0.0.1:37268                  127.0.0.1:36727 users:(("language_server",pid=1456997,fd=31))
+tcp   0      0                                     10.0.0.10:39774              104.18.36.146:443   users:(("brave",pid=536025,fd=81))           
+tcp   0      0                                     127.0.0.1:36727                  127.0.0.1:58280 users:(("antigravity",pid=1456816,fd=59))    
+tcp   0      0                                     10.0.0.10:38670                18.97.36.51:443   users:(("brave",pid=536025,fd=27))           
+tcp   0      0                                     127.0.0.1:36727                  127.0.0.1:58268 users:(("antigravity",pid=1456816,fd=62))    
+tcp   0      0                                     127.0.0.1:37597                  127.0.0.1:49552 users:(("tor-0.4.8.19-li",pid=1261996,fd=10))
+tcp   0      0                                     127.0.0.1:36727                  127.0.0.1:37262 users:(("antigravity",pid=1456816,fd=68))    
+tcp   0      0                                     127.0.0.1:42177                  127.0.0.1:44796 users:(("language_server",pid=1456997,fd=21))
+tcp   0      0                                     127.0.0.1:49552                  127.0.0.1:37597 users:(("brave",pid=535961,fd=586))          
+tcp   0      0                                     127.0.0.1:58268                  127.0.0.1:36727 users:(("language_server",pid=1456997,fd=15))
+tcp   0      0                                     127.0.0.1:57116                  127.0.0.1:34549 users:(("antigravity",pid=371631,fd=30))     
+tcp   0      0                                     127.0.0.1:34549                  127.0.0.1:57102 users:(("language_server",pid=1456997,fd=14))
+tcp   0      0      [2601:404:c000:3480:bbf9:b8fd:af6a:2c32]:48108 [2607:f8b0:4009:80a::200a]:443   users:(("language_server",pid=1456997,fd=24))
+tcp   0      0      [2601:404:c000:3480:bbf9:b8fd:af6a:2c32]:36830   [2001:4860:4802:38::223]:443   users:(("language_server",pid=1456997,fd=28))
+tcp   0      0      [2601:404:c000:3480:bbf9:b8fd:af6a:2c32]:52330 [2607:f8b0:4009:81a::200a]:443   users:(("language_server",pid=1456997,fd=33))
+tcp   0      0      [2601:404:c000:3480:bbf9:b8fd:af6a:2c32]:48802 [2607:f8b0:4009:817::200a]:443   users:(("language_server",pid=1456997,fd=29))
+tcp   0      0      [2601:404:c000:3480:bbf9:b8fd:af6a:2c32]:52322 [2607:f8b0:4009:81a::200a]:443   users:(("language_server",pid=1456997,fd=22))
+tcp   0      0      [2601:404:c000:3480:bbf9:b8fd:af6a:2c32]:43686         [2605:380:56:6::1]:443   users:(("brave",pid=536025,fd=40))           
+tcp   0      0      [2601:404:c000:3480:bbf9:b8fd:af6a:2c32]:45286 [2607:f8b0:4009:817::200a]:443   users:(("language_server",pid=1456997,fd=26))
+tcp   0      0      [2601:404:c000:3480:bbf9:b8fd:af6a:2c32]:52334 [2607:f8b0:4009:81a::200a]:443   users:(("language_server",pid=1456997,fd=34))
+tcp   0      0      [2601:404:c000:3480:bbf9:b8fd:af6a:2c32]:40818 [2607:f8b0:4009:819::200a]:443   users:(("language_server",pid=1456997,fd=23))
+
+
+=== SOCKET STATISTICS ===
+Total: 1562
+TCP:   60 (estab 35, closed 7, orphaned 0, timewait 7)
+
+Transport Total     IP        IPv6
+RAW	  1         0         1        
+UDP	  9         6         3        
+TCP	  53        42        11       
+INET	  63        48        15       
+FRAG	  0         0         0        
+
+
+
+=== PROCESS NETWORK ACTIVITY (lsof) ===
+COMMAND       PID   USER   FD   TYPE   DEVICE SIZE/OFF NODE NAME
+antigravi  371580 outrun   84u  IPv4  6210809      0t0  TCP 127.0.0.1:9093 (LISTEN)
+antigravi  371580 outrun   87u  IPv6  2419825      0t0  TCP *:43889 (LISTEN)
+antigravi  371580 outrun   89u  IPv4  2419827      0t0  TCP 127.0.0.1:9101 (LISTEN)
+antigravi  371580 outrun  148u  IPv4  3566139      0t0  TCP 127.0.0.1:9092 (LISTEN)
+antigravi  371580 outrun  173u  IPv4  6238829      0t0  TCP 127.0.0.1:9090 (LISTEN)
+antigravi  371580 outrun  181u  IPv4  6062845      0t0  TCP 127.0.0.1:9091 (LISTEN)
+antigravi  371580 outrun  189u  IPv4 10770112      0t0  TCP 127.0.0.1:9094 (LISTEN)
+antigravi  371631 outrun   30u  IPv4 10770885      0t0  TCP 127.0.0.1:57116->127.0.0.1:34549 (ESTABLISHED)
+brave      535961 outrun  521u  IPv4 10245095      0t0  UDP 224.0.0.251:5353 
+brave      535961 outrun  586u  IPv4  9520799      0t0  TCP 127.0.0.1:49552->127.0.0.1:37597 (ESTABLISHED)
+brave      536025 outrun   24u  IPv4 10757309      0t0  TCP 10.0.0.10:42146->172.64.150.129:443 (ESTABLISHED)
+brave      536025 outrun   27u  IPv4 10774002      0t0  TCP 10.0.0.10:38670->18.97.36.51:443 (ESTABLISHED)
+brave      536025 outrun   28u  IPv4 10749796      0t0  TCP 10.0.0.10:40264->172.66.0.227:443 (ESTABLISHED)
+brave      536025 outrun   31u  IPv4 10756761      0t0  TCP 10.0.0.10:43070->18.97.36.67:443 (ESTABLISHED)
+brave      536025 outrun   38u  IPv4 10763317      0t0  TCP 10.0.0.10:44660->185.70.42.37:443 (ESTABLISHED)
+brave      536025 outrun   40u  IPv6 10762661      0t0  TCP [2601:404:c000:3480:bbf9:b8fd:af6a:2c32]:43686->[2605:380:56:6::1]:443 (ESTABLISHED)
+brave      536025 outrun   43u  IPv4 10762672      0t0  TCP 10.0.0.10:40744->104.244.43.131:443 (ESTABLISHED)
+brave      536025 outrun   46u  IPv4  3970218      0t0  UDP 224.0.0.251:5353 
+brave      536025 outrun   68u  IPv4 10756558      0t0  TCP 10.0.0.10:33654->140.82.112.26:443 (ESTABLISHED)
+brave      536025 outrun   81u  IPv4 10781975      0t0  TCP 10.0.0.10:39774->104.18.36.146:443 (ESTABLISHED)
+FreeCAD   1186425 outrun   51u  IPv4  6090521      0t0  TCP 127.0.0.1:9875 (LISTEN)
+tor-0.4.8 1261996 outrun    6u  IPv4  9566215      0t0  TCP 127.0.0.1:43637 (LISTEN)
+tor-0.4.8 1261996 outrun    7u  IPv4  9566216      0t0  TCP 127.0.0.1:37597 (LISTEN)
+tor-0.4.8 1261996 outrun   10u  IPv4  9558745      0t0  TCP 127.0.0.1:37597->127.0.0.1:49552 (ESTABLISHED)
+antigravi 1456816 outrun   50u  IPv4 10773562      0t0  TCP 127.0.0.1:36727 (LISTEN)
+antigravi 1456816 outrun   53u  IPv4 10735474      0t0  TCP 127.0.0.1:57102->127.0.0.1:34549 (ESTABLISHED)
+antigravi 1456816 outrun   57u  IPv4 10766589      0t0  TCP 127.0.0.1:36727->127.0.0.1:58278 (ESTABLISHED)
+antigravi 1456816 outrun   59u  IPv4 10735476      0t0  TCP 127.0.0.1:36727->127.0.0.1:58280 (ESTABLISHED)
+antigravi 1456816 outrun   62u  IPv4 10766571      0t0  TCP 127.0.0.1:36727->127.0.0.1:58268 (ESTABLISHED)
+antigravi 1456816 outrun   63u  IPv4 10735479      0t0  TCP 127.0.0.1:44796->127.0.0.1:42177 (ESTABLISHED)
+antigravi 1456816 outrun   68u  IPv4 10775636      0t0  TCP 127.0.0.1:36727->127.0.0.1:37262 (ESTABLISHED)
+antigravi 1456816 outrun   70u  IPv4 10770122      0t0  TCP 127.0.0.1:36727->127.0.0.1:37268 (ESTABLISHED)
+language_ 1456997 outrun    9u  IPv4 10770836      0t0  TCP 127.0.0.1:34549 (LISTEN)
+language_ 1456997 outrun   10u  IPv4 10770840      0t0  TCP 127.0.0.1:34757 (LISTEN)
+language_ 1456997 outrun   11u  IPv4 10735404      0t0  TCP 127.0.0.1:42177 (LISTEN)
+language_ 1456997 outrun   13u  IPv4 10769088      0t0  TCP 127.0.0.1:34549->127.0.0.1:57116 (ESTABLISHED)
+language_ 1456997 outrun   14u  IPv4 10766595      0t0  TCP 127.0.0.1:34549->127.0.0.1:57102 (ESTABLISHED)
+language_ 1456997 outrun   15u  IPv4 10735408      0t0  TCP 127.0.0.1:58268->127.0.0.1:36727 (ESTABLISHED)
+language_ 1456997 outrun   16u  IPv4 10770861      0t0  TCP 127.0.0.1:58280->127.0.0.1:36727 (ESTABLISHED)
+language_ 1456997 outrun   17u  IPv4 10770850      0t0  TCP 127.0.0.1:58278->127.0.0.1:36727 (ESTABLISHED)
+language_ 1456997 outrun   21u  IPv4 10766597      0t0  TCP 127.0.0.1:42177->127.0.0.1:44796 (ESTABLISHED)
+language_ 1456997 outrun   22u  IPv6 10782102      0t0  TCP [2601:404:c000:3480:bbf9:b8fd:af6a:2c32]:52322->[2607:f8b0:4009:81a::200a]:443 (ESTABLISHED)
+language_ 1456997 outrun   23u  IPv6 10778997      0t0  TCP [2601:404:c000:3480:bbf9:b8fd:af6a:2c32]:40818->[2607:f8b0:4009:819::200a]:443 (ESTABLISHED)
+language_ 1456997 outrun   24u  IPv6 10767155      0t0  TCP [2601:404:c000:3480:bbf9:b8fd:af6a:2c32]:48108->[2607:f8b0:4009:80a::200a]:443 (ESTABLISHED)
+language_ 1456997 outrun   26u  IPv6 10784984      0t0  TCP [2601:404:c000:3480:bbf9:b8fd:af6a:2c32]:45286->[2607:f8b0:4009:817::200a]:443 (ESTABLISHED)
+language_ 1456997 outrun   28u  IPv6 10746752      0t0  TCP [2601:404:c000:3480:bbf9:b8fd:af6a:2c32]:36830->[2001:4860:4802:38::223]:443 (ESTABLISHED)
+language_ 1456997 outrun   29u  IPv6 10783395      0t0  TCP [2601:404:c000:3480:bbf9:b8fd:af6a:2c32]:48802->[2607:f8b0:4009:817::200a]:443 (ESTABLISHED)
+language_ 1456997 outrun   30u  IPv4 10772309      0t0  TCP 127.0.0.1:37262->127.0.0.1:36727 (ESTABLISHED)
+language_ 1456997 outrun   31u  IPv4 10735512      0t0  TCP 127.0.0.1:37268->127.0.0.1:36727 (ESTABLISHED)
+language_ 1456997 outrun   33u  IPv6 10767134      0t0  TCP [2601:404:c000:3480:bbf9:b8fd:af6a:2c32]:52330->[2607:f8b0:4009:81a::200a]:443 (ESTABLISHED)
+language_ 1456997 outrun   34u  IPv6 10775165      0t0  TCP [2601:404:c000:3480:bbf9:b8fd:af6a:2c32]:52334->[2607:f8b0:4009:81a::200a]:443 (ESTABLISHED)
+
+
+=== NETSTAT CONNECTIONS ===
+Active Internet connections (w/o servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 127.0.0.1:34549         127.0.0.1:57116         ESTABLISHED 1456997/language_se 
+tcp        0      0 10.0.0.10:43070         18.97.36.67:443         ESTABLISHED 536025/brave --type 
+tcp        0      0 127.0.0.1:44796         127.0.0.1:42177         ESTABLISHED 1456816/exe         
+tcp        0      0 10.0.0.10:47944         45.90.30.0:853          TIME_WAIT   -                   
+tcp        0      0 10.0.0.10:44266         34.54.84.110:443        TIME_WAIT   -                   
+tcp        0      0 127.0.0.1:58280         127.0.0.1:36727         ESTABLISHED 1456997/language_se 
+tcp        0      0 127.0.0.1:37262         127.0.0.1:36727         ESTABLISHED 1456997/language_se 
+tcp        0      0 127.0.0.1:57102         127.0.0.1:34549         ESTABLISHED 1456816/exe         
+tcp        0      0 127.0.0.1:36727         127.0.0.1:37268         ESTABLISHED 1456816/exe         
+tcp        0      0 10.0.0.10:44660         185.70.42.37:443        ESTABLISHED 536025/brave --type 
+tcp        0      0 127.0.0.1:58278         127.0.0.1:36727         ESTABLISHED 1456997/language_se 
+tcp        0      0 10.0.0.10:33654         140.82.112.26:443       ESTABLISHED 536025/brave --type 
+tcp        0      0 127.0.0.1:36727         127.0.0.1:58278         ESTABLISHED 1456816/exe         
+tcp        0      0 10.0.0.10:40264         172.66.0.227:443        ESTABLISHED 536025/brave --type 
+tcp        0      0 10.0.0.10:42146         172.64.150.129:443      ESTABLISHED 536025/brave --type 
+tcp        0      0 10.0.0.10:40744         104.244.43.131:443      ESTABLISHED 536025/brave --type 
+tcp        0      0 127.0.0.1:37268         127.0.0.1:36727         ESTABLISHED 1456997/language_se 
+tcp        0      0 10.0.0.10:39774         104.18.36.146:443       ESTABLISHED 536025/brave --type 
+tcp        0      0 127.0.0.1:36727         127.0.0.1:58280         ESTABLISHED 1456816/exe         
+tcp        0      0 10.0.0.10:38670         18.97.36.51:443         ESTABLISHED 536025/brave --type 
+tcp        0      0 127.0.0.1:36727         127.0.0.1:58268         ESTABLISHED 1456816/exe         
+tcp        0      0 10.0.0.10:56238         45.90.30.0:853          TIME_WAIT   -                   
+tcp        0      0 127.0.0.1:37597         127.0.0.1:49552         ESTABLISHED 1261996/tor-0.4.8.1 
+tcp        0      0 127.0.0.1:36727         127.0.0.1:37262         ESTABLISHED 1456816/exe         
+tcp        0      0 127.0.0.1:42177         127.0.0.1:44796         ESTABLISHED 1456997/language_se 
+tcp        0      0 127.0.0.1:34757         127.0.0.1:32938         TIME_WAIT   -                   
+tcp        0      0 10.0.0.10:57986         34.54.84.110:443        TIME_WAIT   -                   
+tcp        0      0 127.0.0.1:34757         127.0.0.1:46772         TIME_WAIT   -                   
+tcp        0      0 127.0.0.1:49552         127.0.0.1:37597         ESTABLISHED 535961/brave        
+tcp        0      0 127.0.0.1:58268         127.0.0.1:36727         ESTABLISHED 1456997/language_se 
+tcp        0      0 127.0.0.1:57116         127.0.0.1:34549         ESTABLISHED 371631/exe          
+tcp        0      0 127.0.0.1:34549         127.0.0.1:57102         ESTABLISHED 1456997/language_se 
+tcp6       0      0 2601:404:c000:348:48108 2607:f8b0:4009:80a::443 ESTABLISHED 1456997/language_se 
+tcp6       0      0 2601:404:c000:348:36830 2001:4860:4802:38:::443 ESTABLISHED 1456997/language_se 
+tcp6       0      0 2601:404:c000:348:52330 2607:f8b0:4009:81a::443 ESTABLISHED 1456997/language_se 
+tcp6       0      0 2601:404:c000:348:48802 2607:f8b0:4009:817::443 ESTABLISHED 1456997/language_se 
+tcp6       0      0 2601:404:c000:348:52322 2607:f8b0:4009:81a::443 ESTABLISHED 1456997/language_se 
+tcp6       0      0 2601:404:c000:348:43686 2605:380:56:6::1:443    ESTABLISHED 536025/brave --type 
+tcp6       0      0 2601:404:c000:348:45286 2607:f8b0:4009:817::443 ESTABLISHED 1456997/language_se 
+tcp6       0      0 2601:404:c000:348:59842 2607:f8b0:4009:818::443 TIME_WAIT   -                   
+tcp6       0      0 2601:404:c000:348:52334 2607:f8b0:4009:81a::443 ESTABLISHED 1456997/language_se 
+tcp6       0      0 2601:404:c000:348:40818 2607:f8b0:4009:819::443 ESTABLISHED 1456997/language_se 
+udp        0      0 10.0.0.10:68            10.0.0.1:67             ESTABLISHED -                   

@@ -1,0 +1,150 @@
+=== CHKROOTKIT SCAN ===
+ROOTDIR is `/'
+Checking `amd'...                                           not found
+Checking `basename'...                                      not infected
+Checking `biff'...                                          not found
+Checking `chfn'...                                          not infected
+Checking `chsh'...                                          not infected
+Checking `cron'...                                          not infected
+Checking `crontab'...                                       not infected
+Checking `date'...                                          not infected
+Checking `du'...                                            not infected
+Checking `dirname'...                                       not infected
+Checking `echo'...                                          not infected
+Checking `egrep'...                                         not infected
+Checking `env'...                                           not infected
+Checking `find'...                                          not infected
+Checking `fingerd'...                                       not found
+Checking `gpm'...                                           not found
+Checking `grep'...                                          not infected
+Checking `hdparm'...                                        not infected
+Checking `su'...                                            not infected
+Checking `ifconfig'...                                      not infected
+Checking `inetd'...                                         not infected
+Checking `inetdconf'...                                     not found
+Checking `identd'...                                        not found
+Checking `init'...                                          not infected
+Checking `killall'...                                       not infected
+Checking `ldsopreload'...                                   not infected
+Checking `login'...                                         not infected
+Checking `ls'...                                            not infected
+Checking `lsof'...                                          not infected
+Checking `mail'...                                          not infected
+Checking `mingetty'...                                      not found
+Checking `netstat'...                                       not infected
+Checking `named'...                                         not found
+Checking `passwd'...                                        not infected
+Checking `pidof'...                                         not infected
+Checking `pop2'...                                          not found
+Checking `pop3'...                                          not found
+Checking `ps'...                                            not infected
+Checking `pstree'...                                        not infected
+Checking `rpcinfo'...                                       not found
+Checking `rlogind'...                                       not found
+Checking `rshd'...                                          not found
+Checking `slogin'...                                        not infected
+Checking `sendmail'...                                      not infected
+Checking `sshd'...                                          not infected
+Checking `syslogd'...                                       not tested
+Checking `tar'...                                           not infected
+Checking `tcpd'...                                          not found
+Checking `tcpdump'...                                       not infected
+Checking `top'...                                           not infected
+Checking `telnetd'...                                       not found
+Checking `timed'...                                         not found
+Checking `traceroute'...                                    not infected
+Checking `vdir'...                                          not infected
+Checking `w'...                                             not infected
+Checking `write'...                                         not infected
+Checking `aliens'...                                        no suspect files
+Searching for sniffer's logs, it may take a while...        nothing found
+Searching for rootkit HiDrootkit's default files...         nothing found
+Searching for rootkit t0rn's default files...               nothing found
+Searching for t0rn's v8 defaults...                         nothing found
+Searching for rootkit Lion's default files...               nothing found
+Searching for rootkit RSHA's default files...               nothing found
+Searching for rootkit RH-Sharpe's default files...          nothing found
+Searching for Ambient's rootkit (ark) default files and dirs... nothing found
+Searching for suspicious files and dirs, it may take a while... The following suspicious files and directories were found:
+/usr/lib/jvm/.java-1.11.0-openjdk-amd64.jinfo
+/usr/lib/virtualbox/.autoreg
+/usr/lib/python3/dist-packages/fail2ban/tests/files/config/apache-auth/noentry/.htaccess
+/usr/lib/python3/dist-packages/fail2ban/tests/files/config/apache-auth/basic/file/.htpasswd
+/usr/lib/python3/dist-packages/fail2ban/tests/files/config/apache-auth/basic/file/.htaccess
+/usr/lib/python3/dist-packages/fail2ban/tests/files/config/apache-auth/basic/authz_owner/.htpasswd
+/usr/lib/python3/dist-packages/fail2ban/tests/files/config/apache-auth/basic/authz_owner/.htaccess
+/usr/lib/python3/dist-packages/fail2ban/tests/files/config/apache-auth/digest_anon/.htpasswd
+/usr/lib/python3/dist-packages/fail2ban/tests/files/config/apache-auth/digest_anon/.htaccess
+/usr/lib/python3/dist-packages/fail2ban/tests/files/config/apache-auth/digest_time/.htpasswd
+/usr/lib/python3/dist-packages/fail2ban/tests/files/config/apache-auth/digest_time/.htaccess
+/usr/lib/python3/dist-packages/fail2ban/tests/files/config/apache-auth/digest_wrongrelm/.htpasswd
+/usr/lib/python3/dist-packages/fail2ban/tests/files/config/apache-auth/digest_wrongrelm/.htaccess
+/usr/lib/python3/dist-packages/fail2ban/tests/files/config/apache-auth/digest/.htpasswd
+/usr/lib/python3/dist-packages/fail2ban/tests/files/config/apache-auth/digest/.htaccess
+/usr/lib/python3/dist-packages/numpy/f2py/tests/src/assumed_shape/.f2py_f2cmap
+/usr/lib/python3/dist-packages/matplotlib/tests/baseline_images/.keep
+/usr/lib/python3/dist-packages/matplotlib/tests/tinypages/_static/.gitignore
+/usr/lib/python3/dist-packages/matplotlib/tests/tinypages/.gitignore
+/usr/lib/python3/dist-packages/matplotlib/backends/web_backend/.prettierignore
+/usr/lib/python3/dist-packages/matplotlib/backends/web_backend/.eslintrc.js
+/usr/lib/python3/dist-packages/matplotlib/backends/web_backend/.prettierrc
+/usr/lib/openfoam/openfoam2412/META-INFO/.gitignore
+/usr/lib/openfoam/openfoam2412/etc/templates/closedVolume/constant/triSurface/.gitignore
+/usr/lib/openfoam/openfoam2412/etc/templates/inflowOutflow/constant/triSurface/.gitignore
+/usr/lib/openfoam/openfoam2412/etc/templates/inflowOutflowRotating/constant/triSurface/.gitignore
+/usr/lib/openfoam/openfoam2412/etc/templates/compressibleInflowOutflow/constant/triSurface/.gitignore
+/usr/lib/openfoam/openfoam2412/etc/templates/closedVolumeRotating/constant/triSurface/.gitignore
+/usr/lib/debug/.build-id
+/usr/lib/modules/6.8.0-86-generic/vdso/.build-id
+/usr/lib/modules/6.8.0-87-generic/vdso/.build-id
+/usr/lib/modules/6.8.0-90-generic/vdso/.build-id
+/usr/lib/libreoffice/share/.registry
+
+
+=== RKHUNTER SCAN ===
+Warning: The file properties have changed:
+         File: /usr/bin/size
+         Current hash: b0d4682dee1d4b2344708a2033dd83e2a167c2182251c58c1478c73457102316
+         Stored hash : dee2f1813de4b18076844a966d34fd396b531206d9329d91bc9f7c1211b11ecd
+         Current inode: 75902836    Stored inode: 75895470
+         Current file modification time: 1764774481 (03-Dec-2025 10:08:01)
+         Stored file modification time : 1763654071 (20-Nov-2025 10:54:31)
+Warning: The file properties have changed:
+         File: /usr/bin/strings
+         Current hash: 2f72e4d1091897cfec64708064307bed19e2d79ab9aa0816022bcc8368482353
+         Stored hash : fcde0c9aba3a6adf75b437622bf7acf101bba7ead1e998b3c24d5b7ec76e6b59
+         Current inode: 75902838    Stored inode: 75895472
+         Current file modification time: 1764774481 (03-Dec-2025 10:08:01)
+         Stored file modification time : 1763654071 (20-Nov-2025 10:54:31)
+Warning: The command '/usr/bin/lwp-request' has been replaced by a script: /usr/bin/lwp-request: Perl script text executable
+Warning: The file properties have changed:
+         File: /usr/bin/x86_64-linux-gnu-size
+         Current hash: b0d4682dee1d4b2344708a2033dd83e2a167c2182251c58c1478c73457102316
+         Stored hash : dee2f1813de4b18076844a966d34fd396b531206d9329d91bc9f7c1211b11ecd
+         Current inode: 75897383    Stored inode: 75898280
+         Current file modification time: 1764774481 (03-Dec-2025 10:08:01)
+         Stored file modification time : 1763654071 (20-Nov-2025 10:54:31)
+Warning: The file properties have changed:
+         File: /usr/bin/x86_64-linux-gnu-strings
+         Current hash: 2f72e4d1091897cfec64708064307bed19e2d79ab9aa0816022bcc8368482353
+         Stored hash : fcde0c9aba3a6adf75b437622bf7acf101bba7ead1e998b3c24d5b7ec76e6b59
+         Current inode: 75897384    Stored inode: 75898282
+         Current file modification time: 1764774481 (03-Dec-2025 10:08:01)
+         Stored file modification time : 1763654071 (20-Nov-2025 10:54:31)
+Warning: The following suspicious (large) shared memory segments have been found:
+         Process: /usr/bin/python3.10    PID: 312473    Owner: outrun    Size: 4.0MB (configured size allowed: 1.0MB)
+         Process: /usr/libexec/xdg-desktop-portal-gnome    PID: 3236    Owner: outrun    Size: 16MB (configured size allowed: 1.0MB)
+         Process: /snap/snap-store/1216/usr/bin/snap-store    PID: 3408    Owner: outrun    Size: 4.0MB (configured size allowed: 1.0MB)
+         Process: /usr/bin/update-notifier    PID: 5637    Owner: outrun    Size: 4.0MB (configured size allowed: 1.0MB)
+         Process: /usr/libexec/gnome-terminal-server    PID: 554681    Owner: outrun    Size: 4.0MB (configured size allowed: 1.0MB)
+         Process: /usr/bin/evince    PID: 1257431    Owner: outrun    Size: 4.0MB (configured size allowed: 1.0MB)
+         Process: /usr/bin/evince    PID: 1257431    Owner: outrun    Size: 64MB (configured size allowed: 1.0MB)
+Warning: Hidden directory found: /etc/.java
+
+
+=== MANUAL CHECKS ===
+SUID files in /tmp:
+
+Hidden files in /tmp:
+
+Recent /bin changes:

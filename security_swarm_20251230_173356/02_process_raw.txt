@@ -1,0 +1,408 @@
+=== TOP 40 PROCESSES BY CPU ===
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+outrun   1455434 48.4 23.5 1463414388 3834100 ?  Sl   11:41  26:02 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=269 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=839373344983 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,3436606618291734882,7987676958293661921,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190709238376128875
+outrun    536013 11.5  1.6 51219976 263916 ?     Sl   Dec27 580:06 /snap/brave/580/opt/brave.com/brave/brave --type=gpu-process --ozone-platform=x11 --crashpad-handler-pid=535963 --enable-crash-reporter=, --change-stack-guard-on-fork=enable --gpu-preferences=UAAAAAAAAAAgAAAEAAAAAAAAAAAAAGAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAAAAABgAAAAAAAAAAQAAAAAAAAAIAAAAAAAAAAgAAAAAAAAA --shared-files --metrics-shmem-handle=4,i,7087178193391661905,5074260960863408006,262144 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190708988185955192
+outrun    371621  3.6  0.5 34285564 95808 ?      Sl   Dec25 285:31 /usr/share/antigravity/antigravity --type=zygote --no-zygote-sandbox
+outrun   1456997  3.5  2.1 5034316 350476 ?      Sl   12:15   0:41 /usr/share/antigravity/resources/app/extensions/antigravity/bin/language_server_linux_x64 --enable_lsp --extension_server_port 36727 --csrf_token c550fdbf-626f-4f0c-a171-a35b9b50509a --random_port --workspace_id file_home_outrun_projects_dCAI_harness --cloud_code_endpoint https://daily-cloudcode-pa.googleapis.com --app_data_dir antigravity --parent_pipe_path /tmp/server_fc45b6dd70131063
+outrun    371644  3.2  3.6 1479990416 596880 ?   Rl   Dec25 254:10 /usr/share/antigravity/antigravity --type=zygote
+outrun   1456816  2.4  1.1 1461331220 186892 ?   Sl   12:15   0:28 /proc/self/exe --type=utility --utility-sub-type=node.mojom.NodeService --lang=en-US --service-sandbox-type=none --dns-result-order=ipv4first --experimental-network-inspection --inspect-port=0 --crashpad-handler-pid=371603 --enable-crash-reporter=7d5ca08b-94a5-4de2-b989-7c7852b0fd43,no_channel --user-data-dir=/home/outrun/.config/Antigravity --standard-schemes=vscode-webview,vscode-file --enable-sandbox --secure-schemes=vscode-webview,vscode-file --cors-schemes=vscode-webview,vscode-file --fetch-schemes=vscode-webview,vscode-file --service-worker-schemes=vscode-webview --code-cache-schemes=vscode-webview,vscode-file --shared-files=v8_context_snapshot_data:100 --field-trial-handle=3,i,13338187382387107281,7853363863123327134,262144 --enable-features=DocumentPolicyIncludeJSCallStacksInCrashReports,EarlyEstablishGpuChannel,EstablishGpuChannelAsync,PdfUseShowSaveFilePicker --disable-features=CalculateNativeWinOcclusion,FontationsLinuxSystemFonts,ScreenAIOCREnabled,SpareRendererForSitePerProcess --variations-seed-version
+outrun    533765  2.3  1.9 5118340 312152 ?      Ssl  Dec27 119:24 /usr/bin/gnome-shell
+outrun   1186425  2.2  1.4 2054156 233616 ?      Sl   Dec27  89:39 /snap/freecad/1634/usr/bin/FreeCAD - --single-instance
+outrun   1458560  2.2  0.0 1100572 12544 pts/3   Sl+  12:33   0:03 target/debug/examples/swarm_security_agent
+outrun    535961  1.6  3.1 51194656 509068 ?     Sl   Dec27  84:54 /snap/brave/580/opt/brave.com/brave/brave
+outrun   1250658  1.1  2.2 1459826064 372516 ?   Sl   Dec29  14:07 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=2607 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=770535388575 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,14506240866731011388,17963220515857788354,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190711429179971837
+outrun   1187518  0.9  1.9 19553004 315024 ?     Ssl  Dec27  35:10 /home/outrun/.local/zed.app/libexec/zed-editor zed-cli:///tmp/.tmpfLxM5b/socket
+outrun   1455059  0.9  0.8 1459771980 131156 ?   Sl   11:37   0:33 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=3598 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=839130447792 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,6683886769433576875,10078682506202668068,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190712357788444196
+outrun      2878  0.7  0.4 25572052 74920 tty2   Sl+  Dec20 106:57 /usr/lib/xorg/Xorg vt2 -displayfd 3 -auth /run/user/1000/gdm/Xauthority -nolisten tcp -background none -noreset -keeptty -novtswitch -verbose 3
+outrun    536025  0.6  0.5 50869508 84004 ?      Sl   Dec27  33:57 /snap/brave/580/opt/brave.com/brave/brave --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-US --service-sandbox-type=none --crashpad-handler-pid=535963 --enable-crash-reporter=, --change-stack-guard-on-fork=enable --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,9107645903007484039,16566440187286578112,524288 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190708989122997041
+outrun   1456650  0.6  1.0 1461501868 177880 ?   Sl   12:15   0:07 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=69 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=841414128722 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,13274119786190250299,17374138855013565156,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190709050967759075
+outrun    536661  0.5  2.1 1459818148 345412 ?   Sl   Dec27  26:05 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=163 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=542374860969 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,10354435540727986741,4833706536095257235,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190709139049692881
+outrun   1220941  0.5  1.7 1459835024 280416 ?   Sl   Dec28  14:29 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=1723 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=693768122766 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,4480010244956291674,1785297446156024950,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190710600834977321
+outrun   1456806  0.5  0.6 1461330088 102704 ?   Sl   12:15   0:06 /proc/self/exe --type=utility --utility-sub-type=node.mojom.NodeService --lang=en-US --service-sandbox-type=none --crashpad-handler-pid=371603 --enable-crash-reporter=7d5ca08b-94a5-4de2-b989-7c7852b0fd43,no_channel --user-data-dir=/home/outrun/.config/Antigravity --standard-schemes=vscode-webview,vscode-file --enable-sandbox --secure-schemes=vscode-webview,vscode-file --cors-schemes=vscode-webview,vscode-file --fetch-schemes=vscode-webview,vscode-file --service-worker-schemes=vscode-webview --code-cache-schemes=vscode-webview,vscode-file --shared-files=v8_context_snapshot_data:100 --field-trial-handle=3,i,13338187382387107281,7853363863123327134,262144 --enable-features=DocumentPolicyIncludeJSCallStacksInCrashReports,EarlyEstablishGpuChannel,EstablishGpuChannelAsync,PdfUseShowSaveFilePicker --disable-features=CalculateNativeWinOcclusion,FontationsLinuxSystemFonts,ScreenAIOCREnabled,SpareRendererForSitePerProcess --variations-seed-version
+outrun    371580  0.3  0.9 1461890616 159816 ?   SLl  Dec25  24:38 /usr/share/antigravity/antigravity
+root        1016  0.2  0.0      0     0 ?        S    Dec20  29:48 [nvidia-modeset/kthread_q]
+outrun   1187341  0.2  1.0 32917284 178164 pts/4 Sl+  Dec27  10:10 claude
+outrun   1220932  0.2  1.6 1461520748 272692 ?   Sl   Dec28   5:01 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=1722 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=693767890243 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,9151363591157625738,8840091499937810475,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190710599897935472
+root     1458309  0.2  0.0      0     0 ?        I    12:31   0:00 [kworker/u65:2-flush-259:1]
+outrun      2798  0.1  0.0 3859304 10008 ?       S<sl Dec20  24:21 /usr/bin/pulseaudio --daemonize=no --log-target=journal
+outrun    371993  0.1  0.2 1461346532 47268 ?    Sl   Dec25  11:40 /proc/self/exe --type=utility --utility-sub-type=node.mojom.NodeService --lang=en-US --service-sandbox-type=none --crashpad-handler-pid=371603 --enable-crash-reporter=7d5ca08b-94a5-4de2-b989-7c7852b0fd43,no_channel --user-data-dir=/home/outrun/.config/Antigravity --standard-schemes=vscode-webview,vscode-file --enable-sandbox --secure-schemes=vscode-webview,vscode-file --cors-schemes=vscode-webview,vscode-file --fetch-schemes=vscode-webview,vscode-file --service-worker-schemes=vscode-webview --code-cache-schemes=vscode-webview,vscode-file --shared-files=v8_context_snapshot_data:100 --field-trial-handle=3,i,13338187382387107281,7853363863123327134,262144 --enable-features=DocumentPolicyIncludeJSCallStacksInCrashReports,EarlyEstablishGpuChannel,EstablishGpuChannelAsync,PdfUseShowSaveFilePicker --disable-features=CalculateNativeWinOcclusion,FontationsLinuxSystemFonts,ScreenAIOCREnabled,SpareRendererForSitePerProcess --variations-seed-version
+outrun    536129  0.1  0.7 1459777972 114780 ?   Sl   Dec27   8:39 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --extension-process --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=8 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=542356668160 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,16094104731435332520,16606003196870010802,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190708993808206286
+outrun   1187559  0.1  0.0 431648  7424 ?        S    Dec27   7:00 /home/outrun/.local/zed.app/libexec/zed-editor --crash-handler /home/outrun/.cache/zed/zed-crash-handler-1187518
+outrun   1189377  0.1  1.3 1461509116 218036 ?   Sl   Dec27   4:46 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=745 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=611135667191 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,15672538706445935599,5796646786097852720,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190709684408048999
+outrun   1211479  0.1  4.3 1482072476 707628 ?   Sl   Dec28   3:07 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=1222 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=675097318087 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,8590554898338262375,16831777957139933839,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190710131377010972
+outrun   1213061  0.1  1.6 1459783628 270796 ?   Sl   Dec28   4:31 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=1296 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=677319936715 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,13011941347563739362,10744466733850243976,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190710200718107798
+outrun   1457398  0.1  0.4 1459532308 65204 ?    Sl   12:15   0:01 /usr/share/antigravity/antigravity /usr/share/antigravity/resources/app/extensions/markdown-language-features/dist/serverWorkerMain --node-ipc --clientProcessId=1456816
+root           1  0.0  0.0 168688  8796 ?        Ss   Dec20   0:38 /sbin/init splash
+root           2  0.0  0.0      0     0 ?        S    Dec20   0:00 [kthreadd]
+root           3  0.0  0.0      0     0 ?        S    Dec20   0:00 [pool_workqueue_release]
+root           4  0.0  0.0      0     0 ?        I<   Dec20   0:00 [kworker/R-rcu_g]
+root           5  0.0  0.0      0     0 ?        I<   Dec20   0:00 [kworker/R-rcu_p]
+root           6  0.0  0.0      0     0 ?        I<   Dec20   0:00 [kworker/R-slub_]
+root           7  0.0  0.0      0     0 ?        I<   Dec20   0:00 [kworker/R-netns]
+root          10  0.0  0.0      0     0 ?        I<   Dec20   0:00 [kworker/0:0H-events_highpri]
+
+
+=== TOP 40 PROCESSES BY MEMORY ===
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+outrun   1455434 48.4 23.5 1463414388 3834100 ?  Sl   11:41  26:02 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=269 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=839373344983 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,3436606618291734882,7987676958293661921,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190709238376128875
+outrun   1211479  0.1  4.3 1482072476 707628 ?   Sl   Dec28   3:07 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=1222 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=675097318087 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,8590554898338262375,16831777957139933839,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190710131377010972
+outrun    371644  3.2  3.6 1479990416 595832 ?   Sl   Dec25 254:10 /usr/share/antigravity/antigravity --type=zygote
+outrun    535961  1.6  3.1 51194656 509068 ?     Sl   Dec27  84:54 /snap/brave/580/opt/brave.com/brave/brave
+outrun    536385  0.0  2.5 1461430880 412796 ?   Sl   Dec27   0:35 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --pdf-renderer --ozone-platform=x11 --lang=en-US --js-flags=--jitless --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=154 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=542361513109 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,13578730936084905321,2834557706295262691,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190709130616316240
+outrun   1250658  1.1  2.2 1459826064 372516 ?   Sl   Dec29  14:07 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=2607 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=770535388575 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,14506240866731011388,17963220515857788354,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190711429179971837
+outrun      3408  0.0  2.2 1716604 363960 ?      Sl   Dec20   2:00 /snap/snap-store/1216/usr/bin/snap-store --gapplication-service
+outrun   1456997  3.5  2.1 5034316 350476 ?      Sl   12:15   0:41 /usr/share/antigravity/resources/app/extensions/antigravity/bin/language_server_linux_x64 --enable_lsp --extension_server_port 36727 --csrf_token c550fdbf-626f-4f0c-a171-a35b9b50509a --random_port --workspace_id file_home_outrun_projects_dCAI_harness --cloud_code_endpoint https://daily-cloudcode-pa.googleapis.com --app_data_dir antigravity --parent_pipe_path /tmp/server_fc45b6dd70131063
+outrun    536661  0.5  2.1 1459818148 345412 ?   Sl   Dec27  26:05 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=163 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=542374860969 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,10354435540727986741,4833706536095257235,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190709139049692881
+outrun   1187518  0.9  1.9 19553004 315024 ?     Ssl  Dec27  35:10 /home/outrun/.local/zed.app/libexec/zed-editor zed-cli:///tmp/.tmpfLxM5b/socket
+outrun    533765  2.3  1.9 5118340 312152 ?      Ssl  Dec27 119:24 /usr/bin/gnome-shell
+outrun   1220941  0.5  1.7 1459835024 280416 ?   Sl   Dec28  14:29 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=1723 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=693768122766 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,4480010244956291674,1785297446156024950,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190710600834977321
+outrun   1220932  0.2  1.6 1461520748 272692 ?   Sl   Dec28   5:01 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=1722 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=693767890243 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,9151363591157625738,8840091499937810475,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190710599897935472
+outrun   1213061  0.1  1.6 1459783628 270796 ?   Sl   Dec28   4:31 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=1296 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=677319936715 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,13011941347563739362,10744466733850243976,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190710200718107798
+outrun    536013 11.5  1.6 51219976 263916 ?     Sl   Dec27 580:06 /snap/brave/580/opt/brave.com/brave/brave --type=gpu-process --ozone-platform=x11 --crashpad-handler-pid=535963 --enable-crash-reporter=, --change-stack-guard-on-fork=enable --gpu-preferences=UAAAAAAAAAAgAAAEAAAAAAAAAAAAAGAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAAAAABgAAAAAAAAAAQAAAAAAAAAIAAAAAAAAAAgAAAAAAAAA --shared-files --metrics-shmem-handle=4,i,7087178193391661905,5074260960863408006,262144 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190708988185955192
+outrun   1186425  2.2  1.4 2054156 233616 ?      Sl   Dec27  89:39 /snap/freecad/1634/usr/bin/FreeCAD - --single-instance
+outrun    536468  0.0  1.3 1461523064 219328 ?   Sl   Dec27   4:55 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=157 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=542364523102 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,6322508202565466408,18275388283851111562,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190709133427441787
+outrun   1189377  0.1  1.3 1461509116 218036 ?   Sl   Dec27   4:46 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=745 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=611135667191 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,15672538706445935599,5796646786097852720,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190709684408048999
+outrun   1455246  0.0  1.2 1459772756 206316 ?   Sl   11:39   0:03 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=3608 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=839254667280 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,14356799035992902861,5229395295635345187,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190712367158862686
+outrun   1456816  2.4  1.1 1461331220 186892 ?   Sl   12:15   0:28 /proc/self/exe --type=utility --utility-sub-type=node.mojom.NodeService --lang=en-US --service-sandbox-type=none --dns-result-order=ipv4first --experimental-network-inspection --inspect-port=0 --crashpad-handler-pid=371603 --enable-crash-reporter=7d5ca08b-94a5-4de2-b989-7c7852b0fd43,no_channel --user-data-dir=/home/outrun/.config/Antigravity --standard-schemes=vscode-webview,vscode-file --enable-sandbox --secure-schemes=vscode-webview,vscode-file --cors-schemes=vscode-webview,vscode-file --fetch-schemes=vscode-webview,vscode-file --service-worker-schemes=vscode-webview --code-cache-schemes=vscode-webview,vscode-file --shared-files=v8_context_snapshot_data:100 --field-trial-handle=3,i,13338187382387107281,7853363863123327134,262144 --enable-features=DocumentPolicyIncludeJSCallStacksInCrashReports,EarlyEstablishGpuChannel,EstablishGpuChannelAsync,PdfUseShowSaveFilePicker --disable-features=CalculateNativeWinOcclusion,FontationsLinuxSystemFonts,ScreenAIOCREnabled,SpareRendererForSitePerProcess --variations-seed-version
+outrun   1228070  0.0  1.1 1459797304 183732 ?   Sl   Dec28   0:09 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=2067 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=708031000799 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,6080745758638601440,12926265879813556997,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190710923177373377
+outrun   1187341  0.2  1.0 32917284 178164 pts/4 Sl+  Dec27  10:10 claude
+outrun   1456650  0.6  1.0 1461501868 177880 ?   Sl   12:15   0:07 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=69 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=841414128722 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,13274119786190250299,17374138855013565156,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190709050967759075
+outrun    371580  0.3  0.9 1461890616 159816 ?   SLl  Dec25  24:38 /usr/share/antigravity/antigravity
+outrun   1262132  0.0  0.9 1459772424 155152 ?   Sl   Dec29   0:16 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=3236 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=795571688713 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,3526310007043626850,14661784814840076113,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190712018579294858
+outrun    536358  0.0  0.8 1459771584 135984 ?   Sl   Dec27   0:17 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --extension-process --init-isolate-as-foreground --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=151 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=542361298397 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,12754368038996854151,4881212212986691392,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190709127805190693
+outrun   1275882  0.0  0.8 1459772368 132560 ?   Sl   10:51   0:01 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=3500 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=836383291337 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,14130365849664227545,14492951944413127600,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190712265958342994
+outrun   1455059  0.9  0.8 1459771980 131156 ?   Sl   11:37   0:33 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=3598 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=839130447792 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,6683886769433576875,10078682506202668068,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190712357788444196
+outrun   1222170  0.0  0.7 1461422556 118464 ?   Sl   Dec28   0:01 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --pdf-renderer --ozone-platform=x11 --lang=en-US --js-flags=--jitless --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=1785 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=696879064425 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,17979321215965683465,93158928899143833,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190710658931571959
+outrun    536129  0.1  0.7 1459777972 114780 ?   Sl   Dec27   8:39 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --extension-process --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=8 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=542356668160 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,16094104731435332520,16606003196870010802,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190708993808206286
+outrun   1222139  0.0  0.7 1459729340 114656 ?   Sl   Dec28   0:01 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=1783 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=696875354966 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,17576644139675502027,751499958951076310,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190710657057488261
+outrun   1456806  0.5  0.6 1461330088 102704 ?   Sl   12:15   0:06 /proc/self/exe --type=utility --utility-sub-type=node.mojom.NodeService --lang=en-US --service-sandbox-type=none --crashpad-handler-pid=371603 --enable-crash-reporter=7d5ca08b-94a5-4de2-b989-7c7852b0fd43,no_channel --user-data-dir=/home/outrun/.config/Antigravity --standard-schemes=vscode-webview,vscode-file --enable-sandbox --secure-schemes=vscode-webview,vscode-file --cors-schemes=vscode-webview,vscode-file --fetch-schemes=vscode-webview,vscode-file --service-worker-schemes=vscode-webview --code-cache-schemes=vscode-webview,vscode-file --shared-files=v8_context_snapshot_data:100 --field-trial-handle=3,i,13338187382387107281,7853363863123327134,262144 --enable-features=DocumentPolicyIncludeJSCallStacksInCrashReports,EarlyEstablishGpuChannel,EstablishGpuChannelAsync,PdfUseShowSaveFilePicker --disable-features=CalculateNativeWinOcclusion,FontationsLinuxSystemFonts,ScreenAIOCREnabled,SpareRendererForSitePerProcess --variations-seed-version
+outrun   1213230  0.0  0.6 1459725852 100304 ?   Sl   Dec28   0:02 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=1301 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=677502736444 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,15777712971757649017,2563866520614789009,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190710205403317043
+outrun    371621  3.6  0.5 34285564 95808 ?      Sl   Dec25 285:31 /usr/share/antigravity/antigravity --type=zygote --no-zygote-sandbox
+outrun   1257431  0.0  0.5 1679936 91740 ?       Sl   Dec29   0:05 evince /home/outrun/Downloads/archive/ningli_gravitomagnetic.pdf
+outrun    536025  0.6  0.5 50869508 84004 ?      Sl   Dec27  33:57 /snap/brave/580/opt/brave.com/brave/brave --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-US --service-sandbox-type=none --crashpad-handler-pid=535963 --enable-crash-reporter=, --change-stack-guard-on-fork=enable --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,9107645903007484039,16566440187286578112,524288 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190708989122997041
+outrun      2878  0.7  0.4 25572052 74920 tty2   Sl+  Dec20 106:57 /usr/lib/xorg/Xorg vt2 -displayfd 3 -auth /run/user/1000/gdm/Xauthority -nolisten tcp -background none -noreset -keeptty -novtswitch -verbose 3
+root        2231  0.0  0.4 446892 73448 ?        Ssl  Dec20   1:55 /usr/libexec/packagekitd
+outrun   1193766  0.0  0.4 1461430752 71156 ?    Sl   Dec27   0:19 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --pdf-renderer --ozone-platform=x11 --lang=en-US --js-flags=--jitless --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=934 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=616613186383 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,1146524218489681484,6747944539468127301,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190709861508958460
+outrun    536204  0.0  0.4 1459769980 69020 ?    Sl   Dec27   0:09 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=141 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=542360139170 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,16661914832587456817,14034894687980047255,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190709118434772203
+
+
+=== ALL RUNNING PROCESSES ===
+    PID    PPID USER     %CPU %MEM STAT  STARTED     TIME COMMAND
+1455434  535974 outrun   48.4 23.5 Rl   11:41:37 00:26:02 brave
+ 536013  535971 outrun   11.5  1.6 Sl     Dec 27 09:40:06 brave
+ 371621  371585 outrun    3.6  0.5 Sl     Dec 25 04:45:31 antigravity
+1456997 1456816 outrun    3.5  2.1 Sl   12:15:54 00:00:41 language_server
+ 371644  371588 outrun    3.2  3.6 Sl     Dec 25 04:14:10 antigravity
+1456816  371580 outrun    2.4  1.1 Sl   12:15:52 00:00:28 antigravity
+ 533765    2789 outrun    2.3  1.9 Ssl    Dec 27 01:59:24 gnome-shell
+1186425  533765 outrun    2.2  1.4 Sl     Dec 27 01:29:39 FreeCAD
+1458560 1457596 outrun    2.2  0.0 Sl+  12:33:01 00:00:03 swarm_security_
+ 535961  535831 outrun    1.6  3.1 Sl     Dec 27 01:24:54 brave
+1250658  535974 outrun    1.1  2.2 Sl   16:34:19 00:14:07 brave
+1187518    2789 outrun    0.9  1.9 Ssl    Dec 27 00:35:10 zed-editor
+1455059  535974 outrun    0.9  0.8 Sl   11:37:34 00:00:33 brave
+   2878    2876 outrun    0.7  0.4 Sl+    Dec 20 01:46:57 Xorg
+ 536025  535961 outrun    0.6  0.5 Sl     Dec 27 00:33:57 brave
+1456650  535974 outrun    0.6  1.0 Sl   12:15:38 00:00:07 brave
+ 536661  535974 outrun    0.5  2.1 Sl     Dec 27 00:26:05 brave
+1220941  535974 outrun    0.5  1.7 Sl     Dec 28 00:14:29 brave
+1456806  371580 outrun    0.5  0.6 Sl   12:15:52 00:00:06 antigravity
+ 371580    2789 outrun    0.3  0.9 SLl    Dec 25 00:24:38 antigravity
+   1016       2 root      0.2  0.0 S      Dec 20 00:29:48 nvidia-modeset/kthread_q
+1187341  554704 outrun    0.2  1.0 Sl+    Dec 27 00:10:10 claude
+1220932  535974 outrun    0.2  1.6 Sl     Dec 28 00:05:01 brave
+1458309       2 root      0.2  0.0 I    12:31:15 00:00:00 kworker/u65:2-flush-259:1
+   2798    2789 outrun    0.1  0.0 S<sl   Dec 20 00:24:21 pulseaudio
+ 371993  371580 outrun    0.1  0.2 Sl     Dec 25 00:11:40 antigravity
+ 536129  535974 outrun    0.1  0.7 Sl     Dec 27 00:08:39 brave
+1187559 1187518 outrun    0.1  0.0 S      Dec 27 00:07:00 zed-editor
+1189377  535974 outrun    0.1  1.3 Sl     Dec 27 00:04:46 brave
+1211479  535974 outrun    0.1  4.3 Sl     Dec 28 00:03:07 brave
+1213061  535974 outrun    0.1  1.6 Sl     Dec 28 00:04:31 brave
+1457398 1456816 outrun    0.1  0.4 Sl   12:15:58 00:00:01 antigravity
+      1       0 root      0.0  0.0 Ss     Dec 20 00:00:38 systemd
+      2       0 root      0.0  0.0 S      Dec 20 00:00:00 kthreadd
+      3       2 root      0.0  0.0 S      Dec 20 00:00:00 pool_workqueue_release
+      4       2 root      0.0  0.0 I<     Dec 20 00:00:00 kworker/R-rcu_g
+      5       2 root      0.0  0.0 I<     Dec 20 00:00:00 kworker/R-rcu_p
+      6       2 root      0.0  0.0 I<     Dec 20 00:00:00 kworker/R-slub_
+      7       2 root      0.0  0.0 I<     Dec 20 00:00:00 kworker/R-netns
+     10       2 root      0.0  0.0 I<     Dec 20 00:00:00 kworker/0:0H-events_highpri
+     11       2 root      0.0  0.0 I      Dec 20 00:00:40 kworker/u64:0-ext4-rsv-conversion
+     12       2 root      0.0  0.0 I<     Dec 20 00:00:00 kworker/R-mm_pe
+     13       2 root      0.0  0.0 I      Dec 20 00:00:00 rcu_tasks_kthread
+     14       2 root      0.0  0.0 I      Dec 20 00:00:00 rcu_tasks_rude_kthread
+     15       2 root      0.0  0.0 I      Dec 20 00:00:00 rcu_tasks_trace_kthread
+     16       2 root      0.0  0.0 S      Dec 20 00:00:10 ksoftirqd/0
+     17       2 root      0.0  0.0 I      Dec 20 00:03:09 rcu_preempt
+     18       2 root      0.0  0.0 S      Dec 20 00:00:04 migration/0
+     19       2 root      0.0  0.0 S      Dec 20 00:00:00 idle_inject/0
+     20       2 root      0.0  0.0 S      Dec 20 00:00:00 cpuhp/0
+     21       2 root      0.0  0.0 S      Dec 20 00:00:00 cpuhp/1
+     22       2 root      0.0  0.0 S      Dec 20 00:00:00 idle_inject/1
+     23       2 root      0.0  0.0 S      Dec 20 00:00:03 migration/1
+     24       2 root      0.0  0.0 S      Dec 20 00:00:03 ksoftirqd/1
+     26       2 root      0.0  0.0 I<     Dec 20 00:00:00 kworker/1:0H-events_highpri
+     27       2 root      0.0  0.0 S      Dec 20 00:00:00 cpuhp/2
+     28       2 root      0.0  0.0 S      Dec 20 00:00:00 idle_inject/2
+     29       2 root      0.0  0.0 S      Dec 20 00:00:03 migration/2
+     30       2 root      0.0  0.0 S      Dec 20 00:00:02 ksoftirqd/2
+     32       2 root      0.0  0.0 I<     Dec 20 00:00:00 kworker/2:0H-events_highpri
+     33       2 root      0.0  0.0 S      Dec 20 00:00:00 cpuhp/3
+     34       2 root      0.0  0.0 S      Dec 20 00:00:00 idle_inject/3
+     35       2 root      0.0  0.0 S      Dec 20 00:00:03 migration/3
+     36       2 root      0.0  0.0 S      Dec 20 00:00:01 ksoftirqd/3
+     38       2 root      0.0  0.0 I<     Dec 20 00:00:00 kworker/3:0H-events_highpri
+     39       2 root      0.0  0.0 S      Dec 20 00:00:00 cpuhp/4
+     40       2 root      0.0  0.0 S      Dec 20 00:00:00 idle_inject/4
+     41       2 root      0.0  0.0 S      Dec 20 00:00:04 migration/4
+     42       2 root      0.0  0.0 S      Dec 20 00:00:01 ksoftirqd/4
+     44       2 root      0.0  0.0 I<     Dec 20 00:00:00 kworker/4:0H-events_highpri
+     45       2 root      0.0  0.0 S      Dec 20 00:00:00 cpuhp/5
+     46       2 root      0.0  0.0 S      Dec 20 00:00:00 idle_inject/5
+     47       2 root      0.0  0.0 S      Dec 20 00:00:03 migration/5
+     48       2 root      0.0  0.0 S      Dec 20 00:00:01 ksoftirqd/5
+     50       2 root      0.0  0.0 I<     Dec 20 00:00:00 kworker/5:0H-events_highpri
+     51       2 root      0.0  0.0 S      Dec 20 00:00:00 cpuhp/6
+     52       2 root      0.0  0.0 S      Dec 20 00:00:00 idle_inject/6
+     53       2 root      0.0  0.0 S      Dec 20 00:00:03 migration/6
+     54       2 root      0.0  0.0 S      Dec 20 00:00:00 ksoftirqd/6
+     56       2 root      0.0  0.0 I<     Dec 20 00:00:00 kworker/6:0H-events_highpri
+     57       2 root      0.0  0.0 S      Dec 20 00:00:00 cpuhp/7
+     58       2 root      0.0  0.0 S      Dec 20 00:00:00 idle_inject/7
+     59       2 root      0.0  0.0 S      Dec 20 00:00:02 migration/7
+     60       2 root      0.0  0.0 S      Dec 20 00:00:00 ksoftirqd/7
+     62       2 root      0.0  0.0 I<     Dec 20 00:00:00 kworker/7:0H-events_highpri
+     63       2 root      0.0  0.0 S      Dec 20 00:00:00 cpuhp/8
+     64       2 root      0.0  0.0 S      Dec 20 00:00:00 idle_inject/8
+     65       2 root      0.0  0.0 S      Dec 20 00:00:02 migration/8
+     66       2 root      0.0  0.0 S      Dec 20 00:00:01 ksoftirqd/8
+     68       2 root      0.0  0.0 I<     Dec 20 00:00:00 kworker/8:0H-events_highpri
+     69       2 root      0.0  0.0 S      Dec 20 00:00:00 cpuhp/9
+     70       2 root      0.0  0.0 S      Dec 20 00:00:00 idle_inject/9
+     71       2 root      0.0  0.0 S      Dec 20 00:00:02 migration/9
+     72       2 root      0.0  0.0 S      Dec 20 00:00:00 ksoftirqd/9
+     74       2 root      0.0  0.0 I<     Dec 20 00:00:00 kworker/9:0H-events_highpri
+     75       2 root      0.0  0.0 S      Dec 20 00:00:00 cpuhp/10
+     76       2 root      0.0  0.0 S      Dec 20 00:00:00 idle_inject/10
+     77       2 root      0.0  0.0 S      Dec 20 00:00:02 migration/10
+     78       2 root      0.0  0.0 S      Dec 20 00:00:01 ksoftirqd/10
+
+
+=== PROCESS TREE (pstree -pa) ===
+systemd,1 splash
+  |-ModemManager,1116
+  |   |-{ModemManager},1146
+  |   `-{ModemManager},1154
+  |-NetworkManager,1690 --no-daemon
+  |   |-{NetworkManager},1699
+  |   `-{NetworkManager},1700
+  |-accounts-daemon,1033
+  |   |-{accounts-daemon},1246
+  |   `-{accounts-daemon},1249
+  |-acpid,1034
+  |-atd,1086 -f
+  |-avahi-daemon,1038
+  |   `-avahi-daemon,1099
+  |-bluetoothd,1040
+  |-colord,2360
+  |   |-{colord},2380
+  |   `-{colord},2382
+  |-containerd,370810
+  |   |-{containerd},370814
+  |   |-{containerd},370815
+  |   |-{containerd},370816
+  |   |-{containerd},370817
+  |   |-{containerd},370818
+  |   |-{containerd},370821
+  |   |-{containerd},370822
+  |   |-{containerd},370823
+  |   |-{containerd},370824
+  |   |-{containerd},370825
+  |   |-{containerd},370826
+  |   |-{containerd},370827
+  |   |-{containerd},370828
+  |   |-{containerd},370829
+  |   |-{containerd},370830
+  |   |-{containerd},442979
+  |   |-{containerd},526160
+  |   |-{containerd},941515
+  |   `-{containerd},941516
+  |-cron,1042 -f -P
+  |-cups-browsed,1263148
+  |   |-{cups-browsed},1263195
+  |   `-{cups-browsed},1263196
+  |-cupsd,1263144 -l
+  |   |-dbus,1263147 dbus://
+  |   |-dbus,1263224 dbus://
+  |   `-dbus,1263225 dbus://
+  |-dbus-daemon,1043 --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+  |-dockerd,2473 -H fd:// --containerd=/run/containerd/containerd.sock
+  |   |-{dockerd},2492
+  |   |-{dockerd},2493
+  |   |-{dockerd},2494
+  |   |-{dockerd},2495
+  |   |-{dockerd},2496
+  |   |-{dockerd},2503
+  |   |-{dockerd},2504
+  |   |-{dockerd},2505
+  |   |-{dockerd},2506
+  |   |-{dockerd},2510
+  |   |-{dockerd},2511
+  |   |-{dockerd},2512
+  |   |-{dockerd},2513
+  |   |-{dockerd},2537
+  |   |-{dockerd},2538
+  |   |-{dockerd},2539
+  |   `-{dockerd},2540
+  |-fwupd,1270923
+  |   |-{fwupd},1270926
+  |   |-{fwupd},1270927
+  |   |-{fwupd},1270928
+  |   `-{fwupd},1270929
+  |-gdm3,2091
+  |   |-gdm-session-wor,2775
+  |   |   |-gdm-x-session,2876 --run-script env GNOME_SHELL_SESSION_MODE=ubuntu /usr/bin/gnome-session --session=ubuntu
+  |   |   |   |-Xorg,2878 vt2 -displayfd 3 -auth /run/user/1000/gdm/Xauthority -nolisten tcp -background none -noreset -keeptty...
+  |   |   |   |   `-{Xorg},2887
+  |   |   |   |-gnome-session-b,2890 --session=ubuntu
+  |   |   |   |   |-{gnome-session-b},2972
+  |   |   |   |   `-{gnome-session-b},2973
+  |   |   |   |-{gdm-x-session},2877
+  |   |   |   `-{gdm-x-session},2888
+
+
+=== PROCESS TREE (ps auxf) ===
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           2  0.0  0.0      0     0 ?        S    Dec20   0:00 [kthreadd]
+root           3  0.0  0.0      0     0 ?        S    Dec20   0:00  \_ [pool_workqueue_release]
+root           4  0.0  0.0      0     0 ?        I<   Dec20   0:00  \_ [kworker/R-rcu_g]
+root           5  0.0  0.0      0     0 ?        I<   Dec20   0:00  \_ [kworker/R-rcu_p]
+root           6  0.0  0.0      0     0 ?        I<   Dec20   0:00  \_ [kworker/R-slub_]
+root           7  0.0  0.0      0     0 ?        I<   Dec20   0:00  \_ [kworker/R-netns]
+root          10  0.0  0.0      0     0 ?        I<   Dec20   0:00  \_ [kworker/0:0H-events_highpri]
+root          11  0.0  0.0      0     0 ?        I    Dec20   0:40  \_ [kworker/u64:0-ext4-rsv-conversion]
+root          12  0.0  0.0      0     0 ?        I<   Dec20   0:00  \_ [kworker/R-mm_pe]
+root          13  0.0  0.0      0     0 ?        I    Dec20   0:00  \_ [rcu_tasks_kthread]
+root          14  0.0  0.0      0     0 ?        I    Dec20   0:00  \_ [rcu_tasks_rude_kthread]
+root          15  0.0  0.0      0     0 ?        I    Dec20   0:00  \_ [rcu_tasks_trace_kthread]
+root          16  0.0  0.0      0     0 ?        S    Dec20   0:10  \_ [ksoftirqd/0]
+root          17  0.0  0.0      0     0 ?        I    Dec20   3:09  \_ [rcu_preempt]
+root          18  0.0  0.0      0     0 ?        S    Dec20   0:04  \_ [migration/0]
+root          19  0.0  0.0      0     0 ?        S    Dec20   0:00  \_ [idle_inject/0]
+root          20  0.0  0.0      0     0 ?        S    Dec20   0:00  \_ [cpuhp/0]
+root          21  0.0  0.0      0     0 ?        S    Dec20   0:00  \_ [cpuhp/1]
+root          22  0.0  0.0      0     0 ?        S    Dec20   0:00  \_ [idle_inject/1]
+root          23  0.0  0.0      0     0 ?        S    Dec20   0:03  \_ [migration/1]
+root          24  0.0  0.0      0     0 ?        S    Dec20   0:03  \_ [ksoftirqd/1]
+root          26  0.0  0.0      0     0 ?        I<   Dec20   0:00  \_ [kworker/1:0H-events_highpri]
+root          27  0.0  0.0      0     0 ?        S    Dec20   0:00  \_ [cpuhp/2]
+root          28  0.0  0.0      0     0 ?        S    Dec20   0:00  \_ [idle_inject/2]
+root          29  0.0  0.0      0     0 ?        S    Dec20   0:03  \_ [migration/2]
+root          30  0.0  0.0      0     0 ?        S    Dec20   0:02  \_ [ksoftirqd/2]
+root          32  0.0  0.0      0     0 ?        I<   Dec20   0:00  \_ [kworker/2:0H-events_highpri]
+root          33  0.0  0.0      0     0 ?        S    Dec20   0:00  \_ [cpuhp/3]
+root          34  0.0  0.0      0     0 ?        S    Dec20   0:00  \_ [idle_inject/3]
+root          35  0.0  0.0      0     0 ?        S    Dec20   0:03  \_ [migration/3]
+root          36  0.0  0.0      0     0 ?        S    Dec20   0:01  \_ [ksoftirqd/3]
+root          38  0.0  0.0      0     0 ?        I<   Dec20   0:00  \_ [kworker/3:0H-events_highpri]
+root          39  0.0  0.0      0     0 ?        S    Dec20   0:00  \_ [cpuhp/4]
+root          40  0.0  0.0      0     0 ?        S    Dec20   0:00  \_ [idle_inject/4]
+root          41  0.0  0.0      0     0 ?        S    Dec20   0:04  \_ [migration/4]
+root          42  0.0  0.0      0     0 ?        S    Dec20   0:01  \_ [ksoftirqd/4]
+root          44  0.0  0.0      0     0 ?        I<   Dec20   0:00  \_ [kworker/4:0H-events_highpri]
+root          45  0.0  0.0      0     0 ?        S    Dec20   0:00  \_ [cpuhp/5]
+root          46  0.0  0.0      0     0 ?        S    Dec20   0:00  \_ [idle_inject/5]
+root          47  0.0  0.0      0     0 ?        S    Dec20   0:03  \_ [migration/5]
+root          48  0.0  0.0      0     0 ?        S    Dec20   0:01  \_ [ksoftirqd/5]
+root          50  0.0  0.0      0     0 ?        I<   Dec20   0:00  \_ [kworker/5:0H-events_highpri]
+root          51  0.0  0.0      0     0 ?        S    Dec20   0:00  \_ [cpuhp/6]
+root          52  0.0  0.0      0     0 ?        S    Dec20   0:00  \_ [idle_inject/6]
+root          53  0.0  0.0      0     0 ?        S    Dec20   0:03  \_ [migration/6]
+root          54  0.0  0.0      0     0 ?        S    Dec20   0:00  \_ [ksoftirqd/6]
+root          56  0.0  0.0      0     0 ?        I<   Dec20   0:00  \_ [kworker/6:0H-events_highpri]
+root          57  0.0  0.0      0     0 ?        S    Dec20   0:00  \_ [cpuhp/7]
+root          58  0.0  0.0      0     0 ?        S    Dec20   0:00  \_ [idle_inject/7]
+root          59  0.0  0.0      0     0 ?        S    Dec20   0:02  \_ [migration/7]
+root          60  0.0  0.0      0     0 ?        S    Dec20   0:00  \_ [ksoftirqd/7]
+root          62  0.0  0.0      0     0 ?        I<   Dec20   0:00  \_ [kworker/7:0H-events_highpri]
+root          63  0.0  0.0      0     0 ?        S    Dec20   0:00  \_ [cpuhp/8]
+root          64  0.0  0.0      0     0 ?        S    Dec20   0:00  \_ [idle_inject/8]
+root          65  0.0  0.0      0     0 ?        S    Dec20   0:02  \_ [migration/8]
+root          66  0.0  0.0      0     0 ?        S    Dec20   0:01  \_ [ksoftirqd/8]
+root          68  0.0  0.0      0     0 ?        I<   Dec20   0:00  \_ [kworker/8:0H-events_highpri]
+root          69  0.0  0.0      0     0 ?        S    Dec20   0:00  \_ [cpuhp/9]
+root          70  0.0  0.0      0     0 ?        S    Dec20   0:00  \_ [idle_inject/9]
+root          71  0.0  0.0      0     0 ?        S    Dec20   0:02  \_ [migration/9]
+root          72  0.0  0.0      0     0 ?        S    Dec20   0:00  \_ [ksoftirqd/9]
+root          74  0.0  0.0      0     0 ?        I<   Dec20   0:00  \_ [kworker/9:0H-events_highpri]
+root          75  0.0  0.0      0     0 ?        S    Dec20   0:00  \_ [cpuhp/10]
+root          76  0.0  0.0      0     0 ?        S    Dec20   0:00  \_ [idle_inject/10]
+root          77  0.0  0.0      0     0 ?        S    Dec20   0:02  \_ [migration/10]
+root          78  0.0  0.0      0     0 ?        S    Dec20   0:01  \_ [ksoftirqd/10]
+root          80  0.0  0.0      0     0 ?        I<   Dec20   0:00  \_ [kworker/10:0H-events_highpri]
+root          81  0.0  0.0      0     0 ?        S    Dec20   0:00  \_ [cpuhp/11]
+root          82  0.0  0.0      0     0 ?        S    Dec20   0:00  \_ [idle_inject/11]
+root          83  0.0  0.0      0     0 ?        S    Dec20   0:02  \_ [migration/11]
+root          84  0.0  0.0      0     0 ?        S    Dec20   0:01  \_ [ksoftirqd/11]
+root          86  0.0  0.0      0     0 ?        I<   Dec20   0:00  \_ [kworker/11:0H-events_highpri]
+root          87  0.0  0.0      0     0 ?        S    Dec20   0:00  \_ [cpuhp/12]
+root          88  0.0  0.0      0     0 ?        S    Dec20   0:00  \_ [idle_inject/12]
+root          89  0.0  0.0      0     0 ?        S    Dec20   0:02  \_ [migration/12]
+root          90  0.0  0.0      0     0 ?        S    Dec20   0:01  \_ [ksoftirqd/12]
+root          92  0.0  0.0      0     0 ?        I<   Dec20   0:00  \_ [kworker/12:0H-events_highpri]
+root          93  0.0  0.0      0     0 ?        S    Dec20   0:00  \_ [cpuhp/13]
+root          94  0.0  0.0      0     0 ?        S    Dec20   0:00  \_ [idle_inject/13]
+
+
+=== OPEN FILES BY PROCESS (lsof) ===
+COMMAND    PID   USER   FD   TYPE             DEVICE SIZE/OFF  NODE NAME
+Xorg      2878 outrun   10u  unix 0x0000000000000000      0t0 21962 /tmp/.X11-unix/X1 type=STREAM
+gnome-ses 2997 outrun   12u  unix 0x0000000000000000      0t0  8190 /tmp/.ICE-unix/2997 type=STREAM
+
+
+=== NETWORK SOCKETS PER PROCESS ===
+      1 users:(("tor-0.4.8.19-li",pid=1261996,fd=10))
+      1 users:(("language_server",pid=1456997,fd=34))
+      1 users:(("language_server",pid=1456997,fd=33))
+      1 users:(("language_server",pid=1456997,fd=31))
+      1 users:(("language_server",pid=1456997,fd=30))
+      1 users:(("language_server",pid=1456997,fd=29))
+      1 users:(("language_server",pid=1456997,fd=28))
+      1 users:(("language_server",pid=1456997,fd=26))
+      1 users:(("language_server",pid=1456997,fd=24))
+      1 users:(("language_server",pid=1456997,fd=23))
+      1 users:(("language_server",pid=1456997,fd=22))
+      1 users:(("language_server",pid=1456997,fd=21))
+      1 users:(("language_server",pid=1456997,fd=17))
+      1 users:(("language_server",pid=1456997,fd=16))
+      1 users:(("language_server",pid=1456997,fd=15))
+      1 users:(("language_server",pid=1456997,fd=14))
+      1 users:(("language_server",pid=1456997,fd=13))
+      1 users:(("brave",pid=536025,fd=81))
+      1 users:(("brave",pid=536025,fd=68))
+      1 users:(("brave",pid=536025,fd=43))
+
+
+=== SUSPICIOUS INDICATORS ===
+Processes running from /tmp or /dev/shm:
+outrun   1187518  0.9  1.9 19553004 315024 ?     Ssl  Dec27  35:10 /home/outrun/.local/zed.app/libexec/zed-editor zed-cli:///tmp/.tmpfLxM5b/socket
+outrun   1456997  3.5  2.1 5034316 350476 ?      Sl   12:15   0:41 /usr/share/antigravity/resources/app/extensions/antigravity/bin/language_server_linux_x64 --enable_lsp --extension_server_port 36727 --csrf_token c550fdbf-626f-4f0c-a171-a35b9b50509a --random_port --workspace_id file_home_outrun_projects_dCAI_harness --cloud_code_endpoint https://daily-cloudcode-pa.googleapis.com --app_data_dir antigravity --parent_pipe_path /tmp/server_fc45b6dd70131063
+
+
+Processes with very high CPU (>30%):
+outrun   1455434 48.4 23.5 1463414388 3834832 ?  Sl   11:41  26:02 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=269 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=839373344983 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,3436606618291734882,7987676958293661921,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190709238376128875
+
+
+Processes with very high memory (>10%):
+outrun   1455434 48.4 23.5 1463414388 3834832 ?  Sl   11:41  26:02 /snap/brave/580/opt/brave.com/brave/brave --type=renderer --crashpad-handler-pid=535963 --enable-crash-reporter=, --enable-distillability-service --origin-trial-public-key=bYUKPJoPnCxeNvu72j4EmPuK7tr1PAC7SHh8ld9Mw3E=,fMS4mpO6buLQ/QMd+zJmxzty/VQ6B1EUZqoCU04zoRU= --change-stack-guard-on-fork=enable --ozone-platform=x11 --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=269 --time-ticks-at-unix-epoch=-1766273532183796 --launch-time-ticks=839373344983 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,3436606618291734882,7987676958293661921,2097152 --field-trial-handle=3,i,786050464457833167,9636700073064511631,262144 --variations-seed-version=main@896677830e9ae594e062c51e1dfab3e6cd73793a --trace-process-track-uuid=3190709238376128875
+
+
+=== KERNEL THREADS ===
+
+
+=== ZOMBIE PROCESSES ===
+outrun   1456843  0.0  0.0      0     0 ?        Z    12:15   0:00 [sh] <defunct>
+
+
+=== PROCESSES WITH DELETED EXECUTABLES ===

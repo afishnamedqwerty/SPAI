@@ -1,0 +1,13 @@
+[package]
+name = "lynis-mcp"
+version = "0.1.0"
+edition = "2021"
+description = "MCP server that wraps lynis and summarizes findings"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+anyhow = "1.0"
+rmcp = { version = "0.11.0", features = ["server", "macros", "transport-io"] }
+tokio = { version = "1.42", features = ["full"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["fmt"] }

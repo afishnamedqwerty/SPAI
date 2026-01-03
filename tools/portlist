@@ -1,0 +1,227 @@
+#!/bin/bash
+# SPAI Portlist - Comprehensive port scanning and analysis tool
+# Lists all listening ports and established connections with process information
+
+set -euo pipefail
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+# Check if we need sudo
+SUDO=""
+if [ "$EUID" -ne 0 ]; then
+    SUDO="sudo"
+fi
+
+# Usage function
+usage() {
+    cat <<EOF
+SPAI Portlist - Comprehensive Port Analysis Tool
+
+Usage: portlist [OPTIONS]
+
+OPTIONS:
+    -l, --listen      Show only listening ports (default)
+    -e, --established Show only established connections
+    -a, --all         Show both listening and established
+    -p, --processes   Show detailed process information
+    -s, --suspicious  Highlight suspicious ports (4444, 31337, etc.)
+    -j, --json        Output in JSON format
+    -h, --help        Show this help message
+
+EXAMPLES:
+    portlist                  # Show listening ports
+    portlist -a               # Show all connections
+    portlist -s               # Highlight suspicious ports
+    portlist -p               # Show detailed process info
+
+EOF
+}
+
+# Parse arguments
+SHOW_LISTEN=1
+SHOW_ESTABLISHED=0
+SHOW_PROCESSES=0
+HIGHLIGHT_SUSPICIOUS=0
+JSON_OUTPUT=0
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -l|--listen)
+            SHOW_LISTEN=1
+            SHOW_ESTABLISHED=0
+            shift
+            ;;
+        -e|--established)
+            SHOW_LISTEN=0
+            SHOW_ESTABLISHED=1
+            shift
+            ;;
+        -a|--all)
+            SHOW_LISTEN=1
+            SHOW_ESTABLISHED=1
+            shift
+            ;;
+        -p|--processes)
+            SHOW_PROCESSES=1
+            shift
+            ;;
+        -s|--suspicious)
+            HIGHLIGHT_SUSPICIOUS=1
+            shift
+            ;;
+        -j|--json)
+            JSON_OUTPUT=1
+            shift
+            ;;
+        -h|--help)
+            usage
+            exit 0
+            ;;
+        *)
+            echo "Unknown option: $1"
+            usage
+            exit 1
+            ;;
+    esac
+done
+
+# Suspicious ports to highlight
+declare -A SUSPICIOUS_PORTS
+SUSPICIOUS_PORTS=(
+    [4444]="Metasploit default"
+    [31337]="Back Orifice"
+    [6667]="IRC"
+    [6668]="IRC"
+    [6669]="IRC"
+    [1337]="Common backdoor"
+    [12345]="NetBus"
+    [54321]="Back Orifice"
+    [9999]="Common backdoor"
+    [8080]="HTTP Proxy (check if expected)"
+    [3389]="RDP (Windows)"
+    [5900]="VNC"
+)
+
+# Function to check if port is suspicious
+is_suspicious() {
+    local port=$1
+    if [[ -n "${SUSPICIOUS_PORTS[$port]:-}" ]]; then
+        return 0
+    fi
+    return 1
+}
+
+# Main output function
+if [ $JSON_OUTPUT -eq 1 ]; then
+    # JSON output
+    echo "{"
+    echo '  "timestamp": "'$(date -u +%Y-%m-%dT%H:%M:%SZ)'",'
+    echo '  "hostname": "'$(hostname)'",'
+    echo '  "listening_ports": ['
+
+    if [ $SHOW_LISTEN -eq 1 ]; then
+        $SUDO ss -tulnp 2>/dev/null | awk 'NR>1' | while read -r line; do
+            echo "    $line" | awk '{print "    {\"protocol\": \""$1"\", \"port\": \""$5"\", \"process\": \""$7"\"}"}'
+        done | paste -sd ',' -
+    fi
+
+    echo '  ],'
+    echo '  "established": ['
+
+    if [ $SHOW_ESTABLISHED -eq 1 ]; then
+        $SUDO ss -tupn state established 2>/dev/null | awk 'NR>1' | while read -r line; do
+            echo "    $line" | awk '{print "    {\"protocol\": \""$1"\", \"local\": \""$5"\", \"remote\": \""$6"\", \"process\": \""$7"\"}"}'
+        done | paste -sd ',' -
+    fi
+
+    echo '  ]'
+    echo "}"
+else
+    # Human-readable output
+    echo -e "${BLUE}═══════════════════════════════════════════════════════════════${NC}"
+    echo -e "${BLUE}   SPAI Port List - $(hostname) - $(date)${NC}"
+    echo -e "${BLUE}═══════════════════════════════════════════════════════════════${NC}"
+    echo ""
+
+    if [ $SHOW_LISTEN -eq 1 ]; then
+        echo -e "${GREEN}Listening Ports:${NC}"
+        echo -e "${GREEN}───────────────────────────────────────────────────────────────${NC}"
+        printf "%-10s %-25s %-25s %s\n" "PROTOCOL" "LOCAL ADDRESS" "STATE" "PROCESS"
+        echo -e "${GREEN}───────────────────────────────────────────────────────────────${NC}"
+
+        $SUDO ss -tulnp 2>/dev/null | awk 'NR>1' | while IFS= read -r line; do
+            proto=$(echo "$line" | awk '{print $1}')
+            local_addr=$(echo "$line" | awk '{print $5}')
+            state=$(echo "$line" | awk '{print $2}')
+            process=$(echo "$line" | awk '{print $7}')
+
+            # Extract port number
+            port=$(echo "$local_addr" | grep -oE '[0-9]+$')
+
+            # Check if suspicious
+            if [ $HIGHLIGHT_SUSPICIOUS -eq 1 ] && is_suspicious "$port" 2>/dev/null; then
+                echo -e "${RED}%-10s %-25s %-25s %s [SUSPICIOUS: ${SUSPICIOUS_PORTS[$port]}]${NC}" "$proto" "$local_addr" "$state" "$process"
+            else
+                printf "%-10s %-25s %-25s %s\n" "$proto" "$local_addr" "$state" "$process"
+            fi
+        done
+        echo ""
+    fi
+
+    if [ $SHOW_ESTABLISHED -eq 1 ]; then
+        echo -e "${YELLOW}Established Connections:${NC}"
+        echo -e "${YELLOW}───────────────────────────────────────────────────────────────${NC}"
+        printf "%-10s %-25s %-25s %s\n" "PROTOCOL" "LOCAL" "REMOTE" "PROCESS"
+        echo -e "${YELLOW}───────────────────────────────────────────────────────────────${NC}"
+
+        $SUDO ss -tupn state established 2>/dev/null | awk 'NR>1' | while IFS= read -r line; do
+            proto=$(echo "$line" | awk '{print $1}')
+            local_addr=$(echo "$line" | awk '{print $5}')
+            remote_addr=$(echo "$line" | awk '{print $6}')
+            process=$(echo "$line" | awk '{print $7}')
+
+            printf "%-10s %-25s %-25s %s\n" "$proto" "$local_addr" "$remote_addr" "$process"
+        done
+        echo ""
+    fi
+
+    if [ $SHOW_PROCESSES -eq 1 ]; then
+        echo -e "${BLUE}Process Network Activity (lsof):${NC}"
+        echo -e "${BLUE}───────────────────────────────────────────────────────────────${NC}"
+        $SUDO lsof -i -n -P 2>/dev/null | head -50
+        echo ""
+    fi
+
+    # Summary statistics
+    echo -e "${GREEN}Summary:${NC}"
+    echo -e "${GREEN}───────────────────────────────────────────────────────────────${NC}"
+
+    LISTEN_COUNT=$($SUDO ss -tulnp 2>/dev/null | awk 'NR>1' | wc -l)
+    ESTABLISHED_COUNT=$($SUDO ss -tupn state established 2>/dev/null | awk 'NR>1' | wc -l)
+
+    echo "  Listening ports: $LISTEN_COUNT"
+    echo "  Established connections: $ESTABLISHED_COUNT"
+
+    if [ $HIGHLIGHT_SUSPICIOUS -eq 1 ]; then
+        SUSPICIOUS_COUNT=0
+        for port in "${!SUSPICIOUS_PORTS[@]}"; do
+            if $SUDO ss -tulnp 2>/dev/null | grep -q ":$port "; then
+                SUSPICIOUS_COUNT=$((SUSPICIOUS_COUNT + 1))
+            fi
+        done
+
+        if [ $SUSPICIOUS_COUNT -gt 0 ]; then
+            echo -e "  ${RED}Suspicious ports detected: $SUSPICIOUS_COUNT${NC}"
+        else
+            echo "  Suspicious ports detected: 0"
+        fi
+    fi
+
+    echo ""
+    echo -e "${BLUE}═══════════════════════════════════════════════════════════════${NC}"
+fi
