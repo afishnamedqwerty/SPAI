@@ -1,8 +1,8 @@
-# SPAI Agent Harness
+# dCAISPAI Agent Harness
 
 **A Production-Grade Multi-Agent Orchestration Framework in Rust**
 
-ATHPTTGH (Agents, Tools, Handoffs, Patterns, Turns, Tracing, Guardrails, Human-in-the-Loop) is a comprehensive multi-agent orchestration framework built in Rust, integrating with OpenRouter for unified access to 200+ LLM providers.
+dCAI/SPAI is a comprehensive multi-agent orchestration framework built in Rust, integrating with OpenRouter for unified access to 200+ LLM providers. Current implementation is an inverted framework of CAI (https://github.com/aliasrobotics/cai) for recurring security audits of a local device. Future iterations (Solid Pods Agent Interface) aim to utilize Inrupt's Solid Pods for WebID authentication and authorization of agent swarms alongside IRI resource encapsulation for agent data controls.
 
 ## Features
 
@@ -43,42 +43,41 @@ The framework implements all eight core components of the ATHPTTGH architecture:
 
 Production-grade perpetual agent capabilities matching **Letta** and **MemGPT**:
 
-#### 🧠 Stateful Agent Memory (`src/memory.rs`)
+#### Stateful Agent Memory (`src/memory.rs`)
 - **Memory Blocks** — Self-editing chunks with labels, size limits, and metadata
 - **In-Context vs Out-of-Context** — Agents control their own context window
 - **Perpetual Message History** — Infinite conversation log with search
 - **Shared Memory Manager** — Multi-agent shared knowledge bases
 
-#### 🛠️ Agentic Context Engineering (`src/memory_tools.rs`)
+#### Agentic Context Engineering (`src/memory_tools.rs`)
 - `update_memory` — Edit memory block content
 - `move_out_of_context` / `move_into_context` — Archive/restore memories
 - `list_memory_blocks` — View all available memories
 - `search_messages` — Search perpetual conversation history
 
-#### 💾 Agent File Format (`src/agent_file.rs`)
+#### Agent File Format (`src/agent_file.rs`)
 - Complete `.af` serialization format for agent state
 - Checkpoint manager for versioned snapshots
 - Import/export for portable agent migration
 
-#### 📁 Filesystem Integration (`src/filesystem.rs`)
+#### Filesystem Integration (`src/filesystem.rs`)
 - Attach folders with file pattern filtering
 - `open_file`, `search_files`, `list_files` tools
 - Per-agent folder attachments with caching
 
-#### 💤 Sleep-Time Agents (`src/sleeptime.rs`)
+#### Sleep-Time Agents (`src/sleeptime.rs`)
 - Background memory consolidation (archives old blocks, summarizes messages)
 - Pattern detection across conversation history
 - Configurable intervals (default: 5 minutes)
 - Runs async without blocking the primary agent
 
-#### ⚡ Background Execution (`src/background.rs`)
+#### Background Execution (`src/background.rs`)
 - Async agent execution with run IDs
 - **Resumable streaming** with sequence IDs and cursor pagination
 - Connection recovery — clients can disconnect/reconnect without losing state
 - Event types: Started, Thought, ToolCall, ToolResult, Output, Completed, Failed
 
-#### 🗄️ Storage Backends (`src/storage.rs`)
-- **SQLite** — Local persistence for development
+#### Storage Backends (`src/storage.rs`)
 - **PostgreSQL** — Distributed deployments with full-text search
 - Automatic migrations and schema creation
 
@@ -132,7 +131,7 @@ Production-grade perpetual agent capabilities matching **Letta** and **MemGPT**:
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 Want to run a comprehensive security scan in 3 minutes? See [QUICKSTART.md](QUICKSTART.md)
 
@@ -349,15 +348,6 @@ Define intervention points for human oversight:
 - Error recovery
 - Confidence threshold triggers
 
-
-
-## Contributing
-
-Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
 ## License
 
-This project is licensed under either of:
-
-- Apache License, Version 2.0 ([LICENSE-APACHE](LICENSE-APACHE) or http://www.apache.org/licenses/LICENSE-2.0)
-- MIT license ([LICENSE-MIT](LICENSE-MIT) or http://opensource.org/licenses/MIT)
+idc
