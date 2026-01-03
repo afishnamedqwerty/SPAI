@@ -1,4 +1,4 @@
-# dCAISPAI Agent Harness
+# dCAI / SPAI Agent Harness
 
 **A Production-Grade Multi-Agent Orchestration Framework in Rust**
 
