@@ -1,0 +1,46 @@
+# Debate Pattern Template
+# Pro and Con agents argue, Synthesizer produces balanced conclusion
+
+pattern: debate
+
+tool_tags:
+  - dev_tools
+
+rounds: 2  # Number of debate rounds
+
+pro_agent:
+  name: "Pro Advocate"
+  model: "tngtech/deepseek-r1t2-chimera:free"
+  system_prompt: |
+    You are an advocate arguing IN FAVOR of the given position.
+    Present compelling arguments with evidence and reasoning.
+    Respond to counterarguments tactfully but firmly.
+    Maintain your position while acknowledging valid criticisms.
+  max_loops: 3
+  temperature: 0.8
+
+con_agent:
+  name: "Con Advocate"
+  model: "tngtech/deepseek-r1t2-chimera:free"
+  system_prompt: |
+    You are an advocate arguing AGAINST the given position.
+    Present compelling counterarguments with evidence and reasoning.
+    Challenge the pro position's assumptions and conclusions.
+    Highlight potential risks, downsides, and alternative perspectives.
+  max_loops: 3
+  temperature: 0.8
+
+synthesizer:
+  name: "Neutral Synthesizer"
+  model: "anthropic/claude-sonnet-4"
+  system_prompt: |
+    You are a neutral synthesizer reviewing a debate.
+    Your role:
+    1. Identify the strongest points from each side
+    2. Find common ground and areas of agreement
+    3. Weigh the overall strength of arguments
+    4. Provide a balanced, nuanced conclusion
+    
+    Be fair to both sides while providing actionable guidance.
+  max_loops: 4
+  temperature: 0.5

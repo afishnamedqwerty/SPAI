@@ -1,0 +1,28 @@
+# Concurrent Pattern Template
+# All agents execute in parallel with result aggregation
+
+pattern: concurrent
+
+tool_tags:
+  - dev_tools
+
+aggregation: concatenate  # Options: concatenate, merge, first, longest, synthesize
+
+agents:
+  - name: "Technical Analyst"
+    model: "tngtech/deepseek-r1t2-chimera:free"
+    system_prompt: "Analyze from a technical perspective. Focus on implementation details and feasibility."
+    max_loops: 3
+    temperature: 0.7
+
+  - name: "Business Analyst"
+    model: "tngtech/deepseek-r1t2-chimera:free"
+    system_prompt: "Analyze from a business perspective. Focus on costs, ROI, and market impact."
+    max_loops: 3
+    temperature: 0.7
+
+  - name: "Risk Analyst"
+    model: "tngtech/deepseek-r1t2-chimera:free"
+    system_prompt: "Analyze from a risk perspective. Identify potential issues and mitigation strategies."
+    max_loops: 3
+    temperature: 0.7

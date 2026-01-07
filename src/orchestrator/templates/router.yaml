@@ -1,0 +1,48 @@
+# Router Pattern Template
+# Triage agent routes to specialized domain experts
+
+pattern: router
+
+tool_tags:
+  - dev_tools
+
+router_agent:
+  name: "Triage Router"
+  model: "anthropic/claude-sonnet-4"
+  system_prompt: |
+    You are a routing agent that triages incoming requests.
+    Analyze each request and determine which specialist should handle it.
+    
+    Respond with: "Route to [domain]" where domain matches one of your specialists.
+    
+    Consider request complexity, domain expertise required, and specialist availability.
+  max_loops: 2
+  temperature: 0.3
+
+specialists:
+  security:
+    name: "Security Specialist"
+    model: "anthropic/claude-sonnet-4"
+    system_prompt: "You are a cybersecurity expert. Handle security-related requests including audits, vulnerability assessments, and security policy."
+    max_loops: 4
+    temperature: 0.5
+    tool_tags:
+      - security_tools
+
+  development:
+    name: "Development Specialist"
+    model: "tngtech/deepseek-r1t2-chimera:free"
+    system_prompt: "You are a software development expert. Handle coding, architecture, and development workflow requests."
+    max_loops: 4
+    temperature: 0.6
+    tool_tags:
+      - dev_tools
+
+  research:
+    name: "Research Specialist"
+    model: "anthropic/claude-sonnet-4"
+    system_prompt: "You are a research analyst. Handle information gathering, analysis, and documentation requests."
+    max_loops: 4
+    temperature: 0.7
+    tool_tags:
+      - web_tools

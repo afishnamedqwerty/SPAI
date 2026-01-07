@@ -1,0 +1,22 @@
+# Sequential Pattern Template
+# Agents execute in order, output of N becomes input of N+1
+
+pattern: sequential
+
+tool_tags:
+  - dev_tools
+
+agents:
+  - name: "Researcher"
+    model: "anthropic/claude-sonnet-4"
+    system_prompt: "You are a research analyst. Analyze the given topic thoroughly and provide comprehensive findings."
+    max_loops: 3
+    temperature: 0.7
+    tool_tags:
+      - web_tools
+
+  - name: "Writer"
+    model: "tngtech/deepseek-r1t2-chimera:free"
+    system_prompt: "You are a technical writer. Take the research findings and produce a clear, well-structured report."
+    max_loops: 3
+    temperature: 0.5

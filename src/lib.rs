@@ -57,6 +57,7 @@ pub mod memory;
 pub mod memory_tools;
 pub mod openrouter;
 pub mod patterns;
+pub mod orchestrator;
 pub mod react;
 pub mod sleeptime;
 #[cfg(feature = "storage")]
@@ -89,6 +90,12 @@ pub use sleeptime::{SleepTimeAgent, SleepTimeConfig};
 #[cfg(feature = "storage")]
 pub use storage::{MemoryStorage, PostgresStorage, SqliteStorage};
 pub use patterns::{PatternConfig, WorkflowPattern};
+pub use orchestrator::{
+    OrchestratorConfig, OrchestratorPattern, OrchestratorResult,
+    PatternType, AgentConfig, SubagentConfig,
+    SequentialOrchestrator, ConcurrentOrchestrator, HierarchicalOrchestrator,
+    DebateOrchestrator, RouterOrchestrator, ConsensusOrchestrator,
+};
 pub use react::{ReActConfig, ReActTrace, ReasoningFormat};
 pub use tools::{Tool, ToolContext, ToolOutput};
 #[cfg(feature = "mcp-tools")]

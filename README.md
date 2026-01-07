@@ -286,14 +286,51 @@ let config = OpenRouterConfig::from_env()?
 
 ## Workflow Patterns
 
-The framework supports multiple orchestration patterns:
+The orchestrator module (`src/orchestrator/`) provides YAML-configurable multi-agent coordination patterns:
 
-- **Sequential**: Agents execute in predetermined order
-- **Concurrent**: Agents execute in parallel with result aggregation
-- **Hierarchical**: Lead agent decomposes tasks and delegates
-- **Debate**: Agents argue different positions with synthesis
-- **Router**: Triage agent routes to specialized agents
-- **Consensus**: Multiple agents must agree before proceeding
+| Pattern | Constructor | Description |
+|---------|-------------|-------------|
+| **Sequential** | `SequentialOrchestrator::new(agents)` | Agents execute in order; output of N → input of N+1 |
+| **Concurrent** | `ConcurrentOrchestrator::new(agents)` | Parallel execution with aggregation (concatenate, merge, first, longest) |
+| **Hierarchical** | `HierarchicalOrchestrator::new(lead, subagents)` | Lead decomposes task → delegates to subagents → synthesizes |
+| **Debate** | `DebateOrchestrator::new(pro, con, synth)` | Pro/con argue N rounds; synthesizer produces balanced conclusion |
+| **Router** | `RouterOrchestrator::new(router).with_specialists(map)` | Triage routes to domain specialists |
+| **Consensus** | `ConsensusOrchestrator::new(agents).with_threshold(0.66)` | Majority voting with configurable threshold |
+
+### YAML Template Example
+
+```yaml
+# src/orchestrator/templates/hierarchical.yaml
+pattern: hierarchical
+
+lead_agent:
+  name: "Lead Analyst"
+  model: "tngtech/deepseek-r1t2-chimera:free"
+  system_prompt: "Decompose task and coordinate subagents."
+  max_loops: 5
+  tool_tags:
+    - dev_tools  # Load specific tools for this agent
+
+subagents:
+  count: 3
+  model: "tngtech/deepseek-r1t2-chimera:free"
+  system_prompt_template: "You are Analyst {index}."
+  tool_tags:
+    - web_tools
+```
+
+### Usage
+
+```rust
+use spai::orchestrator::{OrchestratorConfig, HierarchicalOrchestrator, OrchestratorPattern};
+
+let config = OrchestratorConfig::from_file("src/orchestrator/templates/hierarchical.yaml")?;
+let orchestrator = HierarchicalOrchestrator::new(lead_agent, subagents);
+let result = orchestrator.execute("Analyze this problem").await?;
+println!("{}", result.content);
+```
+
+Run the demo: `cargo run --example test_patterns`
 
 ## Tracing & Observability
 

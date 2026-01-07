@@ -17,6 +17,7 @@ async-trait = "0.1"
 # Serialization
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
+serde_yaml = "0.9"
 
 # Swarms framework
 swarms-rs = "0.1.7"
@@ -153,3 +154,7 @@ path = "examples/concurrent_agent_tools.rs"
 [[example]]
 name = "sequential_agent_dev"
 path = "examples/sequential_agent_dev.rs"
+
+[[example]]
+name = "test_patterns"
+path = "examples/test_patterns.rs"

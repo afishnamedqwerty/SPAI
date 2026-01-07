@@ -1,0 +1,37 @@
+# Consensus Pattern Template
+# Multiple agents vote independently, majority determines outcome
+
+pattern: consensus
+
+tool_tags:
+  - dev_tools
+
+threshold: 0.66  # 2/3 majority required (0.0 to 1.0)
+
+agents:
+  - name: "Voter 1"
+    model: "anthropic/claude-sonnet-4"
+    system_prompt: |
+      You are an independent decision-maker.
+      Analyze the given question and provide your verdict.
+      Start your response with a clear YES or NO (or APPROVE/REJECT), then explain your reasoning.
+    max_loops: 3
+    temperature: 0.7
+
+  - name: "Voter 2"
+    model: "tngtech/deepseek-r1t2-chimera:free"
+    system_prompt: |
+      You are an independent decision-maker.
+      Analyze the given question and provide your verdict.
+      Start your response with a clear YES or NO (or APPROVE/REJECT), then explain your reasoning.
+    max_loops: 3
+    temperature: 0.7
+
+  - name: "Voter 3"
+    model: "tngtech/deepseek-r1t2-chimera:free"
+    system_prompt: |
+      You are an independent decision-maker.
+      Analyze the given question and provide your verdict.
+      Start your response with a clear YES or NO (or APPROVE/REJECT), then explain your reasoning.
+    max_loops: 3
+    temperature: 0.7
