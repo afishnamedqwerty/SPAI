@@ -1,0 +1,37 @@
+{
+    "name": "Xargs Tool",
+    "description": "Build and execute command lines from input with support for parallel execution, replacement strings, and batch processing.",
+    "category": "system",
+    "tags": [
+        "dev_tools",
+        "filesystem_tools"
+    ],
+    "requires_sudo": false,
+    "args": [
+        {
+            "name": "-n",
+            "description": "Max arguments per command",
+            "required": false
+        },
+        {
+            "name": "-P",
+            "description": "Max parallel processes",
+            "required": false
+        },
+        {
+            "name": "-I",
+            "description": "Replacement string for input",
+            "required": false
+        },
+        {
+            "name": "-0",
+            "description": "Null-delimited input",
+            "required": false
+        },
+        {
+            "name": "--dry-run",
+            "description": "Show commands without executing",
+            "required": false
+        }
+    ]
+}

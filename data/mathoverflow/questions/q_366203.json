@@ -1,0 +1,10 @@
+{
+  "id": "q_366203",
+  "mathoverflow_id": 366203,
+  "url": "https://mathoverflow.net/questions/366203/motivic-cohomology-and-resolution-of-singularities",
+  "title": "ag.algebraic geometry - Motivic cohomology and resolution of singularities",
+  "body": "Suppose $X$ is a singular variety and we somehow know its motivic cohomology groups. Can the knowledge of motivic cohomology help in understanding the singularities of $X$ and how to resolve them? ag.algebraic-geometry Share Cite Improve this question Follow asked Jul 21, 2020 at 14:33 user161444 21 1 1 bronze badge $\\endgroup$ Add a comment  |  0 Sorted by: Reset to default Highest score (default) Date modified (newest first) Date created (oldest first) You must log in to answer this question. Start asking to get answers Find the answer to your question by asking. Ask question Explore related questions ag.algebraic-geometry See similar questions with these tags. The Overflow Blog Now everyone can chat on Stack Overflow Featured on Meta A proposal for bringing back Community Promotion & Open Source Ads Community Asks Sprint Announcement – January 2026: Custom site-specific badges! Citation Helper v2 - User Script edition! Related 2 Is resolution of singularities effective? 10 Stable motivic cohomology with finite coefficients? 12 Motivic cohomology and pushforward maps 11 How to think about infinite generatedness of motivic cohomology 4 Absoluteness of motivic cohomology and restriction of scalars 3 Resolution of conical singularities have even-only cohomology? $(function() { $(\".js-gps-related-questions .spacer\").on(\"click\", function () { fireRelatedEvent($(this).index() + 1, $(this).data('question-id')); }); function fireRelatedEvent(position, questionId) { StackExchange.using(\"gps\", function() { StackExchange.gps.track('related_questions.click', { position: position, originQuestionId: 366203, relatedQuestionId: +questionId, location: 'sidebar', source: 'Baseline' }); }); } }); Question feed",
+  "tags": "ag.algebraic-geometry,ag.algebraic-geometry",
+  "scraped_at": "2026-01-14T04:23:51.321722",
+  "answer": ""
+}

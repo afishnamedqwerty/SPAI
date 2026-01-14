@@ -1,0 +1,140 @@
+#!/bin/bash
+# Cut Tool - Column/field extraction
+# SPAI Dev Tool
+
+set -euo pipefail
+
+usage() {
+    cat <<EOF
+Cut Tool - Column/field extraction utility
+
+Usage: cut_tool [OPTIONS] [file...]
+
+OPTIONS:
+    -d, --delimiter CHAR  Field delimiter [default: tab]
+    -f, --fields LIST     Select fields (e.g., 1,3-5)
+    -c, --characters LIST Select character positions
+    -b, --bytes LIST      Select byte positions
+    -s, --only-delimited  Only print lines with delimiters
+    --output-delim CHAR   Output delimiter [default: input delim]
+    --complement          Complement the selection
+    --json                JSON output
+    -h, --help            Show this help
+
+LIST FORMAT:
+    N       Nth field/char/byte (1-indexed)
+    N-      From Nth to end
+    N-M     From Nth to Mth (inclusive)
+    -M      From 1st to Mth
+
+EXAMPLES:
+    cut_tool -d "," -f 1,3 data.csv
+    cut_tool -c 1-10 file.txt
+    echo "a:b:c:d" | cut_tool -d ":" -f 2-3
+    cut_tool -f 1 --complement file.txt
+EOF
+}
+
+DELIMITER=$'\t'
+FIELDS=""
+CHARS=""
+BYTES=""
+ONLY_DELIM=""
+OUTPUT_DELIM=""
+COMPLEMENT=""
+JSON_OUT=0
+FILES=()
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -d|--delimiter) DELIMITER="$2"; shift 2 ;;
+        -f|--fields) FIELDS="$2"; shift 2 ;;
+        -c|--characters) CHARS="$2"; shift 2 ;;
+        -b|--bytes) BYTES="$2"; shift 2 ;;
+        -s|--only-delimited) ONLY_DELIM="-s"; shift ;;
+        --output-delim) OUTPUT_DELIM="$2"; shift 2 ;;
+        --complement) COMPLEMENT="--complement"; shift ;;
+        --json) JSON_OUT=1; shift ;;
+        -h|--help) usage; exit 0 ;;
+        *) FILES+=("$1"); shift ;;
+    esac
+done
+
+# Validate mutually exclusive options
+MODE_COUNT=0
+[ -n "$FIELDS" ] && ((MODE_COUNT++)) || true
+[ -n "$CHARS" ] && ((MODE_COUNT++)) || true
+[ -n "$BYTES" ] && ((MODE_COUNT++)) || true
+
+if [ $MODE_COUNT -eq 0 ]; then
+    echo "Error: Must specify -f, -c, or -b"
+    usage
+    exit 1
+fi
+
+if [ $MODE_COUNT -gt 1 ]; then
+    echo "Error: Only one of -f, -c, -b can be specified"
+    exit 1
+fi
+
+echo "═══════════════════════════════════════════════════════════════"
+echo "   SPAI Cut Tool"
+if [ -n "$FIELDS" ]; then
+    echo "   Mode: Fields ($FIELDS), Delimiter: '$DELIMITER'"
+elif [ -n "$CHARS" ]; then
+    echo "   Mode: Characters ($CHARS)"
+else
+    echo "   Mode: Bytes ($BYTES)"
+fi
+echo "═══════════════════════════════════════════════════════════════"
+echo ""
+
+# Build cut command
+CUT_OPTS=()
+
+if [ -n "$FIELDS" ]; then
+    CUT_OPTS+=(-d "$DELIMITER" -f "$FIELDS")
+elif [ -n "$CHARS" ]; then
+    CUT_OPTS+=(-c "$CHARS")
+else
+    CUT_OPTS+=(-b "$BYTES")
+fi
+
+[ -n "$ONLY_DELIM" ] && CUT_OPTS+=("$ONLY_DELIM")
+[ -n "$COMPLEMENT" ] && CUT_OPTS+=("$COMPLEMENT")
+[ -n "$OUTPUT_DELIM" ] && CUT_OPTS+=(--output-delimiter="$OUTPUT_DELIM")
+
+# Run cut
+if [ ${#FILES[@]} -eq 0 ]; then
+    # Read from stdin
+    if [ $JSON_OUT -eq 1 ]; then
+        OUTPUT=$(cut "${CUT_OPTS[@]}")
+        LINES=$(echo "$OUTPUT" | wc -l)
+        ESCAPED=$(echo "$OUTPUT" | jq -Rs .)
+        echo "{\"lines\": $LINES, \"output\": $ESCAPED}"
+    else
+        cut "${CUT_OPTS[@]}"
+    fi
+else
+    for file in "${FILES[@]}"; do
+        if [ ! -f "$file" ]; then
+            echo "Warning: $file not found, skipping" >&2
+            continue
+        fi
+        
+        if [ $JSON_OUT -eq 1 ]; then
+            OUTPUT=$(cut "${CUT_OPTS[@]}" "$file")
+            LINES=$(echo "$OUTPUT" | wc -l)
+            ESCAPED=$(echo "$OUTPUT" | jq -Rs .)
+            echo "{\"file\": \"$file\", \"lines\": $LINES, \"output\": $ESCAPED}"
+        else
+            if [ ${#FILES[@]} -gt 1 ]; then
+                echo "--- $file ---"
+            fi
+            cut "${CUT_OPTS[@]}" "$file" | head -500
+        fi
+    done
+fi
+
+echo ""
+echo "═══════════════════════════════════════════════════════════════"

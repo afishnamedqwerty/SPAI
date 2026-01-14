@@ -1,0 +1,165 @@
+#!/bin/bash
+# Sort/Uniq Tool - Sorting and unique filtering
+# SPAI Dev Tool
+
+set -euo pipefail
+
+usage() {
+    cat <<EOF
+Sort/Uniq Tool - Sorting and unique filtering
+
+Usage: sort_uniq [COMMAND] [OPTIONS] [file...]
+
+COMMANDS:
+    sort            Sort lines (default)
+    uniq            Remove duplicates
+    both            Sort then dedupe
+    freq            Frequency count (sort | uniq -c | sort -rn)
+    top             Top N most frequent
+
+OPTIONS:
+    -n, --numeric       Numeric sort
+    -r, --reverse       Reverse order
+    -f, --ignore-case   Case insensitive
+    -u, --unique        Unique only (for sort)
+    -k, --key FIELD     Sort by field number
+    -t, --field-sep SEP Field separator
+    -c, --count         Show counts (for uniq)
+    -d, --duplicates    Only show duplicates
+    --top NUM           Show top N items [default: 20]
+    --json              JSON output
+    -h, --help          Show this help
+
+EXAMPLES:
+    sort_uniq sort -n numbers.txt
+    sort_uniq uniq -c words.txt
+    sort_uniq freq access.log
+    cat data.txt | sort_uniq top --top 10
+EOF
+}
+
+COMMAND="${1:-sort}"
+shift || true
+
+NUMERIC=""
+REVERSE=""
+IGNORE_CASE=""
+UNIQUE=""
+KEY=""
+FIELD_SEP=""
+COUNT=""
+DUPLICATES=""
+TOP_N=20
+JSON_OUT=0
+FILES=()
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -n|--numeric) NUMERIC="-n"; shift ;;
+        -r|--reverse) REVERSE="-r"; shift ;;
+        -f|--ignore-case) IGNORE_CASE="-f"; shift ;;
+        -u|--unique) UNIQUE="-u"; shift ;;
+        -k|--key) KEY="$2"; shift 2 ;;
+        -t|--field-sep) FIELD_SEP="$2"; shift 2 ;;
+        -c|--count) COUNT="-c"; shift ;;
+        -d|--duplicates) DUPLICATES="-d"; shift ;;
+        --top) TOP_N="$2"; shift 2 ;;
+        --json) JSON_OUT=1; shift ;;
+        -h|--help) usage; exit 0 ;;
+        sort|uniq|both|freq|top) COMMAND="$1"; shift ;;
+        *) FILES+=("$1"); shift ;;
+    esac
+done
+
+echo "═══════════════════════════════════════════════════════════════"
+echo "   SPAI Sort/Uniq Tool"
+echo "   Command: $COMMAND"
+echo "═══════════════════════════════════════════════════════════════"
+echo ""
+
+# Build sort options
+SORT_OPTS=($NUMERIC $REVERSE $IGNORE_CASE $UNIQUE)
+[ -n "$KEY" ] && SORT_OPTS+=(-k "$KEY")
+[ -n "$FIELD_SEP" ] && SORT_OPTS+=(-t "$FIELD_SEP")
+
+# Build uniq options
+UNIQ_OPTS=($COUNT $DUPLICATES $IGNORE_CASE)
+
+get_input() {
+    if [ ${#FILES[@]} -eq 0 ]; then
+        cat
+    else
+        cat "${FILES[@]}"
+    fi
+}
+
+case "$COMMAND" in
+    sort)
+        if [ $JSON_OUT -eq 1 ]; then
+            OUTPUT=$(get_input | sort "${SORT_OPTS[@]}")
+            LINES=$(echo "$OUTPUT" | wc -l)
+            ESCAPED=$(echo "$OUTPUT" | jq -Rs .)
+            echo "{\"lines\": $LINES, \"output\": $ESCAPED}"
+        else
+            get_input | sort "${SORT_OPTS[@]}" | head -500
+            echo ""
+            TOTAL=$(get_input | wc -l)
+            echo "Total lines: $TOTAL"
+        fi
+        ;;
+        
+    uniq)
+        if [ $JSON_OUT -eq 1 ]; then
+            OUTPUT=$(get_input | uniq "${UNIQ_OPTS[@]}")
+            UNIQUE_COUNT=$(echo "$OUTPUT" | wc -l)
+            ESCAPED=$(echo "$OUTPUT" | jq -Rs .)
+            echo "{\"unique_lines\": $UNIQUE_COUNT, \"output\": $ESCAPED}"
+        else
+            get_input | uniq "${UNIQ_OPTS[@]}" | head -500
+        fi
+        ;;
+        
+    both)
+        if [ $JSON_OUT -eq 1 ]; then
+            OUTPUT=$(get_input | sort "${SORT_OPTS[@]}" | uniq)
+            UNIQUE_COUNT=$(echo "$OUTPUT" | wc -l)
+            ESCAPED=$(echo "$OUTPUT" | jq -Rs .)
+            echo "{\"unique_lines\": $UNIQUE_COUNT, \"output\": $ESCAPED}"
+        else
+            get_input | sort "${SORT_OPTS[@]}" | uniq | head -500
+        fi
+        ;;
+        
+    freq)
+        if [ $JSON_OUT -eq 1 ]; then
+            OUTPUT=$(get_input | sort | uniq -c | sort -rn | head -"$TOP_N")
+            ESCAPED=$(echo "$OUTPUT" | jq -Rs .)
+            echo "{\"top_n\": $TOP_N, \"frequencies\": $ESCAPED}"
+        else
+            echo "Frequency count (top $TOP_N):"
+            echo ""
+            get_input | sort | uniq -c | sort -rn | head -"$TOP_N"
+        fi
+        ;;
+        
+    top)
+        if [ $JSON_OUT -eq 1 ]; then
+            OUTPUT=$(get_input | sort | uniq -c | sort -rn | head -"$TOP_N")
+            ESCAPED=$(echo "$OUTPUT" | jq -Rs .)
+            echo "{\"top_n\": $TOP_N, \"items\": $ESCAPED}"
+        else
+            echo "Top $TOP_N most frequent:"
+            echo ""
+            get_input | sort | uniq -c | sort -rn | head -"$TOP_N" | awk '{printf "%6d  %s\n", $1, substr($0, index($0,$2))}'
+        fi
+        ;;
+        
+    *)
+        echo "Unknown command: $COMMAND"
+        usage
+        exit 1
+        ;;
+esac
+
+echo ""
+echo "═══════════════════════════════════════════════════════════════"

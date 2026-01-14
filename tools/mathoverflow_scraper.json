@@ -1,0 +1,37 @@
+{
+    "name": "mathoverflow_scraper",
+    "description": "Scrape unanswered questions from MathOverflow for theorem proving and formalization",
+    "tags": [
+        "web",
+        "scraping",
+        "math",
+        "research"
+    ],
+    "parameters": {
+        "limit": {
+            "type": "integer",
+            "description": "Maximum number of questions to fetch",
+            "default": 10
+        },
+        "output": {
+            "type": "string",
+            "description": "Output directory for question JSON files",
+            "default": "./data/mathoverflow/questions"
+        },
+        "search": {
+            "type": "string",
+            "description": "Search query for MathOverflow",
+            "default": "is:question closed:0 answers:0"
+        }
+    },
+    "examples": [
+        "mathoverflow_scraper --limit 5",
+        "mathoverflow_scraper -o ./questions -l 20",
+        "mathoverflow_scraper --json"
+    ],
+    "output_format": "json",
+    "requires": [
+        "curl",
+        "python3"
+    ]
+}

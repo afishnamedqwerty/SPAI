@@ -1,0 +1,10 @@
+{
+  "id": "q_368240",
+  "mathoverflow_id": 368240,
+  "url": "https://mathoverflow.net/questions/368240/isomorphisms-mod-nonstationary",
+  "title": "set theory - Isomorphisms mod nonstationary",
+  "body": "Suppose $G \\subseteq \\mathrm{Add}(\\omega_1)$ is generic over $V$ . Let $X_i = \\{ \\alpha : G(\\alpha) = i \\}$ . Is it true that $P(X_0)/\\mathrm{NS} \\cong P(X_1)/\\mathrm{NS}$ ? set-theory lo.logic forcing Share Cite Improve this question Follow asked Aug 3, 2020 at 17:25 Monroe Eskew 21.1k 5 5 gold badges 62 62 silver badges 130 130 bronze badges $\\endgroup$ Add a comment  |  0 Sorted by: Reset to default Highest score (default) Date modified (newest first) Date created (oldest first) You must log in to answer this question. Start asking to get answers Find the answer to your question by asking. Ask question Explore related questions set-theory lo.logic forcing See similar questions with these tags. The Overflow Blog Now everyone can chat on Stack Overflow Featured on Meta A proposal for bringing back Community Promotion & Open Source Ads Community Asks Sprint Announcement – January 2026: Custom site-specific badges! Citation Helper v2 - User Script edition! Related 7 subalgebra of a simple forcing 10 Can you have many independent reals? 6 Can we recover an inner model of CH after forgetting some generic information? 3 Adding a closed unbounded set containing of only limit ordinals with a special property 5 Can a generic ultrafilter over $\\mathrm{NS}^+_{\\omega_1}$ witness $\\omega_1$ is Ramsey-like? $(function() { $(\".js-gps-related-questions .spacer\").on(\"click\", function () { fireRelatedEvent($(this).index() + 1, $(this).data('question-id')); }); function fireRelatedEvent(position, questionId) { StackExchange.using(\"gps\", function() { StackExchange.gps.track('related_questions.click', { position: position, originQuestionId: 368240, relatedQuestionId: +questionId, location: 'sidebar', source: 'Baseline' }); }); } }); Question feed",
+  "tags": "set-theory,lo.logic,forcing,set-theory,lo.logic,forcing",
+  "scraped_at": "2026-01-14T04:27:51.721446",
+  "answer": ""
+}

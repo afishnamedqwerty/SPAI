@@ -1,0 +1,181 @@
+#!/bin/bash
+# AWK Tool - Pattern-based text processing
+# SPAI Dev Tool
+
+set -euo pipefail
+
+usage() {
+    cat <<EOF
+AWK Tool - Pattern-based text processing
+
+Usage: awk_tool [COMMAND] [OPTIONS] [file...]
+
+COMMANDS:
+    print               Print specific fields
+    sum FIELD           Sum numeric field
+    avg FIELD           Average of numeric field
+    count               Count lines/records
+    filter CONDITION    Filter lines by condition
+    format TEMPLATE     Format output with template
+    freq FIELD          Frequency count of field values
+    custom SCRIPT       Run custom AWK script
+
+OPTIONS:
+    -F, --field-sep FS  Field separator [default: whitespace]
+    -f, --field NUM     Field number to operate on
+    -v, --var NAME=VAL  Set AWK variable
+    -H, --header        First line is header
+    --json              JSON output
+    -h, --help          Show this help
+
+EXAMPLES:
+    awk_tool print -f 1,3 data.csv
+    awk_tool -F "," sum 2 sales.csv
+    awk_tool filter '\$3 > 100' data.txt
+    cat access.log | awk_tool freq 1
+EOF
+}
+
+COMMAND="${1:-print}"
+shift || true
+
+FIELD_SEP=""
+FIELDS=""
+HEADER=0
+VARS=()
+JSON_OUT=0
+ARGS=()
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -F|--field-sep) FIELD_SEP="$2"; shift 2 ;;
+        -f|--field) FIELDS="$2"; shift 2 ;;
+        -v|--var) VARS+=(-v "$2"); shift 2 ;;
+        -H|--header) HEADER=1; shift ;;
+        --json) JSON_OUT=1; shift ;;
+        -h|--help) usage; exit 0 ;;
+        *) ARGS+=("$1"); shift ;;
+    esac
+done
+
+echo "═══════════════════════════════════════════════════════════════"
+echo "   SPAI AWK Tool"
+echo "   Command: $COMMAND"
+echo "═══════════════════════════════════════════════════════════════"
+echo ""
+
+# Build AWK options
+AWK_OPTS=("${VARS[@]}")
+if [ -n "$FIELD_SEP" ]; then
+    AWK_OPTS+=(-F "$FIELD_SEP")
+fi
+
+run_awk() {
+    local script="$1"
+    shift
+    
+    if [ ${#ARGS[@]} -eq 0 ]; then
+        awk "${AWK_OPTS[@]}" "$script"
+    else
+        awk "${AWK_OPTS[@]}" "$script" "${ARGS[@]}"
+    fi
+}
+
+case "$COMMAND" in
+    print)
+        if [ -z "$FIELDS" ]; then
+            FIELDS="0"
+        fi
+        
+        # Convert comma-separated fields to AWK print statement
+        PRINT_EXPR=$(echo "$FIELDS" | sed 's/,/,$/g' | sed 's/^/$/g')
+        if [ $HEADER -eq 1 ]; then
+            run_awk "NR==1 {print; next} {print $PRINT_EXPR}"
+        else
+            run_awk "{print $PRINT_EXPR}"
+        fi
+        ;;
+        
+    sum)
+        FIELD="${ARGS[0]:-1}"
+        ARGS=("${ARGS[@]:1}")
+        
+        if [ $JSON_OUT -eq 1 ]; then
+            run_awk "{sum += \$$FIELD} END {printf \"{\\\"sum\\\": %g}\\n\", sum}"
+        else
+            run_awk "{sum += \$$FIELD} END {print \"Sum:\", sum}"
+        fi
+        ;;
+        
+    avg)
+        FIELD="${ARGS[0]:-1}"
+        ARGS=("${ARGS[@]:1}")
+        
+        if [ $JSON_OUT -eq 1 ]; then
+            run_awk "{sum += \$$FIELD; count++} END {printf \"{\\\"avg\\\": %g, \\\"count\\\": %d}\\n\", sum/count, count}"
+        else
+            run_awk "{sum += \$$FIELD; count++} END {print \"Average:\", sum/count, \"(n=\"count\")\"}"
+        fi
+        ;;
+        
+    count)
+        if [ $JSON_OUT -eq 1 ]; then
+            run_awk "END {printf \"{\\\"lines\\\": %d}\\n\", NR}"
+        else
+            run_awk "END {print \"Lines:\", NR}"
+        fi
+        ;;
+        
+    filter)
+        CONDITION="${ARGS[0]:-1}"
+        ARGS=("${ARGS[@]:1}")
+        
+        if [ $HEADER -eq 1 ]; then
+            run_awk "NR==1 {print; next} $CONDITION {print}"
+        else
+            run_awk "$CONDITION {print}"
+        fi
+        ;;
+        
+    format)
+        TEMPLATE="${ARGS[0]:-}"
+        ARGS=("${ARGS[@]:1}")
+        
+        if [ -z "$TEMPLATE" ]; then
+            echo "Error: format requires a template"
+            exit 1
+        fi
+        run_awk "{printf \"$TEMPLATE\\n\", \$1, \$2, \$3, \$4, \$5}"
+        ;;
+        
+    freq)
+        FIELD="${ARGS[0]:-1}"
+        ARGS=("${ARGS[@]:1}")
+        
+        if [ $HEADER -eq 1 ]; then
+            run_awk "NR==1 {next} {count[\$$FIELD]++} END {for (val in count) print count[val], val}" | sort -rn | head -50
+        else
+            run_awk "{count[\$$FIELD]++} END {for (val in count) print count[val], val}" | sort -rn | head -50
+        fi
+        ;;
+        
+    custom)
+        SCRIPT="${ARGS[0]:-}"
+        ARGS=("${ARGS[@]:1}")
+        
+        if [ -z "$SCRIPT" ]; then
+            echo "Error: custom requires a script"
+            exit 1
+        fi
+        run_awk "$SCRIPT"
+        ;;
+        
+    *)
+        echo "Unknown command: $COMMAND"
+        usage
+        exit 1
+        ;;
+esac
+
+echo ""
+echo "═══════════════════════════════════════════════════════════════"

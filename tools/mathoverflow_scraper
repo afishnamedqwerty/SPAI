@@ -1,0 +1,284 @@
+#!/usr/bin/env python3
+"""
+MathOverflow Scraper - Fetch unanswered questions for theorem proving
+SPAI Web Tool
+
+Usage:
+    mathoverflow_scraper [OPTIONS]
+
+Options:
+    -l, --limit NUM      Maximum questions to fetch [default: 10]
+    -o, --output DIR     Output directory [default: ./data/mathoverflow/questions]
+    -s, --search QUERY   Search query [default: is:question closed:0 answers:0]
+    -d, --delay SEC      Delay between requests [default: 1.0]
+    -p, --pages NUM      Maximum pages to scrape [default: 50]
+    --json               Output raw JSON to stdout
+    -h, --help           Show this help
+"""
+
+import argparse
+import json
+import os
+import re
+import sys
+import time
+import urllib.parse
+import urllib.request
+from html import unescape
+from datetime import datetime
+
+
+def fetch_url(url: str) -> str:
+    """Fetch URL content with proper headers."""
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.5',
+        'Connection': 'keep-alive',
+    }
+    req = urllib.request.Request(url, headers=headers)
+    with urllib.request.urlopen(req, timeout=30) as response:
+        return response.read().decode('utf-8', errors='replace')
+
+
+def extract_questions_from_page(html: str) -> list:
+    """Extract question URLs and IDs from a single search results page."""
+    # Pattern matches question links in search results (with optional query params)
+    pattern = r'href="/questions/(\d+)/([^"?\s]+)'
+    matches = re.findall(pattern, html)
+    
+    seen = set()
+    questions = []
+    for qid, slug in matches:
+        if qid not in seen:
+            seen.add(qid)
+            questions.append({
+                'id': qid,
+                'slug': slug,
+                'url': f'https://mathoverflow.net/questions/{qid}/{slug}'
+            })
+    
+    return questions
+
+
+def has_next_page(html: str, current_page: int) -> bool:
+    """Check if there's a next page of results."""
+    # Look for pagination links
+    next_page_pattern = rf'page=({current_page + 1})'
+    return bool(re.search(next_page_pattern, html))
+
+
+def extract_question_content(html: str, url: str) -> dict:
+    """Extract question title, body, and tags from question page."""
+    result = {
+        'title': '',
+        'body': '',
+        'tags': ''
+    }
+    
+    # Extract title from <title> tag or h1
+    title_match = re.search(r'<title>([^<]+)</title>', html)
+    if title_match:
+        result['title'] = title_match.group(1).replace(' - MathOverflow', '').strip()
+    
+    # Alternative: Extract from itemprop="name"
+    if not result['title']:
+        name_match = re.search(r'itemprop="name"[^>]*>([^<]+)<', html)
+        if name_match:
+            result['title'] = unescape(name_match.group(1).strip())
+    
+    # Extract question body from post-text div
+    body_patterns = [
+        r'<div class="s-prose js-post-body"[^>]*>(.*?)</div>\s*(?:<div class="mt24"|<aside|<div class="post-taglist)',
+        r'<div itemprop="text"[^>]*>(.*?)</div>',
+        r'class="postcell"[^>]*>.*?<div[^>]*>(.*?)</div>',
+    ]
+    
+    for pattern in body_patterns:
+        body_match = re.search(pattern, html, re.DOTALL)
+        if body_match:
+            body_html = body_match.group(1)
+            # Strip HTML tags
+            body_text = re.sub(r'<[^>]+>', ' ', body_html)
+            # Clean up whitespace
+            body_text = re.sub(r'\s+', ' ', body_text)
+            # Unescape HTML entities
+            body_text = unescape(body_text.strip())
+            if len(body_text) > 50:
+                result['body'] = body_text[:8000]
+                break
+    
+    # Extract tags
+    tag_matches = re.findall(r'rel="tag"[^>]*>([^<]+)<', html)
+    if tag_matches:
+        result['tags'] = ','.join(tag_matches)
+    
+    # Alternative tag extraction
+    if not result['tags']:
+        tag_matches = re.findall(r'class="post-tag[^"]*"[^>]*>([^<]+)<', html)
+        if tag_matches:
+            result['tags'] = ','.join(tag_matches)
+    
+    return result
+
+
+def scrape_mathoverflow(search_query: str, limit: int, max_pages: int, output_dir: str, delay: float, json_output: bool) -> dict:
+    """Main scraping function with pagination support."""
+    
+    print("═" * 65, file=sys.stderr)
+    print("   SPAI MathOverflow Scraper (with pagination)", file=sys.stderr)
+    print(f"   Query: {search_query}", file=sys.stderr)
+    print(f"   Limit: {limit} questions | Max pages: {max_pages}", file=sys.stderr)
+    print("═" * 65, file=sys.stderr)
+    print("", file=sys.stderr)
+    
+    # Create output directory
+    os.makedirs(output_dir, exist_ok=True)
+    
+    # Build base search URL
+    encoded_query = urllib.parse.quote(search_query)
+    base_search_url = f"https://mathoverflow.net/search?q={encoded_query}"
+    
+    # Phase 1: Collect all question URLs from paginated search results
+    print("📥 Phase 1: Collecting question URLs from search results...", file=sys.stderr)
+    
+    all_questions_meta = []
+    seen_ids = set()
+    page = 1
+    
+    while page <= max_pages and len(all_questions_meta) < limit:
+        search_url = f"{base_search_url}&page={page}"
+        print(f"   📄 Page {page}...", file=sys.stderr, end=" ", flush=True)
+        
+        try:
+            search_html = fetch_url(search_url)
+            page_questions = extract_questions_from_page(search_html)
+            
+            # Deduplicate
+            new_count = 0
+            for q in page_questions:
+                if q['id'] not in seen_ids:
+                    seen_ids.add(q['id'])
+                    all_questions_meta.append(q)
+                    new_count += 1
+                    if len(all_questions_meta) >= limit:
+                        break
+            
+            print(f"found {new_count} new questions (total: {len(all_questions_meta)})", file=sys.stderr)
+            
+            # If no questions found on this page at all, we might have hit the end
+            if len(page_questions) == 0:
+                print("   ℹ️  No more pages available", file=sys.stderr)
+                break
+            
+            page += 1
+            # Use longer delay with jitter to avoid rate limiting
+            import random
+            sleep_time = delay + random.uniform(0.5, 1.5)
+            time.sleep(sleep_time)
+            
+        except Exception as e:
+            print(f"failed: {e}", file=sys.stderr)
+            break
+    
+    if not all_questions_meta:
+        print("❌ No questions found in search results", file=sys.stderr)
+        return {"questions": [], "count": 0, "error": "No questions found"}
+    
+    print(f"\n✓ Collected {len(all_questions_meta)} question URLs from {page} pages\n", file=sys.stderr)
+    
+    # Phase 2: Fetch individual question content
+    print("📥 Phase 2: Fetching question content...", file=sys.stderr)
+    
+    questions = []
+    
+    for i, meta in enumerate(all_questions_meta):
+        qid = meta['id']
+        url = meta['url']
+        
+        # Progress indicator every 10 questions
+        if i % 10 == 0 or i == len(all_questions_meta) - 1:
+            print(f"   Progress: {i+1}/{len(all_questions_meta)} questions", file=sys.stderr)
+        
+        try:
+            if i > 0:
+                time.sleep(delay)  # Rate limiting
+            
+            question_html = fetch_url(url)
+            content = extract_question_content(question_html, url)
+            
+            question = {
+                "id": f"q_{qid}",
+                "mathoverflow_id": int(qid),
+                "url": url,
+                "title": content['title'],
+                "body": content['body'],
+                "tags": content['tags'],
+                "scraped_at": datetime.now().isoformat(),
+                "answer": ""
+            }
+            
+            # Save individual file
+            filename = f"q_{qid}.json"
+            filepath = os.path.join(output_dir, filename)
+            with open(filepath, 'w', encoding='utf-8') as f:
+                json.dump(question, f, indent=2, ensure_ascii=False)
+            
+            questions.append(question)
+            
+        except Exception as e:
+            print(f"   ⚠️  Failed q_{qid}: {e}", file=sys.stderr)
+            continue
+    
+    result = {
+        "questions": questions,
+        "count": len(questions),
+        "pages_scraped": page,
+        "scraped_at": datetime.now().isoformat()
+    }
+    
+    if json_output:
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+    else:
+        print("", file=sys.stderr)
+        print("═" * 65, file=sys.stderr)
+        print(f"✓ Scraped {len(questions)} questions to {output_dir}", file=sys.stderr)
+        print(f"  Pages processed: {page}", file=sys.stderr)
+        print("═" * 65, file=sys.stderr)
+    
+    return result
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description='MathOverflow Scraper - Fetch unanswered math questions'
+    )
+    parser.add_argument('-l', '--limit', type=int, default=10,
+                        help='Maximum questions to fetch (default: 10)')
+    parser.add_argument('-o', '--output', type=str, 
+                        default='./data/mathoverflow/questions',
+                        help='Output directory')
+    parser.add_argument('-s', '--search', type=str,
+                        default='is:question closed:0 answers:0',
+                        help='Search query')
+    parser.add_argument('-d', '--delay', type=float, default=2.0,
+                        help='Delay between requests in seconds (default: 2.0)')
+    parser.add_argument('-p', '--pages', type=int, default=50,
+                        help='Maximum pages to scrape (default: 50)')
+    parser.add_argument('--json', action='store_true',
+                        help='Output raw JSON to stdout')
+    
+    args = parser.parse_args()
+    
+    scrape_mathoverflow(
+        search_query=args.search,
+        limit=args.limit,
+        max_pages=args.pages,
+        output_dir=args.output,
+        delay=args.delay,
+        json_output=args.json
+    )
+
+
+if __name__ == '__main__':
+    main()

@@ -1,0 +1,168 @@
+#!/bin/bash
+# Xargs Tool - Build and execute command lines
+# SPAI Dev Tool
+
+set -euo pipefail
+
+usage() {
+    cat <<EOF
+Xargs Tool - Build and execute command lines from input
+
+Usage: xargs_tool [OPTIONS] command [args...]
+
+OPTIONS:
+    -n, --max-args NUM    Max arguments per command [default: all]
+    -L, --max-lines NUM   Max lines per command
+    -P, --parallel NUM    Max parallel processes [default: 1]
+    -I, --replace STR     Replace string for input [default: {}]
+    -d, --delimiter CHAR  Input delimiter [default: newline]
+    -0, --null            Null-delimited input
+    -t, --verbose         Print commands before execution
+    -p, --prompt          Prompt before execution
+    --no-run-if-empty     Don't run if input is empty
+    --dry-run             Show commands without executing
+    --json                JSON output
+    -h, --help            Show this help
+
+EXAMPLES:
+    echo "file1 file2" | xargs_tool rm
+    find . -name "*.log" | xargs_tool -I {} gzip {}
+    cat urls.txt | xargs_tool -P 4 curl -O
+    echo "a b c" | xargs_tool -n 1 echo "Item:"
+EOF
+}
+
+MAX_ARGS=""
+MAX_LINES=""
+PARALLEL=1
+REPLACE="{}"
+DELIMITER=$'\n'
+NULL_DELIM=0
+VERBOSE=0
+PROMPT=0
+NO_RUN_EMPTY=0
+DRY_RUN=0
+JSON_OUT=0
+COMMAND_ARGS=()
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -n|--max-args) MAX_ARGS="$2"; shift 2 ;;
+        -L|--max-lines) MAX_LINES="$2"; shift 2 ;;
+        -P|--parallel) PARALLEL="$2"; shift 2 ;;
+        -I|--replace) REPLACE="$2"; shift 2 ;;
+        -d|--delimiter) DELIMITER="$2"; shift 2 ;;
+        -0|--null) NULL_DELIM=1; shift ;;
+        -t|--verbose) VERBOSE=1; shift ;;
+        -p|--prompt) PROMPT=1; shift ;;
+        --no-run-if-empty) NO_RUN_EMPTY=1; shift ;;
+        --dry-run) DRY_RUN=1; shift ;;
+        --json) JSON_OUT=1; shift ;;
+        -h|--help) usage; exit 0 ;;
+        *) COMMAND_ARGS+=("$1"); shift ;;
+    esac
+done
+
+if [ ${#COMMAND_ARGS[@]} -eq 0 ]; then
+    echo "Error: No command specified"
+    usage
+    exit 1
+fi
+
+echo "═══════════════════════════════════════════════════════════════"
+echo "   SPAI Xargs Tool"
+echo "   Command: ${COMMAND_ARGS[*]}"
+echo "═══════════════════════════════════════════════════════════════"
+echo ""
+
+# Build xargs options
+XARGS_OPTS=()
+[ -n "$MAX_ARGS" ] && XARGS_OPTS+=(-n "$MAX_ARGS")
+[ -n "$MAX_LINES" ] && XARGS_OPTS+=(-L "$MAX_LINES")
+[ "$PARALLEL" -gt 1 ] && XARGS_OPTS+=(-P "$PARALLEL")
+[ "$NULL_DELIM" -eq 1 ] && XARGS_OPTS+=(-0)
+[ "$VERBOSE" -eq 1 ] && XARGS_OPTS+=(-t)
+[ "$PROMPT" -eq 1 ] && XARGS_OPTS+=(-p)
+[ "$NO_RUN_EMPTY" -eq 1 ] && XARGS_OPTS+=(-r)
+
+# Check if replacement string is used
+USES_REPLACE=0
+for arg in "${COMMAND_ARGS[@]}"; do
+    if [[ "$arg" == *"$REPLACE"* ]]; then
+        USES_REPLACE=1
+        break
+    fi
+done
+
+if [ $USES_REPLACE -eq 1 ]; then
+    XARGS_OPTS+=(-I "$REPLACE")
+fi
+
+# Read input
+INPUT=$(cat)
+
+if [ -z "$INPUT" ] && [ $NO_RUN_EMPTY -eq 1 ]; then
+    echo "No input, skipping execution"
+    exit 0
+fi
+
+EXECUTED=0
+RESULTS=()
+
+if [ $DRY_RUN -eq 1 ]; then
+    echo "Dry run - would execute:"
+    echo ""
+    
+    if [ $USES_REPLACE -eq 1 ]; then
+        # Show each command with replacement
+        while IFS= read -r line; do
+            CMD="${COMMAND_ARGS[*]//$REPLACE/$line}"
+            echo "  $CMD"
+            ((EXECUTED++))
+        done <<< "$INPUT"
+    else
+        # Show batched commands
+        echo "  ${COMMAND_ARGS[*]} <input items>"
+        EXECUTED=$(echo "$INPUT" | wc -l)
+    fi
+    
+    echo ""
+    echo "Would execute $EXECUTED command(s)"
+else
+    if [ $JSON_OUT -eq 1 ]; then
+        echo "["
+        FIRST=1
+        
+        while IFS= read -r line; do
+            if [ $USES_REPLACE -eq 1 ]; then
+                CMD="${COMMAND_ARGS[*]//$REPLACE/$line}"
+            else
+                CMD="${COMMAND_ARGS[*]} $line"
+            fi
+            
+            OUTPUT=$(eval "$CMD" 2>&1 || true)
+            ESCAPED=$(echo "$OUTPUT" | jq -Rs .)
+            
+            if [ $FIRST -eq 1 ]; then
+                FIRST=0
+            else
+                echo ","
+            fi
+            
+            printf '{"input": "%s", "output": %s}' "$line" "$ESCAPED"
+            ((EXECUTED++))
+        done <<< "$INPUT"
+        
+        echo ""
+        echo "]"
+    else
+        # Use actual xargs
+        echo "$INPUT" | xargs "${XARGS_OPTS[@]}" "${COMMAND_ARGS[@]}" 2>&1 | head -500
+        EXECUTED=$(echo "$INPUT" | wc -l)
+    fi
+fi
+
+echo ""
+echo "═══════════════════════════════════════════════════════════════"
+echo "Processed: $EXECUTED items"
+echo "═══════════════════════════════════════════════════════════════"

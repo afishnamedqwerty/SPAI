@@ -1,0 +1,144 @@
+#!/bin/bash
+# Head/Tail Tool - View file beginnings and endings
+# SPAI Dev Tool
+
+set -euo pipefail
+
+usage() {
+    cat <<EOF
+Head/Tail Tool - View file beginnings and endings
+
+Usage: head_tail [COMMAND] [OPTIONS] [file...]
+
+COMMANDS:
+    head            Show first lines (default)
+    tail            Show last lines
+    both            Show both head and tail
+    middle          Show lines from middle of file
+
+OPTIONS:
+    -n, --lines NUM     Number of lines [default: 10]
+    -c, --bytes NUM     Number of bytes instead of lines
+    -f, --follow        Follow file for new content (tail only)
+    -q, --quiet         Don't print file headers
+    --skip NUM          Skip first NUM lines (tail mode)
+    --json              JSON output
+    -h, --help          Show this help
+
+EXAMPLES:
+    head_tail head -n 20 file.txt
+    head_tail tail -f /var/log/syslog
+    head_tail both -n 5 data.csv
+    head_tail middle -n 100 --skip 50 bigfile.log
+EOF
+}
+
+COMMAND="${1:-head}"
+shift || true
+
+LINES=10
+BYTES=""
+FOLLOW=""
+QUIET=""
+SKIP=0
+JSON_OUT=0
+FILES=()
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -n|--lines) LINES="$2"; shift 2 ;;
+        -c|--bytes) BYTES="$2"; shift 2 ;;
+        -f|--follow) FOLLOW="-f"; shift ;;
+        -q|--quiet) QUIET="-q"; shift ;;
+        --skip) SKIP="$2"; shift 2 ;;
+        --json) JSON_OUT=1; shift ;;
+        -h|--help) usage; exit 0 ;;
+        head|tail|both|middle) COMMAND="$1"; shift ;;
+        *) FILES+=("$1"); shift ;;
+    esac
+done
+
+echo "═══════════════════════════════════════════════════════════════"
+echo "   SPAI Head/Tail Tool"
+echo "   Command: $COMMAND"
+echo "═══════════════════════════════════════════════════════════════"
+echo ""
+
+process_file() {
+    local file="$1"
+    local is_stdin=0
+    
+    if [ "$file" = "-" ] || [ -z "$file" ]; then
+        is_stdin=1
+        file="/dev/stdin"
+    elif [ ! -f "$file" ]; then
+        echo "Error: $file not found" >&2
+        return 1
+    fi
+    
+    if [ ${#FILES[@]} -gt 1 ] && [ -z "$QUIET" ] && [ $is_stdin -eq 0 ]; then
+        echo "==> $file <=="
+    fi
+    
+    case "$COMMAND" in
+        head)
+            if [ -n "$BYTES" ]; then
+                head -c "$BYTES" "$file"
+            else
+                head -n "$LINES" "$file"
+            fi
+            ;;
+            
+        tail)
+            local TAIL_OPTS=()
+            [ -n "$BYTES" ] && TAIL_OPTS+=(-c "$BYTES") || TAIL_OPTS+=(-n "$LINES")
+            [ -n "$FOLLOW" ] && TAIL_OPTS+=("$FOLLOW")
+            
+            if [ $SKIP -gt 0 ]; then
+                TAIL_OPTS+=(-n "+$((SKIP + 1))")
+            fi
+            
+            tail "${TAIL_OPTS[@]}" "$file"
+            ;;
+            
+        both)
+            echo "--- HEAD ($LINES lines) ---"
+            head -n "$LINES" "$file"
+            echo ""
+            echo "--- TAIL ($LINES lines) ---"
+            tail -n "$LINES" "$file"
+            ;;
+            
+        middle)
+            local start=$((SKIP + 1))
+            local end=$((SKIP + LINES))
+            sed -n "${start},${end}p" "$file"
+            ;;
+    esac
+}
+
+if [ $JSON_OUT -eq 1 ]; then
+    for file in "${FILES[@]:-/dev/stdin}"; do
+        if [ ! -f "$file" ] && [ "$file" != "/dev/stdin" ]; then
+            echo "{\"error\": \"file not found\", \"file\": \"$file\"}"
+            continue
+        fi
+        
+        CONTENT=$(process_file "$file" 2>/dev/null)
+        TOTAL=$(wc -l < "$file" 2>/dev/null || echo 0)
+        ESCAPED=$(echo "$CONTENT" | jq -Rs .)
+        
+        echo "{\"file\": \"$file\", \"total_lines\": $TOTAL, \"content\": $ESCAPED}"
+    done
+else
+    if [ ${#FILES[@]} -eq 0 ]; then
+        process_file "-"
+    else
+        for file in "${FILES[@]}"; do
+            process_file "$file"
+            echo ""
+        done
+    fi
+fi
+
+echo "═══════════════════════════════════════════════════════════════"

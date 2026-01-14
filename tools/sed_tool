@@ -1,0 +1,192 @@
+#!/bin/bash
+# Sed Tool - Stream editor wrapper
+# SPAI Dev Tool
+
+set -euo pipefail
+
+usage() {
+    cat <<EOF
+Sed Tool - Stream editor wrapper for text transformations
+
+Usage: sed_tool [COMMAND] [OPTIONS] [file...]
+
+COMMANDS:
+    replace PATTERN REPL   Replace pattern with replacement
+    delete PATTERN         Delete lines matching pattern
+    insert LINE TEXT       Insert text before line number
+    append LINE TEXT       Append text after line number
+    extract PATTERN        Extract lines matching pattern
+    number                 Number all lines
+    trim                   Remove leading/trailing whitespace
+
+OPTIONS:
+    -i, --in-place         Edit files in place
+    -g, --global           Replace all occurrences (default for replace)
+    -n, --first            Replace only first occurrence
+    -E, --extended         Use extended regex
+    -c, --count            Show count of changes
+    --backup EXT           Create backup with extension
+    --json                 JSON output
+    -h, --help             Show this help
+
+EXAMPLES:
+    sed_tool replace "foo" "bar" file.txt
+    sed_tool -i delete "^#" config.txt
+    sed_tool extract "ERROR" logfile.log
+    echo "hello" | sed_tool replace "e" "a"
+EOF
+}
+
+COMMAND="${1:-}"
+shift || true
+
+IN_PLACE=""
+GLOBAL=1
+EXTENDED=""
+COUNT=0
+BACKUP=""
+JSON_OUT=0
+FILES=()
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -i|--in-place) IN_PLACE="-i"; shift ;;
+        -g|--global) GLOBAL=1; shift ;;
+        -n|--first) GLOBAL=0; shift ;;
+        -E|--extended) EXTENDED="-E"; shift ;;
+        -c|--count) COUNT=1; shift ;;
+        --backup) BACKUP="$2"; shift 2 ;;
+        --json) JSON_OUT=1; shift ;;
+        -h|--help) usage; exit 0 ;;
+        *) FILES+=("$1"); shift ;;
+    esac
+done
+
+if [ -z "$COMMAND" ]; then
+    echo "Error: No command specified"
+    usage
+    exit 1
+fi
+
+echo "═══════════════════════════════════════════════════════════════"
+echo "   SPAI Sed Tool"
+echo "   Command: $COMMAND"
+echo "═══════════════════════════════════════════════════════════════"
+echo ""
+
+# Build sed options
+SED_OPTS=($EXTENDED)
+if [ -n "$IN_PLACE" ]; then
+    if [ -n "$BACKUP" ]; then
+        SED_OPTS+=(-i".$BACKUP")
+    else
+        SED_OPTS+=(-i)
+    fi
+fi
+
+run_sed() {
+    local expr="$1"
+    shift
+    
+    if [ ${#FILES[@]} -eq 0 ] || [ "${FILES[0]}" = "-" ]; then
+        # Read from stdin
+        sed "${SED_OPTS[@]}" "$expr"
+    else
+        # Process files
+        for file in "${FILES[@]}"; do
+            if [ ! -f "$file" ]; then
+                echo "Warning: $file not found, skipping" >&2
+                continue
+            fi
+            
+            if [ $JSON_OUT -eq 1 ]; then
+                BEFORE=$(wc -l < "$file")
+                OUTPUT=$(sed "${SED_OPTS[@]}" "$expr" "$file")
+                AFTER=$(echo "$OUTPUT" | wc -l)
+                echo "{\"file\": \"$file\", \"lines_before\": $BEFORE, \"lines_after\": $AFTER}"
+            else
+                echo "--- $file ---"
+                sed "${SED_OPTS[@]}" "$expr" "$file"
+            fi
+        done
+    fi
+}
+
+case "$COMMAND" in
+    replace)
+        if [ ${#FILES[@]} -lt 2 ]; then
+            echo "Error: replace requires PATTERN and REPLACEMENT"
+            exit 1
+        fi
+        PATTERN="${FILES[0]}"
+        REPL="${FILES[1]}"
+        FILES=("${FILES[@]:2}")
+        
+        if [ $GLOBAL -eq 1 ]; then
+            EXPR="s|${PATTERN}|${REPL}|g"
+        else
+            EXPR="s|${PATTERN}|${REPL}|"
+        fi
+        run_sed "$EXPR"
+        ;;
+        
+    delete)
+        if [ ${#FILES[@]} -lt 1 ]; then
+            echo "Error: delete requires PATTERN"
+            exit 1
+        fi
+        PATTERN="${FILES[0]}"
+        FILES=("${FILES[@]:1}")
+        run_sed "/${PATTERN}/d"
+        ;;
+        
+    insert)
+        if [ ${#FILES[@]} -lt 2 ]; then
+            echo "Error: insert requires LINE and TEXT"
+            exit 1
+        fi
+        LINE="${FILES[0]}"
+        TEXT="${FILES[1]}"
+        FILES=("${FILES[@]:2}")
+        run_sed "${LINE}i\\${TEXT}"
+        ;;
+        
+    append)
+        if [ ${#FILES[@]} -lt 2 ]; then
+            echo "Error: append requires LINE and TEXT"
+            exit 1
+        fi
+        LINE="${FILES[0]}"
+        TEXT="${FILES[1]}"
+        FILES=("${FILES[@]:2}")
+        run_sed "${LINE}a\\${TEXT}"
+        ;;
+        
+    extract)
+        if [ ${#FILES[@]} -lt 1 ]; then
+            echo "Error: extract requires PATTERN"
+            exit 1
+        fi
+        PATTERN="${FILES[0]}"
+        FILES=("${FILES[@]:1}")
+        SED_OPTS+=(-n)
+        run_sed "/${PATTERN}/p"
+        ;;
+        
+    number)
+        run_sed "="
+        ;;
+        
+    trim)
+        run_sed 's/^[[:space:]]*//;s/[[:space:]]*$//'
+        ;;
+        
+    *)
+        echo "Unknown command: $COMMAND"
+        usage
+        exit 1
+        ;;
+esac
+
+echo ""
+echo "═══════════════════════════════════════════════════════════════"

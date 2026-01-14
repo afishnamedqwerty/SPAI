@@ -1,0 +1,174 @@
+#!/bin/bash
+# Find Tool - File discovery utility
+# SPAI Dev Tool
+
+set -euo pipefail
+
+usage() {
+    cat <<EOF
+Find Tool - File discovery utility
+
+Usage: find_tool [OPTIONS] [path...]
+
+OPTIONS:
+    -n, --name PATTERN    Match filename pattern (glob)
+    -t, --type TYPE       Type: file, dir, link, any [default: any]
+    -s, --size SIZE       Size filter (+10M, -1K, 100)
+    -m, --mtime DAYS      Modified within N days (+ for older, - for newer)
+    -a, --atime DAYS      Accessed within N days
+    -d, --depth NUM       Max depth
+    -e, --exec CMD        Execute command on matches ({} = file)
+    -p, --print0          Null-delimited output
+    --empty               Find empty files/directories
+    --hidden              Include hidden files
+    --extension EXT       Filter by extension
+    --exclude PATTERN     Exclude pattern
+    --count               Only count matches
+    --json                JSON output
+    -h, --help            Show this help
+
+EXAMPLES:
+    find_tool -n "*.rs" src/
+    find_tool -t file -s +1M .
+    find_tool -m -7 -t file ~/Documents
+    find_tool --extension py --count .
+    find_tool -e "wc -l {}" -n "*.txt" .
+EOF
+}
+
+NAME=""
+TYPE=""
+SIZE=""
+MTIME=""
+ATIME=""
+DEPTH=""
+EXEC_CMD=""
+PRINT0=""
+EMPTY=""
+HIDDEN=0
+EXTENSION=""
+EXCLUDE=""
+COUNT_ONLY=0
+JSON_OUT=0
+PATHS=()
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -n|--name) NAME="$2"; shift 2 ;;
+        -t|--type) TYPE="$2"; shift 2 ;;
+        -s|--size) SIZE="$2"; shift 2 ;;
+        -m|--mtime) MTIME="$2"; shift 2 ;;
+        -a|--atime) ATIME="$2"; shift 2 ;;
+        -d|--depth) DEPTH="$2"; shift 2 ;;
+        -e|--exec) EXEC_CMD="$2"; shift 2 ;;
+        -p|--print0) PRINT0="-print0"; shift ;;
+        --empty) EMPTY="-empty"; shift ;;
+        --hidden) HIDDEN=1; shift ;;
+        --extension) EXTENSION="$2"; shift 2 ;;
+        --exclude) EXCLUDE="$2"; shift 2 ;;
+        --count) COUNT_ONLY=1; shift ;;
+        --json) JSON_OUT=1; shift ;;
+        -h|--help) usage; exit 0 ;;
+        *) PATHS+=("$1"); shift ;;
+    esac
+done
+
+# Default path
+if [ ${#PATHS[@]} -eq 0 ]; then
+    PATHS=(".")
+fi
+
+echo "═══════════════════════════════════════════════════════════════"
+echo "   SPAI Find Tool"
+echo "   Paths: ${PATHS[*]}"
+echo "═══════════════════════════════════════════════════════════════"
+echo ""
+
+# Build find command
+FIND_OPTS=()
+
+# Depth limit
+[ -n "$DEPTH" ] && FIND_OPTS+=(-maxdepth "$DEPTH")
+
+# Exclude hidden files by default
+if [ $HIDDEN -eq 0 ]; then
+    FIND_OPTS+=(-not -path '*/\.*')
+fi
+
+# Exclude patterns
+if [ -n "$EXCLUDE" ]; then
+    FIND_OPTS+=(-not -name "$EXCLUDE" -not -path "*/$EXCLUDE/*")
+fi
+
+# Type filter
+case "$TYPE" in
+    file|f) FIND_OPTS+=(-type f) ;;
+    dir|d) FIND_OPTS+=(-type d) ;;
+    link|l) FIND_OPTS+=(-type l) ;;
+    any|"") ;;
+    *) echo "Warning: Unknown type $TYPE"; ;;
+esac
+
+# Name filter
+if [ -n "$NAME" ]; then
+    FIND_OPTS+=(-name "$NAME")
+elif [ -n "$EXTENSION" ]; then
+    FIND_OPTS+=(-name "*.$EXTENSION")
+fi
+
+# Size filter
+[ -n "$SIZE" ] && FIND_OPTS+=(-size "$SIZE")
+
+# Time filters
+[ -n "$MTIME" ] && FIND_OPTS+=(-mtime "$MTIME")
+[ -n "$ATIME" ] && FIND_OPTS+=(-atime "$ATIME")
+
+# Empty filter
+[ -n "$EMPTY" ] && FIND_OPTS+=("$EMPTY")
+
+# Execute find
+if [ $COUNT_ONLY -eq 1 ]; then
+    COUNT=$(find "${PATHS[@]}" "${FIND_OPTS[@]}" 2>/dev/null | wc -l)
+    if [ $JSON_OUT -eq 1 ]; then
+        echo "{\"count\": $COUNT}"
+    else
+        echo "Found: $COUNT matches"
+    fi
+elif [ -n "$EXEC_CMD" ]; then
+    # Execute command on each file
+    echo "Executing: $EXEC_CMD"
+    echo ""
+    find "${PATHS[@]}" "${FIND_OPTS[@]}" 2>/dev/null | head -100 | while read -r file; do
+        CMD="${EXEC_CMD//\{\}/$file}"
+        echo "--- $file ---"
+        eval "$CMD" 2>&1 || true
+    done
+elif [ $JSON_OUT -eq 1 ]; then
+    echo "["
+    FIRST=1
+    find "${PATHS[@]}" "${FIND_OPTS[@]}" 2>/dev/null | head -500 | while read -r file; do
+        if [ -e "$file" ]; then
+            SIZE_BYTES=$(stat -c %s "$file" 2>/dev/null || echo 0)
+            MTIME_TS=$(stat -c %Y "$file" 2>/dev/null || echo 0)
+            TYPE_CHAR=$(stat -c %F "$file" 2>/dev/null | cut -c1)
+            
+            if [ $FIRST -eq 1 ]; then
+                FIRST=0
+            else
+                echo ","
+            fi
+            printf '{"path": "%s", "size": %d, "mtime": %d, "type": "%s"}' "$file" "$SIZE_BYTES" "$MTIME_TS" "$TYPE_CHAR"
+        fi
+    done
+    echo ""
+    echo "]"
+else
+    find "${PATHS[@]}" "${FIND_OPTS[@]}" $PRINT0 2>/dev/null | head -500
+    
+    echo ""
+    COUNT=$(find "${PATHS[@]}" "${FIND_OPTS[@]}" 2>/dev/null | wc -l)
+    echo "Found: $COUNT matches"
+fi
+
+echo ""
+echo "═══════════════════════════════════════════════════════════════"

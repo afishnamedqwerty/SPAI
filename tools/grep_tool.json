@@ -1,0 +1,42 @@
+{
+    "name": "Grep Tool",
+    "description": "Enhanced pattern search wrapper with ripgrep fallback, regex modes, context lines, file type filtering, and recursive search.",
+    "category": "text",
+    "tags": [
+        "dev_tools",
+        "filesystem_tools"
+    ],
+    "requires_sudo": false,
+    "args": [
+        {
+            "name": "-i",
+            "description": "Case insensitive search",
+            "required": false
+        },
+        {
+            "name": "-r",
+            "description": "Recursive search",
+            "required": false
+        },
+        {
+            "name": "-v",
+            "description": "Invert match",
+            "required": false
+        },
+        {
+            "name": "-C",
+            "description": "Lines of context",
+            "required": false
+        },
+        {
+            "name": "-t",
+            "description": "File type filter",
+            "required": false
+        },
+        {
+            "name": "-E",
+            "description": "Extended regex",
+            "required": false
+        }
+    ]
+}

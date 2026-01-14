@@ -5,7 +5,15 @@ edition = "2021"
 authors = ["ATHPTTGH Contributors"]
 license = "MIT OR Apache-2.0"
 description = "ATHPTTGH Agent Harness - Production-grade multi-agent orchestration framework with OpenRouter integration"
-keywords = ["ai", "agents", "llm", "multi-agent", "openrouter", "react", "swarms"]
+keywords = [
+    "ai",
+    "agents",
+    "llm",
+    "multi-agent",
+    "openrouter",
+    "react",
+    "swarms",
+]
 categories = ["asynchronous", "web-programming"]
 readme = "README.md"
 
@@ -23,7 +31,11 @@ serde_yaml = "0.9"
 swarms-rs = "0.1.7"
 
 # HTTP client for OpenRouter
-reqwest = { version = "0.12", features = ["json", "stream", "rustls-tls"], default-features = false }
+reqwest = { version = "0.12", features = [
+    "json",
+    "stream",
+    "rustls-tls",
+], default-features = false }
 
 # Error handling
 anyhow = "1.0"
@@ -33,7 +45,12 @@ thiserror = "2.0"
 dotenvy = "0.15"
 
 # MCP support (rmcp)
-rmcp = { version = "0.11.0", features = ["client", "server", "macros", "transport-child-process"], optional = true }
+rmcp = { version = "0.11.0", features = [
+    "client",
+    "server",
+    "macros",
+    "transport-child-process",
+], optional = true }
 
 # Tracing and observability
 tracing = "0.1"
@@ -64,7 +81,14 @@ config = "0.14"
 
 # Storage
 sled = "0.34"
-sqlx = { version = "0.8", features = ["runtime-tokio-rustls", "sqlite", "postgres", "chrono", "uuid", "json"], optional = true }
+sqlx = { version = "0.8", features = [
+    "runtime-tokio-rustls",
+    "sqlite",
+    "postgres",
+    "chrono",
+    "uuid",
+    "json",
+], optional = true }
 
 # Rate limiting
 governor = "0.8"
@@ -101,7 +125,15 @@ full = ["mcp-tools", "telemetry", "storage"]
 mcp-tools = ["rmcp"]
 telemetry = []
 storage = ["sqlx"]
-solid-integration = ["sophia_api", "oxigraph", "jsonwebtoken", "p256", "keyring", "base64", "sha2"]
+solid-integration = [
+    "sophia_api",
+    "oxigraph",
+    "jsonwebtoken",
+    "p256",
+    "keyring",
+    "base64",
+    "sha2",
+]
 
 [[example]]
 name = "basic_agent"
@@ -158,3 +190,11 @@ path = "examples/sequential_agent_dev.rs"
 [[example]]
 name = "test_patterns"
 path = "examples/test_patterns.rs"
+
+[[example]]
+name = "monetary_policy"
+path = "examples/monetary_policy.rs"
+
+[[example]]
+name = "math_agg"
+path = "examples/math_agg.rs"

@@ -10,7 +10,7 @@ rounds: 2  # Number of debate rounds
 
 pro_agent:
   name: "Pro Advocate"
-  model: "tngtech/deepseek-r1t2-chimera:free"
+  model: "anthropic/claude-opus-4.5"
   system_prompt: |
     You are an advocate arguing IN FAVOR of the given position.
     Present compelling arguments with evidence and reasoning.
@@ -32,7 +32,7 @@ con_agent:
 
 synthesizer:
   name: "Neutral Synthesizer"
-  model: "anthropic/claude-sonnet-4"
+  model: "anthropic/claude-opus-4.5"
   system_prompt: |
     You are a neutral synthesizer reviewing a debate.
     Your role:

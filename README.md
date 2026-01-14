@@ -170,8 +170,8 @@ SPAI provides a modular tool discovery system with tag-based filtering. Tools ar
 |-----|-------------|---------------|
 | `security_tools` | Security auditing and vulnerability scanning | `file_integrity`, `cve_scanner`, `ssh_auditor`, `firewall_auditor` |
 | `web_tools` | Web scraping and API interaction | `exa_search`, `url_fetcher`, `api_client`, `rss_parser` |
-| `filesystem_tools` | File operations and search | `semantic_search`, `file_metadata`, `diff_tool`, `archive_handler` |
-| `dev_tools` | Development workflow tools | `code_linter`, `test_runner`, `git_ops`, `sandbox_exec` |
+| `filesystem_tools` | File operations and search | `semantic_search`, `file_metadata`, `diff_tool`, `archive_handler`, `sed_tool`, `awk_tool`, `cut_tool`, `grep_tool`, `find_tool` |
+| `dev_tools` | Development workflow tools | `code_linter`, `test_runner`, `git_ops`, `sandbox_exec`, `sed_tool`, `awk_tool`, `cut_tool`, `grep_tool`, `head_tail`, `sort_uniq`, `wc_tool`, `tr_tool`, `find_tool`, `xargs_tool` |
 | `all` | Special tag - returns all tools | * |
 
 ### Agent Instantiation with Tagged Tools

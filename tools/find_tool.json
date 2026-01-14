@@ -1,0 +1,42 @@
+{
+    "name": "Find Tool",
+    "description": "File discovery utility with filtering by type, size, modification time, extension, and command execution on matches.",
+    "category": "filesystem",
+    "tags": [
+        "dev_tools",
+        "filesystem_tools"
+    ],
+    "requires_sudo": false,
+    "args": [
+        {
+            "name": "-n",
+            "description": "Match filename pattern (glob)",
+            "required": false
+        },
+        {
+            "name": "-t",
+            "description": "Type filter: file, dir, link",
+            "required": false
+        },
+        {
+            "name": "-s",
+            "description": "Size filter (e.g., +1M, -10K)",
+            "required": false
+        },
+        {
+            "name": "-m",
+            "description": "Modified within N days",
+            "required": false
+        },
+        {
+            "name": "--extension",
+            "description": "Filter by file extension",
+            "required": false
+        },
+        {
+            "name": "-e",
+            "description": "Execute command on matches",
+            "required": false
+        }
+    ]
+}

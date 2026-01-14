@@ -28,7 +28,7 @@ agents:
     temperature: 0.7
 
   - name: "Voter 3"
-    model: "tngtech/deepseek-r1t2-chimera:free"
+    model: "anthropic/claude-opus-4.5"
     system_prompt: |
       You are an independent decision-maker.
       Analyze the given question and provide your verdict.

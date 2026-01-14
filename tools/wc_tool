@@ -1,0 +1,177 @@
+#!/bin/bash
+# WC Tool - Word/line/character counting
+# SPAI Dev Tool
+
+set -euo pipefail
+
+usage() {
+    cat <<EOF
+WC Tool - Word/line/character counting
+
+Usage: wc_tool [OPTIONS] [file...]
+
+OPTIONS:
+    -l, --lines         Count lines
+    -w, --words         Count words
+    -c, --bytes         Count bytes
+    -m, --chars         Count characters
+    -L, --max-line      Length of longest line
+    -a, --all           Show all counts (default)
+    -t, --total         Only show total
+    -r, --recursive     Recursive for directories
+    --by-extension      Group by file extension
+    --json              JSON output
+    -h, --help          Show this help
+
+EXAMPLES:
+    wc_tool README.md
+    wc_tool -l src/*.rs
+    wc_tool -r --by-extension src/
+    cat file.txt | wc_tool -w
+EOF
+}
+
+LINES=0
+WORDS=0
+BYTES=0
+CHARS=0
+MAX_LINE=0
+ALL=1
+TOTAL_ONLY=0
+RECURSIVE=0
+BY_EXT=0
+JSON_OUT=0
+FILES=()
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -l|--lines) LINES=1; ALL=0; shift ;;
+        -w|--words) WORDS=1; ALL=0; shift ;;
+        -c|--bytes) BYTES=1; ALL=0; shift ;;
+        -m|--chars) CHARS=1; ALL=0; shift ;;
+        -L|--max-line) MAX_LINE=1; ALL=0; shift ;;
+        -a|--all) ALL=1; shift ;;
+        -t|--total) TOTAL_ONLY=1; shift ;;
+        -r|--recursive) RECURSIVE=1; shift ;;
+        --by-extension) BY_EXT=1; shift ;;
+        --json) JSON_OUT=1; shift ;;
+        -h|--help) usage; exit 0 ;;
+        *) FILES+=("$1"); shift ;;
+    esac
+done
+
+echo "═══════════════════════════════════════════════════════════════"
+echo "   SPAI WC Tool"
+echo "═══════════════════════════════════════════════════════════════"
+echo ""
+
+# Build wc options
+WC_OPTS=()
+if [ $ALL -eq 1 ]; then
+    WC_OPTS+=(-lwc)
+else
+    [ $LINES -eq 1 ] && WC_OPTS+=(-l)
+    [ $WORDS -eq 1 ] && WC_OPTS+=(-w)
+    [ $BYTES -eq 1 ] && WC_OPTS+=(-c)
+    [ $CHARS -eq 1 ] && WC_OPTS+=(-m)
+    [ $MAX_LINE -eq 1 ] && WC_OPTS+=(-L)
+fi
+
+count_file() {
+    local file="$1"
+    
+    if [ $JSON_OUT -eq 1 ]; then
+        local l=$(wc -l < "$file" 2>/dev/null || echo 0)
+        local w=$(wc -w < "$file" 2>/dev/null || echo 0)
+        local c=$(wc -c < "$file" 2>/dev/null || echo 0)
+        echo "{\"file\": \"$file\", \"lines\": $l, \"words\": $w, \"bytes\": $c}"
+    else
+        wc "${WC_OPTS[@]}" "$file" 2>/dev/null
+    fi
+}
+
+if [ $BY_EXT -eq 1 ]; then
+    echo "Counts by file extension:"
+    echo ""
+    
+    # Handle recursive or direct files
+    if [ $RECURSIVE -eq 1 ] && [ ${#FILES[@]} -gt 0 ]; then
+        for dir in "${FILES[@]}"; do
+            find "$dir" -type f 2>/dev/null
+        done
+    else
+        for f in "${FILES[@]}"; do
+            echo "$f"
+        done
+    fi | while read -r file; do
+        ext="${file##*.}"
+        [ "$ext" = "$file" ] && ext="(no ext)"
+        echo "$ext"
+    done | sort | uniq -c | sort -rn | while read -r count ext; do
+        # Get line counts for each extension
+        if [ $RECURSIVE -eq 1 ] && [ ${#FILES[@]} -gt 0 ]; then
+            total_lines=$(find "${FILES[@]}" -name "*.$ext" -type f -exec cat {} \; 2>/dev/null | wc -l)
+        else
+            total_lines=$(cat "${FILES[@]}" 2>/dev/null | wc -l)
+        fi
+        printf "%6d files  %8d lines  %s\n" "$count" "$total_lines" "$ext"
+    done
+    
+elif [ $RECURSIVE -eq 1 ] && [ ${#FILES[@]} -gt 0 ]; then
+    TOTAL_LINES=0
+    TOTAL_WORDS=0
+    TOTAL_BYTES=0
+    FILE_COUNT=0
+    
+    while IFS= read -r -d '' file; do
+        if [ $TOTAL_ONLY -eq 0 ]; then
+            count_file "$file"
+        fi
+        
+        l=$(wc -l < "$file" 2>/dev/null || echo 0)
+        w=$(wc -w < "$file" 2>/dev/null || echo 0)
+        c=$(wc -c < "$file" 2>/dev/null || echo 0)
+        
+        TOTAL_LINES=$((TOTAL_LINES + l))
+        TOTAL_WORDS=$((TOTAL_WORDS + w))
+        TOTAL_BYTES=$((TOTAL_BYTES + c))
+        FILE_COUNT=$((FILE_COUNT + 1))
+    done < <(find "${FILES[@]}" -type f -print0 2>/dev/null)
+    
+    echo ""
+    echo "═══════════════════════════════════════════════════════════════"
+    if [ $JSON_OUT -eq 1 ]; then
+        echo "{\"total_files\": $FILE_COUNT, \"total_lines\": $TOTAL_LINES, \"total_words\": $TOTAL_WORDS, \"total_bytes\": $TOTAL_BYTES}"
+    else
+        printf "TOTAL: %d files, %d lines, %d words, %d bytes\n" "$FILE_COUNT" "$TOTAL_LINES" "$TOTAL_WORDS" "$TOTAL_BYTES"
+    fi
+    
+elif [ ${#FILES[@]} -eq 0 ]; then
+    # Read from stdin
+    if [ $JSON_OUT -eq 1 ]; then
+        INPUT=$(cat)
+        l=$(echo "$INPUT" | wc -l)
+        w=$(echo "$INPUT" | wc -w)
+        c=$(echo "$INPUT" | wc -c)
+        echo "{\"lines\": $l, \"words\": $w, \"bytes\": $c}"
+    else
+        wc "${WC_OPTS[@]}"
+    fi
+else
+    # Process specific files
+    for file in "${FILES[@]}"; do
+        if [ ! -f "$file" ]; then
+            echo "Warning: $file not found" >&2
+            continue
+        fi
+        count_file "$file"
+    done
+    
+    if [ ${#FILES[@]} -gt 1 ] && [ $JSON_OUT -eq 0 ]; then
+        echo ""
+        wc "${WC_OPTS[@]}" "${FILES[@]}" 2>/dev/null | tail -1
+    fi
+fi
+
+echo ""
+echo "═══════════════════════════════════════════════════════════════"

@@ -1,0 +1,37 @@
+{
+    "name": "Sed Tool",
+    "description": "Stream editor wrapper for text transformations including find/replace, line deletion, insertion, and pattern extraction.",
+    "category": "text",
+    "tags": [
+        "dev_tools",
+        "filesystem_tools"
+    ],
+    "requires_sudo": false,
+    "args": [
+        {
+            "name": "replace",
+            "description": "Replace pattern with replacement text",
+            "required": false
+        },
+        {
+            "name": "delete",
+            "description": "Delete lines matching pattern",
+            "required": false
+        },
+        {
+            "name": "extract",
+            "description": "Extract lines matching pattern",
+            "required": false
+        },
+        {
+            "name": "-i",
+            "description": "Edit files in place",
+            "required": false
+        },
+        {
+            "name": "-E",
+            "description": "Use extended regex",
+            "required": false
+        }
+    ]
+}

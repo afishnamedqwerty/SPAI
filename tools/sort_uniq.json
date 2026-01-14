@@ -1,0 +1,37 @@
+{
+    "name": "Sort/Uniq Tool",
+    "description": "Sorting and unique filtering with frequency counting, field-based sorting, and top-N analysis.",
+    "category": "text",
+    "tags": [
+        "dev_tools",
+        "filesystem_tools"
+    ],
+    "requires_sudo": false,
+    "args": [
+        {
+            "name": "sort",
+            "description": "Sort lines",
+            "required": false
+        },
+        {
+            "name": "uniq",
+            "description": "Remove duplicates",
+            "required": false
+        },
+        {
+            "name": "freq",
+            "description": "Frequency count",
+            "required": false
+        },
+        {
+            "name": "-n",
+            "description": "Numeric sort",
+            "required": false
+        },
+        {
+            "name": "-r",
+            "description": "Reverse order",
+            "required": false
+        }
+    ]
+}

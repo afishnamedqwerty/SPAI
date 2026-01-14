@@ -1,0 +1,158 @@
+#!/bin/bash
+# Grep Tool - Enhanced pattern search
+# SPAI Dev Tool
+
+set -euo pipefail
+
+usage() {
+    cat <<EOF
+Grep Tool - Enhanced pattern search wrapper
+
+Usage: grep_tool [OPTIONS] <pattern> [path...]
+
+OPTIONS:
+    -i, --ignore-case     Case insensitive search
+    -v, --invert          Invert match (show non-matching)
+    -w, --word            Match whole words only
+    -x, --line            Match whole lines only
+    -c, --count           Only print count of matches
+    -l, --files-only      List matching files only
+    -L, --files-without   List non-matching files only
+    -n, --line-number     Show line numbers
+    -H, --with-filename   Show filenames
+    -r, --recursive       Recursive search
+    -A, --after NUM       Show NUM lines after match
+    -B, --before NUM      Show NUM lines before match
+    -C, --context NUM     Show NUM lines of context
+    -E, --extended        Extended regex (egrep)
+    -F, --fixed           Fixed strings (fgrep)
+    -P, --perl            Perl-compatible regex
+    -t, --type TYPE       File type filter (e.g., py, rs, js)
+    --include GLOB        Include files matching glob
+    --exclude GLOB        Exclude files matching glob
+    --color               Colorize output
+    --json                JSON output
+    -h, --help            Show this help
+
+EXAMPLES:
+    grep_tool "TODO" src/
+    grep_tool -ri "error" --type py .
+    grep_tool -C 3 "function" main.js
+    grep_tool -v "^#" config.txt
+EOF
+}
+
+PATTERN=""
+PATHS=()
+OPTS=()
+COUNT_ONLY=0
+JSON_OUT=0
+FILE_TYPE=""
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -i|--ignore-case) OPTS+=(-i); shift ;;
+        -v|--invert) OPTS+=(-v); shift ;;
+        -w|--word) OPTS+=(-w); shift ;;
+        -x|--line) OPTS+=(-x); shift ;;
+        -c|--count) COUNT_ONLY=1; OPTS+=(-c); shift ;;
+        -l|--files-only) OPTS+=(-l); shift ;;
+        -L|--files-without) OPTS+=(-L); shift ;;
+        -n|--line-number) OPTS+=(-n); shift ;;
+        -H|--with-filename) OPTS+=(-H); shift ;;
+        -r|--recursive) OPTS+=(-r); shift ;;
+        -A|--after) OPTS+=(-A "$2"); shift 2 ;;
+        -B|--before) OPTS+=(-B "$2"); shift 2 ;;
+        -C|--context) OPTS+=(-C "$2"); shift 2 ;;
+        -E|--extended) OPTS+=(-E); shift ;;
+        -F|--fixed) OPTS+=(-F); shift ;;
+        -P|--perl) OPTS+=(-P); shift ;;
+        -t|--type) FILE_TYPE="$2"; shift 2 ;;
+        --include) OPTS+=(--include="$2"); shift 2 ;;
+        --exclude) OPTS+=(--exclude="$2"); shift 2 ;;
+        --color) OPTS+=(--color=always); shift ;;
+        --json) JSON_OUT=1; shift ;;
+        -h|--help) usage; exit 0 ;;
+        *)
+            if [ -z "$PATTERN" ]; then
+                PATTERN="$1"
+            else
+                PATHS+=("$1")
+            fi
+            shift
+            ;;
+    esac
+done
+
+if [ -z "$PATTERN" ]; then
+    echo "Error: No search pattern specified"
+    usage
+    exit 1
+fi
+
+# Default path
+if [ ${#PATHS[@]} -eq 0 ]; then
+    PATHS=(".")
+fi
+
+# Add file type filter
+if [ -n "$FILE_TYPE" ]; then
+    OPTS+=(--include="*.$FILE_TYPE")
+fi
+
+echo "═══════════════════════════════════════════════════════════════"
+echo "   SPAI Grep Tool"
+echo "   Pattern: $PATTERN"
+echo "   Paths: ${PATHS[*]}"
+echo "═══════════════════════════════════════════════════════════════"
+echo ""
+
+# Add line numbers if not already specified and not counting
+if [[ ! " ${OPTS[*]} " =~ " -n " ]] && [ $COUNT_ONLY -eq 0 ] && [[ ! " ${OPTS[*]} " =~ " -l " ]] && [[ ! " ${OPTS[*]} " =~ " -L " ]]; then
+    OPTS+=(-n)
+fi
+
+# Check for ripgrep for better performance
+if command -v rg &>/dev/null && [[ ! " ${OPTS[*]} " =~ " -P " ]]; then
+    # Convert grep opts to rg opts where needed
+    RG_OPTS=()
+    for opt in "${OPTS[@]}"; do
+        case "$opt" in
+            -E) ;; # rg uses PCRE by default
+            -H) ;; # rg includes filename by default
+            *) RG_OPTS+=("$opt") ;;
+        esac
+    done
+    
+    if [ -n "$FILE_TYPE" ]; then
+        RG_OPTS+=(-t "$FILE_TYPE")
+    fi
+    
+    if [ $JSON_OUT -eq 1 ]; then
+        RG_OPTS+=(--json)
+        rg "${RG_OPTS[@]}" "$PATTERN" "${PATHS[@]}" 2>/dev/null | head -1000 || true
+    else
+        rg "${RG_OPTS[@]}" "$PATTERN" "${PATHS[@]}" 2>/dev/null | head -500 || true
+        
+        echo ""
+        TOTAL=$(rg -c "$PATTERN" "${PATHS[@]}" 2>/dev/null | awk -F: '{sum+=$NF} END {print sum}' || echo 0)
+        echo "Total matches: ${TOTAL:-0}"
+    fi
+else
+    # Fallback to grep
+    if [ $JSON_OUT -eq 1 ]; then
+        OUTPUT=$(grep "${OPTS[@]}" "$PATTERN" "${PATHS[@]}" 2>/dev/null || true)
+        MATCH_COUNT=$(echo "$OUTPUT" | grep -c . || echo 0)
+        ESCAPED=$(echo "$OUTPUT" | jq -Rs .)
+        echo "{\"pattern\": \"$PATTERN\", \"matches\": $MATCH_COUNT, \"output\": $ESCAPED}"
+    else
+        grep "${OPTS[@]}" "$PATTERN" "${PATHS[@]}" 2>/dev/null | head -500 || true
+        
+        echo ""
+        TOTAL=$(grep -rc "$PATTERN" "${PATHS[@]}" 2>/dev/null | awk -F: '{sum+=$NF} END {print sum}' || echo 0)
+        echo "Total matches: ${TOTAL:-0}"
+    fi
+fi
+
+echo ""
+echo "═══════════════════════════════════════════════════════════════"

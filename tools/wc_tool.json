@@ -1,0 +1,37 @@
+{
+    "name": "WC Tool",
+    "description": "Word/line/character counting with recursive directory support and file extension grouping.",
+    "category": "text",
+    "tags": [
+        "dev_tools",
+        "filesystem_tools"
+    ],
+    "requires_sudo": false,
+    "args": [
+        {
+            "name": "-l",
+            "description": "Count lines",
+            "required": false
+        },
+        {
+            "name": "-w",
+            "description": "Count words",
+            "required": false
+        },
+        {
+            "name": "-c",
+            "description": "Count bytes",
+            "required": false
+        },
+        {
+            "name": "-r",
+            "description": "Recursive for directories",
+            "required": false
+        },
+        {
+            "name": "--by-extension",
+            "description": "Group counts by file extension",
+            "required": false
+        }
+    ]
+}

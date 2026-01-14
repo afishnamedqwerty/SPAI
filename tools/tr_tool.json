@@ -1,0 +1,37 @@
+{
+    "name": "TR Tool",
+    "description": "Character translation and deletion with presets for case conversion, whitespace normalization, and character class operations.",
+    "category": "text",
+    "tags": [
+        "dev_tools",
+        "filesystem_tools"
+    ],
+    "requires_sudo": false,
+    "args": [
+        {
+            "name": "upper",
+            "description": "Convert to uppercase",
+            "required": false
+        },
+        {
+            "name": "lower",
+            "description": "Convert to lowercase",
+            "required": false
+        },
+        {
+            "name": "delete",
+            "description": "Delete characters in set",
+            "required": false
+        },
+        {
+            "name": "squeeze",
+            "description": "Squeeze repeated characters",
+            "required": false
+        },
+        {
+            "name": "-c",
+            "description": "Complement the character set",
+            "required": false
+        }
+    ]
+}

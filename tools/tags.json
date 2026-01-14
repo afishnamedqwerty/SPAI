@@ -37,7 +37,17 @@
                 "diff_tool",
                 "archive_handler",
                 "file_integrity",
-                "pdf_extractor"
+                "pdf_extractor",
+                "sed_tool",
+                "awk_tool",
+                "cut_tool",
+                "grep_tool",
+                "head_tail",
+                "sort_uniq",
+                "wc_tool",
+                "tr_tool",
+                "find_tool",
+                "xargs_tool"
             ]
         },
         "dev_tools": {
@@ -51,7 +61,17 @@
                 "container_scanner",
                 "semantic_search",
                 "diff_tool",
-                "api_client"
+                "api_client",
+                "sed_tool",
+                "awk_tool",
+                "cut_tool",
+                "grep_tool",
+                "head_tail",
+                "sort_uniq",
+                "wc_tool",
+                "tr_tool",
+                "find_tool",
+                "xargs_tool"
             ]
         },
         "network_tools": {

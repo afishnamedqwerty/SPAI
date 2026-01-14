@@ -1,0 +1,42 @@
+{
+    "name": "AWK Tool",
+    "description": "Pattern-based text processing with field extraction, aggregation (sum, avg, count), filtering, and frequency analysis.",
+    "category": "text",
+    "tags": [
+        "dev_tools",
+        "filesystem_tools"
+    ],
+    "requires_sudo": false,
+    "args": [
+        {
+            "name": "print",
+            "description": "Print specific fields",
+            "required": false
+        },
+        {
+            "name": "sum",
+            "description": "Sum a numeric field",
+            "required": false
+        },
+        {
+            "name": "avg",
+            "description": "Average of a numeric field",
+            "required": false
+        },
+        {
+            "name": "filter",
+            "description": "Filter lines by condition",
+            "required": false
+        },
+        {
+            "name": "-F",
+            "description": "Field separator",
+            "required": false
+        },
+        {
+            "name": "-f",
+            "description": "Field number(s) to operate on",
+            "required": false
+        }
+    ]
+}

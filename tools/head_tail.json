@@ -1,0 +1,32 @@
+{
+    "name": "Head/Tail Tool",
+    "description": "View file beginnings, endings, or middle sections with support for following logs and byte ranges.",
+    "category": "text",
+    "tags": [
+        "dev_tools",
+        "filesystem_tools"
+    ],
+    "requires_sudo": false,
+    "args": [
+        {
+            "name": "head",
+            "description": "Show first lines",
+            "required": false
+        },
+        {
+            "name": "tail",
+            "description": "Show last lines",
+            "required": false
+        },
+        {
+            "name": "-n",
+            "description": "Number of lines",
+            "required": false
+        },
+        {
+            "name": "-f",
+            "description": "Follow file for new content",
+            "required": false
+        }
+    ]
+}

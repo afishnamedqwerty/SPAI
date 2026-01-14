@@ -1,0 +1,155 @@
+#!/bin/bash
+# TR Tool - Character translation and deletion
+# SPAI Dev Tool
+
+set -euo pipefail
+
+usage() {
+    cat <<EOF
+TR Tool - Character translation and deletion
+
+Usage: tr_tool [COMMAND] [OPTIONS] [SET1] [SET2]
+
+COMMANDS:
+    translate SET1 SET2   Translate characters from SET1 to SET2
+    delete SET            Delete characters in SET
+    squeeze SET           Squeeze repeated characters
+    upper                 Convert to uppercase
+    lower                 Convert to lowercase
+    space-to-newline      Convert spaces to newlines
+    newline-to-space      Convert newlines to spaces
+    strip-non-print       Remove non-printable characters
+    normalize-whitespace  Normalize all whitespace to single spaces
+
+OPTIONS:
+    -c, --complement      Complement SET1
+    -s, --squeeze         Squeeze repeated output characters
+    --json                JSON output
+    -h, --help            Show this help
+
+CHARACTER CLASSES:
+    [:alnum:]    Alphanumeric
+    [:alpha:]    Alphabetic
+    [:digit:]    Digits
+    [:lower:]    Lowercase
+    [:upper:]    Uppercase
+    [:space:]    Whitespace
+    [:punct:]    Punctuation
+    [:print:]    Printable
+
+EXAMPLES:
+    echo "hello" | tr_tool upper
+    echo "hello  world" | tr_tool squeeze " "
+    tr_tool translate "abc" "xyz" < file.txt
+    tr_tool delete "0-9" < file.txt
+EOF
+}
+
+COMMAND="${1:-}"
+shift || true
+
+COMPLEMENT=""
+SQUEEZE=""
+JSON_OUT=0
+SET1=""
+SET2=""
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -c|--complement) COMPLEMENT="-c"; shift ;;
+        -s|--squeeze) SQUEEZE="-s"; shift ;;
+        --json) JSON_OUT=1; shift ;;
+        -h|--help) usage; exit 0 ;;
+        *)
+            if [ -z "$SET1" ]; then
+                SET1="$1"
+            elif [ -z "$SET2" ]; then
+                SET2="$1"
+            fi
+            shift
+            ;;
+    esac
+done
+
+if [ -z "$COMMAND" ]; then
+    echo "Error: No command specified"
+    usage
+    exit 1
+fi
+
+echo "═══════════════════════════════════════════════════════════════"
+echo "   SPAI TR Tool"
+echo "   Command: $COMMAND"
+echo "═══════════════════════════════════════════════════════════════"
+echo ""
+
+run_tr() {
+    local opts=("$@")
+    
+    if [ $JSON_OUT -eq 1 ]; then
+        OUTPUT=$(tr "${opts[@]}")
+        ESCAPED=$(echo "$OUTPUT" | jq -Rs .)
+        echo "{\"output\": $ESCAPED}"
+    else
+        tr "${opts[@]}" | head -c 50000
+    fi
+}
+
+case "$COMMAND" in
+    translate)
+        if [ -z "$SET1" ] || [ -z "$SET2" ]; then
+            echo "Error: translate requires SET1 and SET2"
+            exit 1
+        fi
+        run_tr $COMPLEMENT $SQUEEZE "$SET1" "$SET2"
+        ;;
+        
+    delete)
+        if [ -z "$SET1" ]; then
+            echo "Error: delete requires SET"
+            exit 1
+        fi
+        run_tr -d $COMPLEMENT "$SET1"
+        ;;
+        
+    squeeze)
+        if [ -z "$SET1" ]; then
+            echo "Error: squeeze requires SET"
+            exit 1
+        fi
+        run_tr -s "$SET1"
+        ;;
+        
+    upper)
+        run_tr '[:lower:]' '[:upper:]'
+        ;;
+        
+    lower)
+        run_tr '[:upper:]' '[:lower:]'
+        ;;
+        
+    space-to-newline)
+        run_tr ' ' '\n'
+        ;;
+        
+    newline-to-space)
+        run_tr '\n' ' '
+        ;;
+        
+    strip-non-print)
+        run_tr -cd '[:print:]\n'
+        ;;
+        
+    normalize-whitespace)
+        run_tr -s '[:space:]' ' '
+        ;;
+        
+    *)
+        echo "Unknown command: $COMMAND"
+        usage
+        exit 1
+        ;;
+esac
+
+echo ""
+echo "═══════════════════════════════════════════════════════════════"
