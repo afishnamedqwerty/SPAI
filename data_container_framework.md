@@ -204,9 +204,9 @@ When traffic spikes (e.g., viral event, DDOS), the Server must degrade gracefull
     4.  **Bad Actors Dropped**: Invalid signatures or DPoP failures are dropped at the edge (Layer 1).
 
 **Whitelist Management**:
-*   **Explicit**: "Gold Tier" subscription = WebID added to Redis Whitelist set.
+*   **Explicit**: WebID added to Redis Whitelist set.
 *   **Implicit**: "Reputation Score" > 50 = Auto-added to whitelist.
-*   **Behavior**: Whitelisted agents bypass generic rate limits and CAPTCHAs even during high load, ensuring reliability for the most valuable users.
+*   **Behavior**: Whitelisted agents bypass generic rate limits and CAPTCHAs even during high load, ensuring reliability for identified users.
 
 ## 8. Dynamic Traffic Shaping & Multi-IdP Load Balancing
 
